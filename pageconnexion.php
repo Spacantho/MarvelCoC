@@ -8,7 +8,38 @@
     <title>Connexion</title>
 </head>
 <body>
-    
+    <div class="box-body">
+        <div class="mask-body">
+            <div class="bandeau"></div>
+                <div class="box-titre-image">
+                    <div class="image-titre"></div>
+                </div>
+                <div class="box-body-input">
+                    <div class="box-imput">
+                        <div class="titre-page-info"><h2>CONNEXION</h2></div>
+                        <div class="message-php"><p></p></div>
+                            <form action="" method="post">
+                                <div class="imput">
+                                    <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
+                                    <input type="text" name="Pseudo" id="Pseudo" required><br>
+                                    <label for="password"><p class="texte-pseudo">mot de passe:</p></label>
+                                    <input type="password" name="password" id="password" required>
+                                    <div class="recup-mdp"><a href="pagemdplost.php"><p>mot de passe oublié</p></a></div> 
+                                </div>
+                                <div class="validation">
+                                    <input class="btn-valide" type="submit" value="Valider">
+                                </div>
+                            </form>
+                        <div class="redirection">
+                            <div class="nouveau"><p>vous êtes nouveau?</p><div class="space"></div><a href="pageinscription.php"> inscrivez-vous ici</a></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="bandeau1">
+                <div class="copy"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
