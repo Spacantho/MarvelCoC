@@ -18,23 +18,33 @@
                 </div>
 
             </div>
-            <div class="categorie">
-                
+            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
+                <div class="filterBlack">
+                    <div class="titleCat">Catégorie 1</div>
+                    <div class="textCat"> <div> 0 vidéos</div>   </div>
+                </div>
+
             </div>
-            <div class="categorie">
-                
+            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
+                <div class="filterBlack">
+                    <div class="titleCat">Catégorie 1</div>
+                    <div class="textCat"> <div> 0 vidéos</div>   </div>
+                </div>
+
             </div>
-            <div class="categorie">
-                
+            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
+                <div class="filterBlack">
+                    <div class="titleCat">Catégorie 1</div>
+                    <div class="textCat"> <div> 0 vidéos</div>   </div>
+                </div>
+
             </div>
-            <div class="categorie">
-                
-            </div>
-            <div class="categorie">
-                
-            </div>
-            <div class="categorie">
-                
+            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
+                <div class="filterBlack">
+                    <div class="titleCat">Catégorie 1</div>
+                    <div class="textCat"> <div> 0 vidéos</div>   </div>
+                </div>
+
             </div>
             
             

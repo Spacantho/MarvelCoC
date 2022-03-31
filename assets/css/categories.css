@@ -17,7 +17,7 @@ body {
 .categorieContainer {
   background-color: #0a1417;
   height: fit-content;
-  padding-top: 8em;
+  padding: 8em 0 8em 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ body {
   height: fit-content;
   justify-content: center;
   background-color: #0a1417;
-  gap: 6em 2em;
+  gap: 5.6em 2em;
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
