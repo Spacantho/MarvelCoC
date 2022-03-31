@@ -18,16 +18,16 @@
                     <div class="box-imput">
                         <div class="titre-page-info"><h2>INSCRIPTION</h2></div>
                         <div class="message-php"><p></p></div>
-                            <form action="" method="post">
+                            <form action="assets/php/traitement-inscription.php" method="post">
                                 <div class="imputi">
                                     <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
                                     <input type="text" name="Pseudo" id="Pseudo" required><br>
                                     <label for="mail"><p class="texte-pseudo">Mail:</p></label>
                                     <input type="mail" name="mail" id="mail" required><br>
-                                    <label for="password"><p class="texte-pseudo">mot de passe:</p></label>
+                                    <label for="password"><p class="texte-pseudo">Mot de passe:</p></label>
                                     <input type="password" name="password" id="password" required>
-                                    <label for="password2"><p class="texte-pseudo">répétez mot de passe:</p></label>
-                                    <input type="password2" name="password2" id="password2" required>
+                                    <label for="password2"><p class="texte-pseudo">Confirmez mot de passe:</p></label>
+                                    <input type="password" name="password2" id="password2" required>
                                 </div>
                                 <div class="validation">
                                     <input class="btn-valide" type="submit" value="Valider">

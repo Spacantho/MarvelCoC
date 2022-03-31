@@ -22,7 +22,7 @@
                                 <div class="imputi">
                                     <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
                                     <input type="text" name="Pseudo" id="Pseudo" required><br>
-                                    <label for="mail"><p class="texte-pseudo">mail:</p></label>
+                                    <label for="mail"><p class="texte-pseudo">Mail:</p></label>
                                     <input type="mail" name="mail" id="mail" required>
                                 </div>
                                 <div class="validation">
