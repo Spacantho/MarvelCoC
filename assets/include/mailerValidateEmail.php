@@ -2,17 +2,17 @@
     ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
     $from = "anthony.tourolle08@gmail.com";
-    $to = $_POST["mail"];
+    $to = $mail;
     
     $subject = "Validation de compte";
 
     $message = "
-    Bonjour ".$_POST["Pseudo"].",
+    Bonjour $name,
     Merci d’avoir rejoint MarvelCoC.
     
     Nous aimerions vous confirmer que votre compte a été créé avec succès. Pour accéder à MarvelCoC, cliquez sur le lien ci-dessous.
     
-    <a href='http://localhost:8888/MarvelCoC/assets/php/traitement_verif_mail.php?token=".$token."'></a>
+    http://localhost:8888/MarvelCoC/assets/php/traitement_verif_mail.php?token=$token
     
     Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous à [email contact].
     
