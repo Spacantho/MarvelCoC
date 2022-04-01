@@ -197,6 +197,32 @@
 .color-success {
   color: green !important;
 }
+.container-valid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.text-valid {
+  font-size: 18px;
+}
+.btn-retour {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* margin-left: 85px; */
+  margin-top: -10px;
+}
+.btn-retour a {
+  color: whitesmoke;
+  transition-duration: 0.3s;
+}
+.btn-retour a:hover {
+  color: rgb(106, 164, 168);
+  transition-duration: 0.3s;
+  text-shadow: 0px 0px 17px rgba(204, 204, 204, 1);
+}
 @media (max-height: 820px) {
   .box-imput {
     height: 400px;
@@ -240,5 +266,8 @@
   }
   .bandeau1 {
     margin-top: 2vh;
+  }
+  .text-valid {
+    font-size: 16px;
   }
 }
