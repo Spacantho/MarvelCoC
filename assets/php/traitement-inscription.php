@@ -59,7 +59,7 @@
                     ':token' => $token,
                     ':photo_users' => $photo
                 ));
-
+                require_once("../include/mailerValidateEmail.php");
                 header("Location: ../../pageconnexion.php?success=1");
             }
             }}

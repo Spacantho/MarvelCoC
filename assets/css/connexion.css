@@ -197,3 +197,48 @@
 .color-success {
   color: green !important;
 }
+@media (max-height: 820px) {
+  .box-imput {
+    height: 400px;
+  }
+  .titre-page-info {
+    margin-top: 25px;
+  }
+  .message-php {
+    margin-top: 10px;
+  }
+  .imputi {
+    margin-top: 5px;
+  }
+}
+@media (max-height: 670px) {
+  * {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .box-body-input {
+    height: 58vh;
+  }
+  .image-titre {
+    width: 225px;
+    height: 160px;
+    background-image: url(../images/logo-mobile.png);
+  }
+  .box-imput {
+    height: 400px;
+    width: 270px;
+  }
+  .titre-page-info {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .message-php {
+    margin-top: 10px;
+  }
+  .imputi {
+    margin-top: 5px;
+  }
+  .bandeau1 {
+    margin-top: 2vh;
+  }
+}
