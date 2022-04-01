@@ -8,6 +8,9 @@
     <title>Inscription</title>
 </head>
 <body>
+    <?php 
+    if(!empty($_GET['erreur'])){$erreur = $_GET['erreur'];}
+    ?>
     <div class="box-body">
         <div class="mask-body">
             <div class="bandeau"></div>
@@ -17,13 +20,19 @@
                 <div class="box-body-input">
                     <div class="box-imput">
                         <div class="titre-page-info"><h2>INSCRIPTION</h2></div>
-                        <div class="message-php"><p></p></div>
+                        <div class="message-php">
+                            <?php if(!empty($_GET['erreur'])){
+                                  if($erreur == '4'){
+                            ?><p class="color-erreur">veuillez respecter tous les champs</p><?php
+                                    // echo ('veuillez respecter tous les champs');
+                            } }?>
+                        </div>
                             <form action="assets/php/traitement-inscription.php" method="post">
                                 <div class="imputi">
                                     <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
                                     <input type="text" name="Pseudo" id="Pseudo" required><br>
                                     <label for="mail"><p class="texte-pseudo">Mail:</p></label>
-                                    <input type="mail" name="mail" id="mail" required><br>
+                                    <input type="email" name="mail" id="mail" required><br>
                                     <label for="password"><p class="texte-pseudo">Mot de passe:</p></label>
                                     <input type="password" name="password" id="password" required>
                                     <label for="password2"><p class="texte-pseudo">Confirmez mot de passe:</p></label>

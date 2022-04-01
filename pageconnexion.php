@@ -8,6 +8,14 @@
     <title>Connexion</title>
 </head>
 <body>
+    <?php
+    if(!empty($_GET['erreur'])){
+     $erreur = $_GET['erreur'];
+    }
+    if(!empty($_GET['success'])){
+     $success = $_GET['success'];
+    }
+    ?>
     <div class="box-body">
         <div class="mask-body">
             <div class="bandeau"></div>
@@ -17,8 +25,34 @@
                 <div class="box-body-input">
                     <div class="box-imput">
                         <div class="titre-page-info"><h2>CONNEXION</h2></div>
-                        <div class="message-php"><p></p></div>
-                            <form action="" method="post">
+                        <div class="message-php">
+                        <?php
+                        if(!empty($_GET['erreur'])){
+                            if($erreur == '2'){
+                        ?><p class="color-erreur">Pseudo ou mdp incorrect</p><?php
+                        //   echo ('Pseudo ou mdp incorrect');
+                        }}
+
+                        if(!empty($_GET['erreur'])){
+                            if($erreur == '3'){
+                        ?><p class="color-erreur">Pseudo ou mdp incorrect</p><?php
+                        //   echo ('Pseudo ou mdp incorrect');
+                        }}
+
+                        if(!empty($_GET['erreur'])){
+                        if($erreur == '1'){
+                        ?><p class="color-erreur">Champs incomplet</p><?php
+                            // echo ('Champs incomplet'); 
+                        }}
+
+                        if(!empty($_GET['success'])){
+                        if($success == '1'){
+                        ?><p class="color-success">Compte créer</p><?php
+                            // echo ('Compte créer');
+                        }} 
+                        ?>
+                        </div>
+                            <form action="assets/php/traitement-connexion.php" method="post">
                                 <div class="imputi">
                                     <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
                                     <input type="text" name="Pseudo" id="Pseudo" required><br>
@@ -31,7 +65,7 @@
 
                                 </div>
                                 <div class="validation">
-                                    <input class="btn-valide" type="submit" value="Valider">
+                                    <input class="btn-valide" type="submit" name="submitBtnLogin" value="Valider">
                                 </div>
                             </form>
                         <div class="redirection">

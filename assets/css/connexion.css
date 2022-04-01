@@ -191,3 +191,9 @@
   margin-top: 10px;
   margin-left: 10px;
 }
+.color-erreur {
+  color: red !important;
+}
+.color-success {
+  color: green !important;
+}

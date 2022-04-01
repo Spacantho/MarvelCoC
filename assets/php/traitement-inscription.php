@@ -30,22 +30,39 @@
             }
         
         $photo = "assets/images/default-user.png";
-    
-
-
-            $sqlRequest = "INSERT INTO users (mail_users, username_users, password_users, photo_users, token, verified, id_role)
-                            VALUES (:mail_users, :username_users, :password_users, :photo_users, :token, '0', '2');";
-            $pdoStat = $db -> prepare($sqlRequest);
-            $pdoStat->execute(ARRAY(
-                ':username_users' => $name,
-                ':mail_users' => $mail,
-                ':password_users' => $password,
-                ':token' => $token,
-                ':photo_users' => $photo
+            $sqlRequest1 = "SELECT * FROM users WHERE mail_users=:mail_users";
+            $pdoStat1 = $db -> prepare($sqlRequest1);
+            $pdoStat1->execute(ARRAY(
+                ':mail_users' => $mail
             ));
-            header("Location: ../../pageconnexion.php?success=1");
+            $result = $pdoStat1->fetch();
+            if(!empty($result)){
+                header("Location: ../../pageinscription.php?erreur=4");
+            }
+            else{
+                    $sqlRequest2 = "SELECT * FROM users WHERE username_users=:username_users";
+                $pdoStat2 = $db -> prepare($sqlRequest2);
+                $pdoStat2->execute(ARRAY(
+                    ':username_users' => $name
+                    ));
+                $result1 = $pdoStat2->fetch();
+                if(!empty($result1)){
+                header("Location: ../../pageinscription.php?erreur=4");
+                }else{
+                $sqlRequest = "INSERT INTO users (mail_users, username_users, password_users, photo_users, token, verified, id_role)
+                                VALUES (:mail_users, :username_users, :password_users, :photo_users, :token, '0', '2');";
+                $pdoStat = $db -> prepare($sqlRequest);
+                $pdoStat->execute(ARRAY(
+                    ':username_users' => $name,
+                    ':mail_users' => $mail,
+                    ':password_users' => $password,
+                    ':token' => $token,
+                    ':photo_users' => $photo
+                ));
 
-        }
+                header("Location: ../../pageconnexion.php?success=1");
+            }
+            }}
         else{
         
         }
