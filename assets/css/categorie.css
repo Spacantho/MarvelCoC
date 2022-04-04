@@ -27,24 +27,25 @@ body {
   height: fit-content;
   justify-content: center;
   background-color: #0a1417;
-  gap: 5.6em 2em;
+  gap: 2em 2em;
   height: fit-content;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  grid-template-rows: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-rows: repeat(auto-fit, 120px);
 }
 .categories .categorie {
-  height: 200px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   background-color: #122228;
   cursor: pointer;
 }
+
 .titleCat {
   color: white;
   padding: 0.5em;
   padding-left: 0.8em;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 .filterBlack {
   background-color: rgba(0, 0, 0, 0.497);
