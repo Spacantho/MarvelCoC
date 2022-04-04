@@ -12,22 +12,24 @@
 <body>
     <section id="uv_mainsection">
 
+    <form action="assets/php/uploadtraitement.php" method="post" enctype='multipart/form-data'>
+
     <h2>UPLOAD VIDEO</h2>
 
     
   <h2>TITRE</h2>
-  <input type="text" id="youtubelink" placeholder="Entrez un titre ici...">
+  <input type="text" id="youtubelink" name="videoname" placeholder="Entrez un titre ici...">
   <h2></h2>
     
     <div class="drop-zone">
     <span class="drop-zone__prompt">Glissez votre vidéo ou cliquez pour choisir</span>
-    <input type="file" name="myFile" class="drop-zone__input">
+    <input type="file" name="videofile" class="drop-zone__input">
   </div>
 
   
   <h2>OU</h2>
   <h2>UTILISER UN LIEN YOUTUBE</h2>
-  <input type="text" id="youtubelink" placeholder="Copiez le lien ici">
+  <input type="text" id="youtubelink" name="videolink" placeholder="Copiez le lien ici">
   
 
   <script src="./src/main.js"></script> 
@@ -37,7 +39,7 @@
 		<div class="panel">
 			<div class="button_outer">
 				<div class="btn_upload">
-					<input type="file" id="upload_file" name="">
+					<input type="file" id="upload_file" name="miniature">
 					Upload Image
 				</div>
 				<div class="processing_bar"></div>
@@ -60,8 +62,15 @@
   </div>
 
   <button type="submit" class="link link--primary">UPLOAD VIDEO</a>
-        </section>
 
+  </form>
+
+        </section>
+        <form action="assets/php/uploadtraitement.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script src="assets/js/uploadimg.js"></script>
