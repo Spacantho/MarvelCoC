@@ -18,7 +18,8 @@
                     <div class="box-imput">
                         <div class="titre-page-info"><h2>PASSWORD PERDU</h2></div>
                         <div class="message-php"><p></p></div>
-                            <form action="" method="post">
+
+                            <form action="assets/php/traitement-recuperation.php" method="post">
                                 <div class="imputi">
                                     <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
                                     <input type="text" name="Pseudo" id="Pseudo" required><br>
