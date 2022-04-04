@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <?php include_once "assets/include/footer.php"; ?>
+    <?php include_once "assets/include/footerIndex.php"; ?>
 
     <script src="assets/js/navbar.js"></script>
 </body>
