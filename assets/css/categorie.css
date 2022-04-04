@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "roboto";
+  src: url("../font/Roboto-Regular.ttf");
+}
+
+body {
+  font-family: "roboto";
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #0a1417;
+}
+.fakenav {
+  height: 12vh;
+  background-color: grey;
+}
+.categorieContainer {
+  background-color: #0a1417;
+  height: fit-content;
+  padding: 8em 0 8em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.categories {
+  width: 80%;
+  height: fit-content;
+  justify-content: center;
+  background-color: #0a1417;
+  gap: 2em 2em;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-rows: repeat(auto-fit, 120px);
+}
+.categories .categorie {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  background-color: #122228;
+  cursor: pointer;
+}
+
+.titleCat {
+  color: white;
+  padding: 0.5em;
+  padding-left: 0.8em;
+  font-size: 1em;
+}
+.filterBlack {
+  background-color: rgba(0, 0, 0, 0.497);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in;
+}
+.filterBlack:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+.textCat {
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding: 0 0 1em 1.3em;
+}
