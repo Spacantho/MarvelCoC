@@ -21,6 +21,7 @@ if(isset($_POST['submitBtnLogin'])) {
         $_SESSION['sess_user_id']   = $row['id_users'];
         $_SESSION['sess_user_name'] = $row['username_users'];
         $_SESSION['sess_id_role'] = $row['id_role'];
+        $_SESSION['isVerified'] = $row["verified"];
         // $_SESSION['sess_name'] = $row['nom_user'];
        header("Location: home.php");
       }

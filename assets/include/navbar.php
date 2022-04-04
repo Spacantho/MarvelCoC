@@ -1,10 +1,10 @@
 <header>
     <div id="hamburger">
-        <img id="logo-navbar" src="assets/images/logo/logoMarvel.png" alt="logo MCOC">
+        <a href="index.php"><img id="logo-navbar" src="assets/images/logo/logoMarvel.png" alt="logo MCOC"></a>
             <div id="hamburger-content">
                 <nav>
                     <ul id="nav-list-choice">
-                        <li class="nav-choice"><a href="#">Catégories</a></li>
+                        <li class="nav-choice"><a href="categories.php">Catégories</a></li>
                         <li class="nav-choice"><a href="contact.php">Contact</a></li>
                         <li class="nav-choice"><a href="deconnexion.php" id="nav-btn">Deconnexion</a></li>
                     </ul>
