@@ -1,61 +1,76 @@
 <?php
 
-$title = $_POST['videoname'];
-$lienyoutube = $_POST['videolink'];
-$miniature = $_POST['miniature'];
-$videofile = $_POST['videofile'];
+if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
 
-var_dump($title);
-var_dump($lienyoutube);
-var_dump($miniature);
-var_dump($videofile);
+  $title = $_POST['videoname'];
+  $lienyoutube = $_POST['videolink'];
+  $desc = $_POST['videodesc'];
+ 
+  echo("Titre: ");
+  echo($title);
+  echo("<br>");
+  
+  echo("Lien: ");
+  echo($lienyoutube);
+  echo("<br>");
+ 
+  echo("Desc: ");
+  echo($desc);
+  echo("<br>");
+ 
+ $videoPath = upload("videofile","mp4");
+ $imagePath = upload("miniature", "png");
 
-$target_dir = "assets/uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+ include 'db.php';
 
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
+$sql = "INSERT INTO video (titre_video, description_video, miniature_video, date_video, lien_video, typelien_video, nb_likes, nb_dislikes, id_users, id_categorie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt= $db->prepare($sql);
+$stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 0, 0, 2, 1]);
+ 
+
+}else{
+  echo("Vous n'avez pas rempli tous les champs");
+}
+
+
+function upload($path, $fileTypeExpected){
+  
+  $nomFinalDuFichier = "";
+
+ $target_dir = "../uploads/";
+
+  $f_name = $_FILES[$path]["name"];
+  $t_name = $_FILES[$path]["tmp_name"];
+  $randomString = generateRandomString();
+
+  $fupload = move_uploaded_file($t_name, $target_dir . $randomString . $f_name);
+ 
+  
+  $target_file = $target_dir . basename($_FILES[$path]["name"]);
+  $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+ 
+ if ($fileType==$fileTypeExpected){
+   if ($fupload){
+     echo $fileType." uploaded<br>";
+     $nomFinalDuFichier = $randomString . $f_name;
+  }else{
+     echo "Impossible d'upload le fichier ".$fileTypeExpected."<br>";
   }
+ }else{
+   echo "Impossible d'upload le fichier ".$fileTypeExpected.", le format n'est pas le bon ou le fichier est inexistant<br>";
+ }
+
+ return $nomFinalDuFichier;
 }
 
-// Check if file already exists
-if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
-  $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
-
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-  } else {
-    echo "Sorry, there was an error uploading your file.";
+function generateRandomString($length = 20) {
+  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $charactersLength = strlen($characters);
+  $randomString = '';
+  for ($i = 0; $i < $length; $i++) {
+      $randomString .= $characters[rand(0, $charactersLength - 1)];
   }
+  return $randomString;
 }
 
 ?>

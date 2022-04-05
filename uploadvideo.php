@@ -12,7 +12,7 @@
 <body>
     <section id="uv_mainsection">
 
-    <form action="assets/php/uploadtraitement.php" method="post" enctype='multipart/form-data'>
+    <form action="assets/php/uploadtraitement.php" method="post" enctype="multipart/form-data">
 
     <h2>UPLOAD VIDEO</h2>
 
@@ -58,7 +58,7 @@
 
 <div class="wrapper">
   <div class="form-group">
-    <textarea rows='1' class='auto-expand' id="textarea1" placeholder="Résumé de la vidéo..."></textarea>
+    <textarea name="videodesc" rows='1' class='auto-expand' id="textarea1" placeholder="Résumé de la vidéo..."></textarea>
   </div>
 
   <button type="submit" class="link link--primary">UPLOAD VIDEO</a>
@@ -66,11 +66,7 @@
   </form>
 
         </section>
-        <form action="assets/php/uploadtraitement.php" method="post" enctype="multipart/form-data">
-  Select image to upload:
-  <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload Image" name="submit">
-</form>
+        
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script src="assets/js/uploadimg.js"></script>
