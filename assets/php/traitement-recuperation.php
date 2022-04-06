@@ -2,7 +2,7 @@
 require("db.php");
 // erreur 1 = champs non remplis
 //  erreur 2 = nombre de character trop long
-//  erreur 3 = compte non créer
+//  erreur 6 = compte non créer
 $max = 255;
 
 
@@ -21,8 +21,8 @@ if(isset($_POST)){
                     ));
                     $result = $pdoStat->fetch();
                     $token = $result[5];
-                    if(!empty($result)){
-                        header("Location: ../../pageinscription.php?erreur=3");
+                    if(empty($result)){
+                        header("Location: ../../pageinscription.php?erreur=6");
                     }
                     else{
                         $to  = $_POST["mail"]; // notez la virgule
