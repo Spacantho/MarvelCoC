@@ -30,7 +30,7 @@
                                                         }}
                                   if(!empty($_GET['erreur'])){
                                       if($erreur == '1'){
-                            ?>         <p class="color-erreur">mail envoyer</p>
+                            ?>         <p class="color-erreur">verifier mail ou mdp</p>
                             <?php    
                                       }
                                   }
@@ -38,7 +38,7 @@
                         </div>
 
                         
-                            <form action="assets/php/traitement-New-mdp.php" method="post">
+                            <form action="assets/php/traitement-New-mdp.php?token=<?php echo $_GET['token']?>" method="post">
                                 <div class="imputi">
                                     <label for="New-mdp"><p class="texte-pseudo">Nouveau Mot de passe:</p></label>
                                     <input type="password" name="New-mdp" id="New-mdp" required><br>
