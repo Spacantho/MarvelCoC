@@ -6,7 +6,7 @@
                     <ul id="nav-list-choice">
                         <li class="nav-choice"><a href="categories.php">Catégories</a></li>
                         <li class="nav-choice"><a href="contact.php">Contact</a></li>
-                        <li class="nav-choice"><a href="deconnexion.php" id="nav-btn">Deconnexion</a></li>
+                        <li class="nav-choice"><a href="assets/php/logout.php" id="nav-btn">Deconnexion</a></li>
                     </ul>
                 </nav>
             </div>
