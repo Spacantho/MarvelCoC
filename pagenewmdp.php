@@ -9,8 +9,6 @@
 </head>
 <body>
     <?php
-        if(!empty($_GET['envoi'])){
-            $envoi = $_GET['envoi'];}
         if(!empty($_GET['erreur'])){
             $erreur = $_GET['erreur'];}
     ?>
@@ -24,16 +22,15 @@
                     <div class="box-imput">
                         <div class="titre-page-info"><h2>PASSWORD PERDU</h2></div>
                         <div class="message-php">
-                            <?php if(!empty($_GET['envoi'])){
-                                    if($envoi == '1')  {
-                            ?><p class="color-success">mail envoyer</p><?php
-                                                        }}
-                                  if(!empty($_GET['erreur'])){
+                            <?php if(!empty($_GET['erreur'])){
                                       if($erreur == '1'){
-                            ?>         <p class="color-erreur">verifier mail ou mdp</p>
+                            ?>         <p class="color-erreur">champ non remplis</p>
                             <?php    
                                       }
-                                  }
+                                      if($erreur == '2'){
+                            ?>         <p class="color-erreur">mot de passe trop long</p>
+                            <?php
+                                  }}
                             ?>
                         </div>
 

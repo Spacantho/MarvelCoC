@@ -38,7 +38,7 @@ include("db.php");
               }
               else{header('Location: ../../pageconnexion.php?erreur=8');}
             }
-            else{header('Location: ../../pageconnexion.php?erreur=8');}
+            else{header('Location: ../../pageconnexion.php?erreur=7');}
           }
           else{header('Location: ../../pageconnexion.php?erreur=6');}
         }

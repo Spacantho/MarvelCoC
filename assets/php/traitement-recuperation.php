@@ -54,7 +54,7 @@ if(isset($_POST)){
                           mail($to, $subject, $message, implode("\r\n", $headers));
                     
 
-
+                        header("Location: ../../pagemdplost.php?envoi=1");
 
 
 
