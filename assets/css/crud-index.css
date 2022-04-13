@@ -1,0 +1,121 @@
+@font-face {
+    font-family: "titre";
+    src: url("../font/AkiraExpanded.otf");
+  }
+  @font-face {
+    font-family: "texte";
+  
+    src: url("../font/lemonlick.otf");
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .box-body{
+    width: 100%;
+    height: 92.6vh;
+    background-color: #101f23;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .box-crud{
+      width: 70%;
+      height: 80vh;
+      background-color: #fff;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  .box-crud-modif{
+      width: 30%;
+      height: 60vh;
+      background-color: #fff;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  .crud-icone{
+      width: 150px;
+  }
+  .crud-slash{
+      width: 150px;
+  }
+  .crud-icone:hover{
+      transform: translateY(-5px);
+      transition-duration: 0.3s;
+  }
+  .texte-crud{
+      text-align: center;
+      font-family: "titre";
+      text-decoration: none;
+      color: #122228;
+  }
+  .crud-column{
+      flex-direction: column;
+  }
+  .box-user{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+  .tableau-intitule{
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: "titre";
+  }
+  .card-user{
+    width: 100%;
+    height: 50px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+    font-family: "texte";
+  }
+  .box_table_id{
+    width: 90%;
+    height: 90%;
+  }
+  .imputi{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 300px;
+    height: 250px;
+    font-family: "titre";
+    line-height: 30px;
+    font-size: 24px;
+  }
+  .imputi input{
+    text-align: center;
+    border-radius: 5px;
+    font-family: "texte";
+    font-size: 18px;
+  }
+  .modif-valeur{
+    display: flex;
+    justify-content: center;
+  }
+  #submit{
+    background-color: #122228;
+    color: white;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: "texte";
+    font-size: 18px;
+  }
+  #submit:hover{
+    transform: translateY(-5px);
+    transition-duration: 0.3s;
+    cursor: pointer;
+  }
