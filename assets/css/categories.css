@@ -63,3 +63,7 @@ body {
   height: 100%;
   padding: 0 0 1em 1.3em;
 }
+.categories a {
+  text-decoration: none;
+  font-size: 1em;
+}
