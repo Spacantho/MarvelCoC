@@ -25,7 +25,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
 
 $sql = "INSERT INTO video (titre_video, description_video, miniature_video, date_video, lien_video, typelien_video, nb_likes, nb_dislikes, id_users, id_categorie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt= $db->prepare($sql);
-$stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 0, 0, 2, 1]);
+$stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 0, 0, 1, 1]);
  
 
 }else{
