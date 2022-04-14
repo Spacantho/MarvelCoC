@@ -19,7 +19,7 @@
     <section class="categorieContainer">
         <div class="categories">
             <?php foreach ($videos as $video) { ?>
-                <a href=<?php echo "template_video?video=" . $video["id_video"] ?>>
+                <a href=<?php echo "template_video.php?video=" . $video["id_video"] ?>>
                     <div class="categorie" style="background-image: url(<?php echo $video["miniature_video"] ?>);background-size: cover;">
 
                         <div class="filterBlack">
