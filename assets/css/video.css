@@ -1,0 +1,153 @@
+@font-face {
+    font-family: "Roboto";
+    src: url('../font/Roboto-Regular.ttf');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0A1417;
+    color: #fff;
+}
+
+#corps-video {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#video {
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+}
+#video h2, #section-commentaire {
+    margin-top: 2rem;
+}
+
+#video-player, #video p{
+    margin-top: 1rem;
+}
+
+#video p {
+    margin-bottom: 1rem;
+}
+
+#video-player {
+    width: 100%
+}
+
+#readButton {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+#readButton:hover {
+    color: #989898;
+}
+
+#section-commentaire {
+    width: 30vw;
+    max-height: 70vh;
+    background-color: #122228;
+    padding: 1rem;
+}
+
+#section-commentaire h2{
+    padding-bottom: 1rem; 
+}
+
+#section-commentaire img{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.visu-commentaire {
+    display: flex;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.container-commentaire {
+    background-color: #032E42;
+    width: 85%;
+    border-radius: 8px;
+    margin-bottom: 3vh;
+}
+
+.data-commentaire {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.texte-commentaire {
+    margin: 10px 20px;
+    color: #666;
+    word-wrap: break-word;
+}
+
+#textarea-commentaire {
+    width: 85%;
+    resize : none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    padding: 3px;
+}
+
+#section-commentaire h3 {
+    margin: 1vh 0;
+}
+
+#commentaire-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#comment_form button img {
+    width: 20px;
+    height: auto;
+}
+
+
+@media screen and (max-width: 1180px) {
+    
+    #corps-video {
+        flex-direction: column;
+    }
+
+    #video {
+        width: 80vw;
+        margin: auto;
+    }
+
+    #section-commentaire {
+        width: 75vw;
+        margin: auto;
+    }
+
+    
+}
+
+@media screen and (max-width: 500px) {
+
+    .container-commentaire {
+        max-width: 70%;
+    }
+
+    #textarea-commentaire {
+        width: 80%;
+    }
+
+    .data-commentaire {
+        flex-direction: column;
+    }
+}
