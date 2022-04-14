@@ -25,6 +25,10 @@
             <div class="crud-column">
                 <a class='crud-icone' href="crud-user.php"><img class='crud-icone' src="assets/images/svg/user-solid.svg"></a><p class='texte-crud'>USERS</p>
             </div>
+            <img class='crud-slash' src="assets/images/slash.png">
+            <div class="crud-column">
+                <a class='crud-icone' href="crud-comm.php"><img class='crud-icone' src="assets/images/svg/comments-solid.svg"></a><p class='texte-crud'>COMMENTAIRES</p>
+            </div>
         </div>
     </div>
 </body>

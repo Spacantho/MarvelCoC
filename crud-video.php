@@ -88,7 +88,9 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
     <script>
         $(document).ready(function() {
-        $('#table_id').DataTable();
+        $('#table_id').DataTable({
+            responsive: true
+        });
         } );
     </script>
 </body>
