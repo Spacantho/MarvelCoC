@@ -1,3 +1,6 @@
+<?php require "assets/php/getallvid.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,38 +15,19 @@
 </head>
 
 <body>
-<?php require_once "assets/include/navbar.php"; ?>
+    <?php require_once "assets/include/navbar.php"; ?>
     <section class="categorieContainer">
         <div class="categories">
-            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
-                <div class="filterBlack">
-                    <div class="titleCat">Vidéo 1</div>
-                </div>
-            </div>
-            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
-                <div class="filterBlack">
-                    <div class="titleCat">Vidéo 1</div>
-                </div>
-            </div>
-            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
-                <div class="filterBlack">
-                    <div class="titleCat">Vidéo 1</div>
+            <?php foreach ($videos as $video) { ?>
+                <a href=<?php echo "template_video?video=" . $video["id_video"] ?>>
+                    <div class="categorie" style="background-image: url(<?php echo $video["miniature_video"] ?>);background-size: cover;">
 
-                </div>
-            </div>
-            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
-                <div class="filterBlack">
-                    <div class="titleCat">Vidéo 1</div>
-                </div>
-            </div>
-            <div class="categorie" style="background-image: url('assets/img/placeholder.jpg');background-size: cover;">
-                <div class="filterBlack">
-                    <div class="titleCat">Vidéo 1</div>
-
-                </div>
-            </div>
-
-
+                        <div class="filterBlack">
+                            <div class="titleCat"><?php echo $video["titre_video"] ?></div>
+                        </div>
+                    </div>
+                </a>
+            <?php } ?>
         </div>
     </section>
     <?php require_once "assets/include/footer.php"; ?>
