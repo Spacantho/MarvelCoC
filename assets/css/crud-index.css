@@ -105,6 +105,11 @@
     display: flex;
     justify-content: center;
   }
+  .modif-valeur2{
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+  }
   #submit{
     background-color: #122228;
     color: white;
