@@ -9,6 +9,16 @@
 </head>
 <body>
     <?php
+    // erreur 1 = champs non remplis
+    //  erreur 2 = nombre de character trop long
+    //  erreur 3 = adresse deja utilisé
+    //  erreur 5 = user deja pris
+    //  erreur 4 = mdp et mdp 2 non identique
+    // erreur 6 = compte non créer
+    // erreur 7 = password incorrect
+    // erreur 8 = compte non validé
+
+
     if(!empty($_GET['erreur'])){
      $erreur = $_GET['erreur'];
     }
@@ -27,29 +37,38 @@
                         <div class="titre-page-info"><h2>CONNEXION</h2></div>
                         <div class="message-php">
                         <?php
-                        if(!empty($_GET['erreur'])){
-                            if($erreur == '2'){
-                        ?><p class="color-erreur">Pseudo ou mdp incorrect</p><?php
-                        //   echo ('Pseudo ou mdp incorrect');
-                        }}
+                            if(!empty($_GET['erreur'])){
+                                if($erreur == '1'){
+                                ?><p class="color-erreur">champs non remplis</p><?php
+                                }
+                                if($erreur == '2'){
+                                ?><p class="color-erreur">nombre de character trop long</p><?php
+                                }
+                                if($erreur == '3'){
+                                ?><p class="color-erreur">adresse deja utilisé</p><?php
+                                }
+                                if($erreur == '4'){
+                                ?><p class="color-erreur">mdp et mdp 2 non identique</p><?php
+                                }
+                                if($erreur == '5'){
+                                ?><p class="color-erreur">user deja pris</p><?php
+                                }
+                                if($erreur == '6'){
+                                ?><p class="color-erreur">compte non créer</p><?php
+                                }
+                                if($erreur == '7'){
+                                ?><p class="color-erreur">password incorrect</p><?php
+                                }
+                                if($erreur == '8'){
+                                ?><p class="color-erreur">compte non validé</p><?php
+                                }
+                            }
 
-                        if(!empty($_GET['erreur'])){
-                            if($erreur == '3'){
-                        ?><p class="color-erreur">Pseudo ou mdp incorrect</p><?php
-                        //   echo ('Pseudo ou mdp incorrect');
-                        }}
-
-                        if(!empty($_GET['erreur'])){
-                        if($erreur == '1'){
-                        ?><p class="color-erreur">Champs incomplet</p><?php
-                            // echo ('Champs incomplet'); 
-                        }}
-
-                        if(!empty($_GET['success'])){
-                        if($success == '1'){
-                        ?><p class="color-success">Compte créer</p><?php
-                            // echo ('Compte créer');
-                        }} 
+                            if(!empty($_GET['success'])){
+                                if($success == '1'){
+                                ?><p class="color-success">Compte créer</p><?php
+                                }
+                            } 
                         ?>
                         </div>
                             <form action="assets/php/traitement-connexion.php" method="post">
