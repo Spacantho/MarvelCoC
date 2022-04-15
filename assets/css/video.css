@@ -84,11 +84,12 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 10px;
+    color: rgb(171, 171, 171);
 }
 
 .texte-commentaire {
     margin: 10px 20px;
-    color: #666;
+    color: rgb(255, 255, 255);
     word-wrap: break-word;
 }
 
@@ -103,13 +104,14 @@ body {
 }
 
 #section-commentaire h3 {
-    margin: 1vh 0;
+    margin: 2vh 0;
 }
 
 #commentaire-btn {
     background: none;
     border: none;
     cursor: pointer;
+    transform: translateY(0.5vh);
 }
 
 #comment_form button img {
@@ -117,6 +119,36 @@ body {
     height: auto;
 }
 
+#comment_form {
+    display: flex;
+}
+
+#commentaire-detail {
+    display: flex;
+    width: 30px;
+    margin-left: 2vh;
+    flex-direction: column;
+}
+
+#scrolled {
+    height: 55vh;
+    overflow-y: scroll;
+}
+
+#crud_com i, a {
+    width: 20px;
+    height: auto;
+    margin-left: 1vh;
+}
+
+#crud_com a:hover {
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+#info-com {
+    display: flex;
+}
 
 @media screen and (max-width: 1180px) {
     
