@@ -9,9 +9,9 @@ if(isset($_POST['video_id'])){
 
     if( (isset($user)) && (isset($_POST['commentaire'])) && (!empty($_POST['commentaire'])) ) {
         $commentaire = htmlspecialchars($_POST['commentaire']);
-        if(strlen($commentaire)<= 255) {
+        if(strlen($commentaire)<= 500) {
             echo "<span class='alertcommentaire' style='color: green; margin-bottom: 1vh;'>Commentaire envoyé avec succès</span>";
-            $insert = $db->prepare('INSERT INTO commentaire(texte_commentaire, id_users, id_video) VALUES(?, ?, ?)');
+            $insert = $db->prepare('INSERT INTO commentaire(texte_commentaire, id_users, id_video, valide_comm) VALUES(?, ?, ?, 1)');
             $insert->execute(array($commentaire,$user,$traitementCourant));
 
         } else { echo "<span class='alertcommentaire' style='color: red;'>Commentaire trop long</span>";}
@@ -33,7 +33,7 @@ $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_us
 
 
                             <?php 
-                                        $user = 32;
+                                        $user = 1;
                                         if($user == $row['id_users']) {
                                         ?>
                                             <div id="crud_com">

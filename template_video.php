@@ -46,6 +46,21 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                 <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
 
             </video>
+
+            <!-- Like/ dislike -->
+            <div class="likeContainer">
+                <div class="likeButton" id="likeButton">
+                    <a id="click_unlike_like" data-type_click="like">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </a>
+                </div>
+                <div class="dislikeButton" id="dislikeButton">
+                    <a id="click_unlike_like" data-type_click="unlike">
+                        <i class="fa-solid fa-thumbs-down"></i>
+                    </a>
+                </div>
+                <div id="res"></div>
+            </div>
             <p>Description : <br><?php echo $response['description_video'] ?></p>
             <button onclick="myFunction()" id="readButton">Voir plus...</button>
     </section>
@@ -54,9 +69,9 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 
     <section id="section-commentaire">
         <form id="comment_form" method="post">
-            <input type="hidden" name="user_id" value="<?php $user=32; echo $user; ?>">
+            <input type="hidden" name="user_id" value="<?php $user=2; echo $user; ?>">
             <input type="hidden" name="video_id" value="<?php echo $video; ?>">
-            <textarea name="commentaire" id="textarea-commentaire" maxlength="255" placeholder="Votre commentaire..." required></textarea>
+            <textarea name="commentaire" id="textarea-commentaire" maxlength="500" placeholder="Votre commentaire..." required></textarea>
             <div id="commentaire-detail">
                 <div id="counter-commentaire"></div>
                 <button id="commentaire-btn" type=submit name="commenter"><img src="assets/images/logo/validate.png" alt="Poster"></button>
@@ -82,7 +97,7 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                                     <div><?php echo $date->format('d-m-Y H:i');?></div>
                                     
                                     <?php 
-                                        $user = 32;
+                                        $user = 2;
                                         if($user == $row['id_users']) {
                                         ?>
                                             <div id="crud_com">
