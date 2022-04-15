@@ -22,3 +22,8 @@ function setVideoInput(){
         videocopylink.style.display = "none";
     }
 }
+
+
+window.onload = function(){
+	 console.log(switchinput.value)
+}

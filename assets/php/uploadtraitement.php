@@ -9,7 +9,24 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
   echo("Titre: ");
   echo($title);
   echo("<br>");
-  
+
+  $switchVideoType = "file";
+  if (isset($_POST['switchinput'])){
+  $switchVideoType = "link";
+  }
+
+  echo("Videotype: ");
+  echo($switchVideoType);
+  echo("<br>");
+
+  echo("Categorie: ");
+  echo($_POST['selectcategorie']);
+  echo("<br>");
+
+  echo("Nouvelle categorie ?");
+  echo($_POST['isNewCategorie']);
+  echo("<br>");
+
   echo("Lien: ");
   echo($lienyoutube);
   echo("<br>");

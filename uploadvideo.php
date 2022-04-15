@@ -8,6 +8,25 @@
     <link href="assets/css/uploadvideo.css" rel="stylesheet">
   <link rel="shortcut icon" href="/assets/favicon.ico">
     <title>Upload Video</title>
+    <script>
+protected override void OnPreRender(System.EventArgs e)
+{
+  //loop through all the controls
+  foreach (Control oLink in Page.Header.Controls){
+      if (oLink is HtmlLink){        
+        HtmlLink cssLink = oLink as HtmlLink;        
+        //Check if CSS link 
+        if (cssLink.Attributes["type"].Equals("text/css", StringComparison.CurrentCultureIgnoreCase)){          
+          if (cssLink.Attributes["href"].Contains(String.Format("~/App_Themes/{0}/", Page.Theme))){
+            //add a version of your app here.                                                                
+            cssLink.Attributes["href"] += "?v.1";
+          }
+        }
+      }
+  }
+  base.OnPreRender(e);
+}
+    </script>
 </head>
 <body>
     <section id="uv_mainsection">
@@ -36,16 +55,16 @@
   <div id="switch_container">
     <p>FICHIER</p>
     <label class="switch">
-    <input type="checkbox" id="switchinput">
-    <span class="slider round"></span>
+    <input type="checkbox" id="switchinput" name="switchinput">
+    <span class="slider round" id="switchboule"></span>
     </label>
     <p>LIEN YOUTUBE</p>
   </div>
 
   <label for="cars">CATÉGORIE</label>
 
-  <div class="sel-box" id="cars">
-  <select reuired>
+  <div id="sel-box" id="cars">
+  <select reuired id="selectcategorie" name="selectcategorie">
     <option value="Spiderman">Spiderman</option>
     <option value="Batman">Batman</option>
     <option value="cat">cat</option>
@@ -53,6 +72,7 @@
     <option value="hedgehog">hedgehog</option>
     <option id="newcategorie">Nouvelle Catégorie...</option>
   </select>
+  <input id="isNewCategorie" type="hidden" name="isNewCategorie">
   
 
 <input id="newcategoriename" class="textinput" type="text" name="newcategoriename" placeholder="Nom de la categorie...">
@@ -108,6 +128,6 @@
         <script src="assets/js/draganddropjs.js"></script>
         <script src="assets/js/inputmultilines.js"></script>
         <script src="assets/js/switch_file_link.js"></script>
-
+        <script src="assets/js/uploadvideo.js"></script>
 </body>
 </html>
