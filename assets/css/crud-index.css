@@ -124,3 +124,9 @@
     transition-duration: 0.3s;
     cursor: pointer;
   }
+
+  @media (max-width: 1080px) {
+    .box-crud-modif{
+      width: 315px;
+  }
+  }

@@ -38,7 +38,7 @@ if(isset($_POST)){
                            </head>
                            <body>
                            <H1>Felicitations voici l'étape final</H1>
-                           <p><a href='../../pagenewmdp.php?r=$token'> cliquer ici </a></p>
+                           <p><a href='../../pagenewmdp.php?token=$token'> cliquer ici </a></p>
                            </body>
                          </html>
                          ";
