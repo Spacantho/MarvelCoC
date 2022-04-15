@@ -4,10 +4,13 @@
     // if(isset($_SESSION['sess_user_id'])){
     //     if(isset($_SESSION['sess_id_role'])){
     //         if($_SESSION['sess_id_role'] == "1"){
-    $user = ("SELECT * FROM users");
-    $user = $db->prepare($user);
-    $user->execute();
-    $user = $user ->fetchAll(PDO::FETCH_ASSOC);
+    $comm = ("SELECT * FROM commentaire
+            INNER JOIN users ON users.id_users = commentaire.id_users
+            INNER JOIN video ON video.id_video = commentaire.id_video
+            ");
+    $comm = $db->prepare($comm);
+    $comm->execute();
+    $comm = $comm ->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,33 +33,31 @@
         <div class="box-crud">
             <div class="box-user">
                 <div class="box_table_id">
-                    <table id="table_id" class="display">
+                    <table id="table_id" class="table table-striped table-bordered dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>ID USER</th>
-                                <th>USERNAME</th>
-                                <th>MAIL</th>
-                                <th>PHOTO</th>
-                                <th>VERIFIE</th>
-                                <th>ROLE</th>
-                                <th>ACTION 1</th>
-                                <th>ACTION 2</th>
+                                <th>ID</th>
+                                <th>COMMENTAIRE</th>
+                                <th>UTILISATEUR</th>
+                                <th>TITRE VIDEO</th>
+                                <th>DATE</th>
+                                <th>VALIDE</th>
+                                <th>BLOQUÉ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($user as $value){ ?>
+                            <?php foreach ($comm as $value){ ?>
                                 <tr>
-                                    <td><?php echo $value["id_users"] ?></td>
+                                    <td><?php echo $value["id_commentaire"] ?></td>
+                                    <td><?php echo $value["texte_commentaire"] ?></td>
                                     <td><?php echo $value["username_users"] ?></td>
-                                    <td><?php echo $value["mail_users"] ?></td>
-                                    <td><?php echo $value["photo_users"] ?></td>
-                                    <td><?php echo $value["verified"] ?></td>
-                                    <td><?php echo $value["id_role"] ?></td>
-                                    <td><a href="crud-moduser.php?id=<?php echo $value["id_users"]?>&role=<?php echo $value["id_role"]?>">modifier</a></td>
-                                    <?php if($value['verified'] == 1){ ?>
-                                    <td><a href="assets/php/blockuser.php?id=<?php echo $value["id_users"]?>">bloqué</a></td>
+                                    <td><?php echo $value["titre_video"] ?></td>
+                                    <td><?php echo $value["date_commentaire"] ?></td>
+                                    <td><?php echo $value["valide_comm"] ?></td>
+                                    <?php if($value['valide_comm'] == 1){ ?>
+                                    <td><a href="assets/php/blockcomm.php?id=<?php echo $value["id_commentaire"]?>">bloqué</a></td>
                                     <?php }else{ ?>
-                                    <td><a href="assets/php/deblockuser.php?id=<?php echo $value["id_users"]?>">débloqué</a></td>
+                                    <td><a href="assets/php/deblockcomm.php?id=<?php echo $value["id_commentaire"]?>">débloqué</a></td>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>
