@@ -1,82 +1,84 @@
 @font-face {
-    font-family: "Roboto";
-    src: url('../font/Roboto-Regular.ttf');
+  font-family: "Roboto";
+  src: url("../font/Roboto-Regular.ttf");
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0A1417;
-    color: #fff;
+  font-family: "Roboto", sans-serif;
+  background-color: #0a1417;
+  color: #fff;
 }
 
 #corps-video {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 #video {
-    width: 55vw;
-    display: flex;
-    flex-direction: column;
+  width: 55vw;
+  display: flex;
+  flex-direction: column;
 }
-#video h2, #section-commentaire {
-    margin-top: 2rem;
+#video h2,
+#section-commentaire {
+  margin-top: 2rem;
 }
 
-#video-player, #video p{
-    margin-top: 1rem;
+#video-player,
+#video p {
+  margin-top: 1rem;
 }
 
 #video p {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 #video-player {
-    width: 100%
+  width: 100%;
 }
 
 #readButton {
-    background: none;
-    border: none;
-    color: white;
-    text-decoration: underline;
-    text-align: center;
-    margin-bottom: 3vh;
+  background: none;
+  border: none;
+  color: white;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: 3vh;
 }
 
 #readButton:hover {
-    color: #989898;
+  color: #989898;
 }
 
 #section-commentaire {
-    width: 30vw;
-    max-height: 70vh;
-    background-color: #122228;
-    padding: 1rem;
+  width: 30vw;
+  max-height: 70vh;
+  background-color: #122228;
+  padding: 1rem;
 }
 
-#section-commentaire h2{
-    padding-bottom: 1rem; 
+#section-commentaire h2 {
+  padding-bottom: 1rem;
 }
 
-#section-commentaire img{
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 50%;
+#section-commentaire img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
 }
 
 .visu-commentaire {
-    display: flex;
-    width: 100%;
-    font-size: 1rem;
+  display: flex;
+  width: 100%;
+  font-size: 1rem;
 }
 
 .container-commentaire {
-    background-color: #032E42;
-    width: 85%;
-    border-radius: 8px;
-    margin-bottom: 3vh;
+  background-color: #032e42;
+  width: 85%;
+  border-radius: 8px;
+  margin-bottom: 3vh;
 }
 
 .data-commentaire {
@@ -94,13 +96,13 @@ body {
 }
 
 #textarea-commentaire {
-    width: 85%;
-    resize : none;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    color: white;
-    padding: 3px;
+  width: 85%;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  padding: 3px;
 }
 
 #section-commentaire h3 {
@@ -112,11 +114,12 @@ body {
     border: none;
     cursor: pointer;
     transform: translateY(0.5vh);
+
 }
 
 #comment_form button img {
-    width: 20px;
-    height: auto;
+  width: 20px;
+  height: auto;
 }
 
 #comment_form {
@@ -151,35 +154,73 @@ body {
 }
 
 @media screen and (max-width: 1180px) {
-    
-    #corps-video {
-        flex-direction: column;
-    }
+  #corps-video {
+    flex-direction: column;
+  }
 
-    #video {
-        width: 80vw;
-        margin: auto;
-    }
+  #video {
+    width: 80vw;
+    margin: auto;
+  }
 
-    #section-commentaire {
-        width: 75vw;
-        margin: auto;
-    }
-
-    
+  #section-commentaire {
+    width: 75vw;
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 500px) {
+  .container-commentaire {
+    max-width: 70%;
+  }
 
-    .container-commentaire {
-        max-width: 70%;
-    }
+  #textarea-commentaire {
+    width: 80%;
+  }
 
-    #textarea-commentaire {
-        width: 80%;
-    }
+  .data-commentaire {
+    flex-direction: column;
+  }
+}
+/* Like dislike */
+.likeContainer {
+  min-height: 50px;
+  background-color: #0a1417;
+  justify-content: flex-end;
+  display: flex;
+}
+.likeContainer i {
+  cursor: pointer;
+}
 
-    .data-commentaire {
-        flex-direction: column;
-    }
+.likeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background-color: #0a1417;
+  color: white;
+  font-size: 1.4em;
+  transition: all 0.2s ease;
+}
+.likeButton i:hover {
+  color: rgb(3, 181, 3);
+  transform: scale(1.2);
+}
+
+.dislikeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background-color: #0a1417;
+  color: white;
+  font-size: 1.4em;
+  transition: all 0.2s ease;
+}
+.dislikeButton i:hover {
+  color: rgb(162, 2, 2);
+  transform: scale(1.2);
 }

@@ -21,7 +21,7 @@
     align-items: center;
   }
   .box-crud{
-      width: 70%;
+      width: 80%;
       height: 80vh;
       background-color: #fff;
       border-radius: 15px;
@@ -63,7 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+    overflow-y: auto;
   }
   .tableau-intitule{
     width: 100%;
@@ -123,4 +123,10 @@
     transform: translateY(-5px);
     transition-duration: 0.3s;
     cursor: pointer;
+  }
+
+  @media (max-width: 1080px) {
+    .box-crud-modif{
+      width: 315px;
+  }
   }

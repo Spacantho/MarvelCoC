@@ -1,14 +1,18 @@
+
 <?php require_once("assets/php/db.php");
     require("assets/php/getNbVideo.php");
 
-    if ( (isset($_GET['video'])) && (!empty($_GET['video'])) ) {
-        $video = $_GET['video'];
-    } else {
-        header('location:templateCategorie.php?err=noget');
-    }
+
+
+if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
+    $video = $_GET['video'];
+} else {
+    header('location:templateCategorie.php?err=noget');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,12 +26,15 @@
     <script src="assets/js/delete_com_user.js" defer></script>
     <title>Vidéo</title>
 </head>
+
 <body>
-    
-    <?php require_once("assets/include/navbar.php");?>
+
+    <?php require_once("assets/include/navbar.php"); ?>
 
     <div id="corps-video">
-    <section id="video">
+
+        <section id="video">
+
             <?php
             $query = $db->prepare('SELECT * FROM video WHERE id_video = ?');
             $query->execute([$video]);
@@ -37,6 +44,7 @@
             <video id="video-player" controls>
                 <source src="<?php echo $response['lien_video'] ?>" type="video/mp4">
                 <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
+
             </video>
             <p>Description : <br><?php echo $response['description_video'] ?></p>
             <button onclick="myFunction()" id="readButton">Voir plus...</button>
@@ -91,15 +99,17 @@
                     <div class="texte-commentaire"><?php echo $row['texte_commentaire'];?></div>
                 </div>
             </div>
+
             <?php
                 }
             ?>
             </div>   
         </section>
     </div>
-    
-
+  
     <script src="assets/js/readMoreDesc.js"></script>
     <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/like.js"></script>
 </body>
+
 </html>
