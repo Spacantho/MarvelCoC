@@ -1,5 +1,7 @@
-<?php
-require_once("assets/php/db.php");
+
+<?php require_once("assets/php/db.php");
+    require("assets/php/getNbVideo.php");
+
 
 
 if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
@@ -21,6 +23,7 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
     <script src="https://kit.fontawesome.com/31b5087217.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/commentaire.js" defer></script>
+    <script src="assets/js/delete_com_user.js" defer></script>
     <title>Vidéo</title>
 </head>
 
@@ -29,7 +32,9 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
     <?php require_once("assets/include/navbar.php"); ?>
 
     <div id="corps-video">
+
         <section id="video">
+
             <?php
             $query = $db->prepare('SELECT * FROM video WHERE id_video = ?');
             $query->execute([$video]);
@@ -41,67 +46,67 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                 <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
 
             </video>
-
-            <!-- Like/ dislike -->
-            <div class="likeContainer">
-                <div class="likeButton" id="likeButton">
-                    <a id="click_unlike_like" data-type_click="like">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                    </a>
-                </div>
-                <div class="dislikeButton" id="dislikeButton">
-                    <a id="click_unlike_like" data-type_click="unlike">
-                        <i class="fa-solid fa-thumbs-down"></i>
-                    </a>
-                </div>
-                <div id="res"></div>
-            </div>
             <p>Description : <br><?php echo $response['description_video'] ?></p>
             <button onclick="myFunction()" id="readButton">Voir plus...</button>
+    </section>
 
 
 
-
-
-        </section>
-
-        <section id="section-commentaire">
-            <form id="comment_form" method="post">
-                <input type="hidden" name="user_id" value="<?php $user = 32;
-                                                            echo $user; ?>">
-                <input type="hidden" name="video_id" value="<?php echo $video; ?>">
-                <textarea name="commentaire" id="textarea-commentaire" maxlength="255" placeholder="Votre commentaire..." required></textarea>
-                <span id="counter-commentaire">255</span>
+    <section id="section-commentaire">
+        <form id="comment_form" method="post">
+            <input type="hidden" name="user_id" value="<?php $user=32; echo $user; ?>">
+            <input type="hidden" name="video_id" value="<?php echo $video; ?>">
+            <textarea name="commentaire" id="textarea-commentaire" maxlength="255" placeholder="Votre commentaire..." required></textarea>
+            <div id="commentaire-detail">
+                <div id="counter-commentaire"></div>
                 <button id="commentaire-btn" type=submit name="commenter"><img src="assets/images/logo/validate.png" alt="Poster"></button>
-            </form>
-            <h3 id="base_com">Commentaires :</h3>
-            <?php
-            $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users ORDER BY date_commentaire');
-            $query->execute();
+            </div>
+        </form>
+
+        <h3><?php echo showNbCom($db, $video); ?></h3>
+
+        <div id="scrolled">
+        <?php
+            $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users WHERE id_video = ? AND valide_comm = 1 ORDER BY date_commentaire');
+            $query->execute([$video]);
             foreach ($query as $row) {
-                if ($video = $row['id_video']) {
-            ?>
-                    <div class="visu-commentaire">
-                        <div class="pp-commentaire"><img src="<?php echo $row['photo_users']; ?>"></div>
-                        <div class="container-commentaire">
-                            <div class="data-commentaire">
-                                <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
-                                <?php $date = new DateTime($row['date_commentaire']); ?>
-                                <div><?php echo $date->format('d-m-Y H:i'); ?></div>
+                ?>
+            <div class="visu-commentaire" id="<?php echo $row['id_commentaire'];?>">
+                <div class="pp-commentaire"><img src="<?php echo $row['photo_users'];?>"></div>
+                    <div class="container-commentaire">
+                        <div class="data-commentaire">
+                            <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
+                                <div id="info-com">
+
+                                    <?php $date = new DateTime($row['date_commentaire']);?>
+                                    <div><?php echo $date->format('d-m-Y H:i');?></div>
+                                    
+                                    <?php 
+                                        $user = 32;
+                                        if($user == $row['id_users']) {
+                                        ?>
+                                            <div id="crud_com">
+                                            <i class="fa-solid fa-pen"></i>
+                                            <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
+                                            </div>
+                                        <?php
+                                        }
+                                    ?>
+
+
                             </div>
-                            <div class="texte-commentaire"><?php echo $row['texte_commentaire']; ?></div>
                         </div>
-                    </div>
+                    <div class="texte-commentaire"><?php echo $row['texte_commentaire'];?></div>
+                </div>
+            </div>
+
             <?php
                 }
-            }
             ?>
+            </div>   
         </section>
     </div>
-
-    <script>
-        src = "count_commentaire_caractere.js"
-    </script>
+  
     <script src="assets/js/readMoreDesc.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/like.js"></script>
