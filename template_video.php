@@ -79,10 +79,9 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 
                     <?php } ?>
                 </div>
-                "width: 10%;"
                 <div class="fillbarContainer">
                     <div class="fillbar">
-                        <div class="gauge" style=<?php echo "width: $ratioLike;" ?>></div>
+                        <div class="gauge" <?php echo " style= width:$ratioLike%;" ?>></div>
                     </div>
                 </div>
 
