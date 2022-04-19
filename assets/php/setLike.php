@@ -7,7 +7,7 @@ $typeLike = $_POST["like"];
 $idVideo = $_POST["vidId"];
 //0 = dislike en bdd
 //1 = Like en bdd
-
+//Quand on clique sur like
 if ($typeLike == "like") {
     //On regarde si la vidéo à déja été like ou dislike
     $sqlRequest = "SELECT * FROM note WHERE id_video = ? AND type_like = ? AND id_users = ?";
@@ -38,7 +38,7 @@ if ($typeLike == "like") {
         $pdoStat->execute([$idVideo, $idUserSession]);
     }
 }
-
+//Quand on clique sur dislike
 if ($typeLike == "unlike") {
     $sqlRequest = "SELECT * FROM note WHERE id_video = ? AND type_like = ?  AND id_users = ?";
     $pdoStat = $db->prepare($sqlRequest);

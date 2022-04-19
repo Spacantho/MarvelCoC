@@ -231,3 +231,32 @@ a {
   color: rgb(162, 2, 2);
   transform: scale(1.1);
 }
+/*Bar like/dislike */
+.fillbarContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.fillbar {
+  position: relative;
+  display: block;
+  width: 90px;
+  height: 3px;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  background: rgb(3, 181, 3);
+}
+.gauge {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  display: block;
+  content: "";
+  height: 3px;
+
+  background: #1e222c;
+}
+.underVid {
+  display: flex;
+
+  flex-direction: column;
+}

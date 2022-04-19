@@ -47,37 +47,47 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
             </video>
 
             <!-- Like/ dislike -->
-            <div class="likeContainer">
-                <?php if ($isLiked == 1) { ?>
-                    <div class="likeButton activeL" id="likeButton">
-                        <a id="click_unlike_like" data-type_click="like">
-                            <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
-                        </a>
-                    </div>
-                <?php } else { ?>
-                    <div class="likeButton " id="likeButton">
-                        <a id="click_unlike_like" data-type_click="like">
-                            <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
-                        </a>
-                    </div>
+            <div class="underVid">
+                <div class="likeContainer">
 
-                <?php } ?>
-                <?php if ($isLiked == 0) { ?>
-                    <div class="dislikeButton activeD" id="dislikeButton">
-                        <a id="click_unlike_like" data-type_click="unlike">
-                            <i class="fa-solid fa-thumbs-down" id="dislikeicon"></i>
-                        </a>
-                    </div>
-                <?php } else { ?>
-                    <div class="dislikeButton" id="dislikeButton">
-                        <a id="click_unlike_like" data-type_click="unlike">
-                            <i class="fa-solid fa-thumbs-down" id="dislikeicon"></i>
-                        </a>
-                    </div>
+                    <?php if ($isLiked == 1) { ?>
+                        <div class="likeButton activeL" id="likeButton">
+                            <a id="click_unlike_like" data-type_click="like">
+                                <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
+                            </a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="likeButton " id="likeButton">
+                            <a id="click_unlike_like" data-type_click="like">
+                                <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
+                            </a>
+                        </div>
 
-                <?php } ?>
-                <div id="res"></div>
+                    <?php } ?>
+                    <?php if ($isLiked == 0) { ?>
+                        <div class="dislikeButton activeD" id="dislikeButton">
+                            <a id="click_unlike_like" data-type_click="unlike">
+                                <i class="fa-solid fa-thumbs-down" id="dislikeicon"></i>
+                            </a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="dislikeButton" id="dislikeButton">
+                            <a id="click_unlike_like" data-type_click="unlike">
+                                <i class="fa-solid fa-thumbs-down" id="dislikeicon"></i>
+                            </a>
+                        </div>
+
+                    <?php } ?>
+                </div>
+                "width: 10%;"
+                <div class="fillbarContainer">
+                    <div class="fillbar">
+                        <div class="gauge" style=<?php echo "width: $ratioLike;" ?>></div>
+                    </div>
+                </div>
+
             </div>
+
             <p>Description : <br><?php echo $response['description_video'] ?></p>
             <button onclick="myFunction()" id="readButton">Voir plus...</button>
         </section>

@@ -12,6 +12,21 @@ $pdoStat->execute([$idVideo]);
 $isLiked = $pdoStat->fetch();
 
 
-if (isset($isLiked["type_like"])) {
-    var_dump($isLiked["type_like"]);
+$sqlRequest =  "SELECT count(*) FROM note WHERE id_video = ? AND type_like = ?";
+$pdoStat = $db->prepare($sqlRequest);
+$pdoStat->execute([$idVideo, 1]);
+$numberLike = $pdoStat->fetch();
+
+$sqlRequest =  "SELECT count(*) FROM note WHERE id_video = ? AND type_like = ?";
+$pdoStat = $db->prepare($sqlRequest);
+$pdoStat->execute([$idVideo, 0]);
+$numberUnlike = $pdoStat->fetch();
+
+
+if ($numberUnlike[0] == 0) {
+    $ratioLike = 0;
+} else if ($numberlike[0] == 0) {
+    $ratioLike = 1;
+} else {
+    $ratioLike = $numberUnlike[0] / $numberlike[0];
 }
