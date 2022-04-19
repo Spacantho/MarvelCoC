@@ -80,7 +80,7 @@
                             <?php 
                                 if(!empty($_GET['erreur'])){
                                     if($erreur == '1'){
-                                    ?><p class="color-erreur">champs non remplis</p><?php
+                                    ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
                                     }
                                     if($erreur == '2'){
                                     ?><p class="color-erreur">nombre de character trop long</p><?php
