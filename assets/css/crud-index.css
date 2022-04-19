@@ -148,6 +148,9 @@
   }
 
 @media (max-width: 360px) {
+  .box-crud{
+    width: 98%;
+  }
   .box-crud-modif{
     width: 270px;
   }
