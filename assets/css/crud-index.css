@@ -124,9 +124,34 @@
     transition-duration: 0.3s;
     cursor: pointer;
   }
-
+  .color-erreur {
+    margin-top:20px;
+    margin-bottom:20px;
+    display: flex;
+    justify-content: center;
+    color: red !important;
+  }
+  .color-success {
+    margin-top:20px;
+    color: green !important;
+  }
   @media (max-width: 1080px) {
     .box-crud-modif{
       width: 315px;
   }
+    .crud-slash{
+      display: none;
+    }
+    .box-crud{
+      flex-wrap: wrap;
+    }
   }
+
+@media (max-width: 360px) {
+  .box-crud-modif{
+    width: 270px;
+  }
+  .imputi{
+    width: 265px;
+  }
+}

@@ -9,7 +9,10 @@
                     $sqlRequest = "SELECT * FROM users";
                     $pdoStat = $db -> prepare($sqlRequest); 
                     $pdoStat->execute();
-            
+                    $id_role = $_GET['role'];
+                    if(!empty($_GET['erreur'])){
+                        $erreur = $_GET['erreur'];
+                       }
 ?>
 
 <!DOCTYPE html>
@@ -29,21 +32,17 @@
         <div class="box-crud-modif">
             <div class="box-body-input">
                 <div class="box-imput">
-                    <form action="assets/php/traitement-crud-moduser.php?id=<?php echo $id_users?>" method="POST" class="crud-create">
+                    <form action="assets/php/traitement-crud-moduser.php?id=<?php echo $id_users?>&role=<?php echo $id_role?>" method="POST" class="crud-create">
                         <?php 
                             while ($result = $pdoStat->fetch()) {
                                 if($result['id_users'] == $id_users){
                         ?>
-                            <div class="imputi">
+                        <div class="imputi">
                             <label for="username_users"><p class="texte-pseudo">username:</p></label>
                             <input type="texte" name="username_users" id="" value="<?php echo $result["username_users"]?>">
-                            <label for="mail_users"><p class="texte-pseudo">mail:</p></label>
-                            <input type="texte" name="mail_users" id="" value="<?php echo $result["mail_users"]?>">
                             <label for="photo_users"><p class="texte-pseudo">photo:</p></label>
                             <input type="texte" name="photo_users" id="" value="<?php echo $result["photo_users"]?>">
                         <?php
-                            $id_role = $_GET['role'];
-
                             $sqlRequest = ("SELECT * FROM role");
                             $requetegenre = $db -> prepare($sqlRequest); 
                             $requetegenre->execute();
@@ -64,7 +63,18 @@
 
                             </select>
                         </div>
-                        
+                        <div class="message-php">
+                            <?php 
+                                if(!empty($_GET['erreur'])){
+                                    if($erreur == '1'){
+                                    ?><p class="color-erreur">champs non remplis</p><?php
+                                    }
+                                    if($erreur == '2'){
+                                    ?><p class="color-erreur">nombre de character trop long</p><?php
+                                    }
+                                }
+                            ?>
+                        </div>
                         <?php     
                             }}}}
                         ?>

@@ -28,12 +28,18 @@
     <title>modding</title>
 </head>
 <body>
-<?php require_once "assets/include/navbar.php"; ?>
+    
+<?php 
+    require_once "assets/include/navbar.php";
+    if(!empty($_GET['erreur'])){
+        $erreur = $_GET['erreur'];
+       }
+?>
     <div class="box-body">
         <div class="box-crud-modif">
             <div class="box-body-input">
                 <div class="box-imput">
-                    <form action="assets/php/traitement-crud-moduser.php?id=<?php echo $id_video?>" method="POST" class="crud-create">
+                    <form action="assets/php/traitement-crud-modvideo.php?id=<?php echo $id_video?>&role=<?php echo $role?>" method="POST" class="crud-create">
                         <?php 
                             while ($result = $pdoStat->fetch()) {
                                 if($result['id_video'] == $id_video){
@@ -56,8 +62,8 @@
                             // while ($resultgenre = $requetegenre->fetch()) {
                                 if($result['id_categorie'] == $role){
                         ?>
-                            <label for="id_role"><p class="texte-pseudo">ID role:</p></label>
-                            <select name="id_role" id="user">
+                            <label for="id_categorie"><p class="texte-pseudo">ID role:</p></label>
+                            <select name="id_categorie" id="user">
                                 <option value="<?php echo $result["id_categorie"] ?>">--<?php echo $result["nom_categorie"] ?>--</option>
                                 <?php 
                                     $role = ("SELECT * FROM categorie");
@@ -70,7 +76,18 @@
 
                             </select>
                         </div>
-                        
+                        <div class="message-php">
+                            <?php 
+                                if(!empty($_GET['erreur'])){
+                                    if($erreur == '1'){
+                                    ?><p class="color-erreur">champs non remplis</p><?php
+                                    }
+                                    if($erreur == '2'){
+                                    ?><p class="color-erreur">nombre de character trop long</p><?php
+                                    }
+                                }
+                            ?>
+                        </div>
                         <?php     
                                     }
                                 }
