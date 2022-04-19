@@ -1,17 +1,70 @@
 <?php
 require_once("db.php");
-if (!isset($_POST["like"]) || $_POST["like"] == "") {
-    header("Location: ../../template_video.php");
-}
+
+$idUserSession = 1; //!!! A CHANGER EN SESSION !!!!
+
 $typeLike = $_POST["like"];
+$idVideo = $_POST["vidId"];
+//0 = dislike en bdd
+//1 = Like en bdd
 
 if ($typeLike == "like") {
-    echo "like !";
-/*     $sqlRequest = "INSERT INTO `livre`(`Titre`, `Auteur`, `Editeur`, `Année`, `Prix HT`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])";
+    //On regarde si la vidéo à déja été like ou dislike
+    $sqlRequest = "SELECT * FROM note WHERE id_video = ? AND type_like = ? AND id_users = ?";
     $pdoStat = $db->prepare($sqlRequest);
-    $pdoStat->execute([]);
-    $videos = $pdoStat->fetchAll(PDO::FETCH_ASSOC); */
+    $pdoStat->execute([$idVideo, 0, $idUserSession]);
+    $isUnLiked = $pdoStat->fetch();
+
+    $sqlRequest = "SELECT * FROM note WHERE id_video = ? AND type_like = ? AND id_users = ?";
+    $pdoStat = $db->prepare($sqlRequest);
+    $pdoStat->execute([$idVideo, 1, $idUserSession]);
+    $isLiked = $pdoStat->fetch();
+
+    //On traite en fonction de cela
+    if ($isLiked == false) {
+        if ($isUnLiked == false) {
+            $sqlRequest = "INSERT INTO `note`(`id_video`,`id_users`,`type_like`) VALUES (?,?,?)";
+            $pdoStat = $db->prepare($sqlRequest);
+            $pdoStat->execute([$idVideo, $idUserSession, 1]);
+        } else {
+            $sqlRequest = "UPDATE note SET type_like = ? WHERE id_video =? AND id_users = ?";
+            $pdoStat = $db->prepare($sqlRequest);
+            $pdoStat->execute([1, $idVideo, $idUserSession]);
+        }
+    }
+    if (!empty($isLiked)) {
+        $sqlRequest = "DELETE FROM `note` WHERE id_video = ? AND id_users = ?";
+        $pdoStat = $db->prepare($sqlRequest);
+        $pdoStat->execute([$idVideo, $idUserSession]);
+    }
 }
+
 if ($typeLike == "unlike") {
-    echo "dislike !";
+    $sqlRequest = "SELECT * FROM note WHERE id_video = ? AND type_like = ?  AND id_users = ?";
+    $pdoStat = $db->prepare($sqlRequest);
+    $pdoStat->execute([$idVideo, 0, $idUserSession]);
+    $isUnLiked = $pdoStat->fetch();
+
+    $sqlRequest = "SELECT * FROM note WHERE id_video = ? AND type_like = ?  AND id_users = ?";
+    $pdoStat = $db->prepare($sqlRequest);
+    $pdoStat->execute([$idVideo, 1, $idUserSession]);
+    $isLiked = $pdoStat->fetch();
+
+    //On traite en fonction de cela
+    if ($isUnLiked == false) {
+        if ($isLiked == false) {
+            $sqlRequest = "INSERT INTO `note`(`id_video`,`id_users`,`type_like`) VALUES (?,?,?)";
+            $pdoStat = $db->prepare($sqlRequest);
+            $pdoStat->execute([$idVideo, $idUserSession, 0]);
+        } else {
+            $sqlRequest = "UPDATE note SET type_like = ? WHERE id_video =? AND id_users = ?";
+            $pdoStat = $db->prepare($sqlRequest);
+            $pdoStat->execute([0, $idVideo, $idUserSession]);
+        }
+    }
+    if (!empty($isUnLiked)) {
+        $sqlRequest = "DELETE FROM `note` WHERE id_video = ? AND id_users = ?";
+        $pdoStat = $db->prepare($sqlRequest);
+        $pdoStat->execute([$idVideo, $idUserSession]);
+    }
 }
