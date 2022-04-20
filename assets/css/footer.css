@@ -1,34 +1,34 @@
 @font-face {
-  font-family: "titre";
-  src: url("../font/AkiraExpanded.otf");
-}
-@font-face {
-  font-family: "texte";
-  src: url("../font/LEMONMILK-Regular.otf");
+  font-family: "Roboto";
+  src: url('../font/Roboto-Regular.ttf');
 }
 * {
   margin: 0;
   padding: 0;
+}
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 #retour {
   display: none;
 }
 .body-footer {
   width: 100%;
-  height: 20vh;
+  height: 12vh;
   display: flex;
   justify-content: center;
   background-color: #122228;
   color: white;
 }
-a {
+.box-footer a {
   color: white;
   text-decoration: none;
-  font-family: "texte";
+  font-family: "Roboto";
 }
 .box-footer {
   width: 95%;
-  height: 20vh;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -37,37 +37,28 @@ a {
 .copy {
   display: flex;
   flex-direction: row;
-  font-family: "texte";
+  font-family: "Roboto";
 }
 .logo-reseaux {
-  width: 5vw;
-  min-width: 50px;
-  height: 5vw;
+  width: 3vw;
+  min-width: 40px;
+  height: 3vw;
   min-height: 50px;
   margin-left: 30px;
 }
 .textefooter {
   margin: 0 5px;
-  font-family: "texte";
+  font-family: "Roboto";
 }
 .link li {
   list-style: none;
 }
 @media (max-width: 870px) {
-  .body-footer {
-    height: 30vh;
-  }
   .box-footer {
     flex-direction: column;
   }
 }
 @media (max-width: 605px) {
-  .body-footer {
-    height: 40vh;
-  }
-  .box-footer {
-    height: 40vh;
-  }
   .copy {
     flex-direction: column;
     align-items: center;
