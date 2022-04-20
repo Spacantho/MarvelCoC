@@ -1,6 +1,6 @@
-
 <?php require_once("assets/php/db.php");
-    require("assets/php/getNbVideo.php");
+require("assets/php/getNbVideo.php");
+require("assets/php/getlike.php");
 
 
 
@@ -50,19 +50,59 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
             </video>
 
             <!-- Like/ dislike -->
-            <div class="likeContainer">
-                <div class="likeButton" id="likeButton">
-                    <a id="click_unlike_like" data-type_click="like">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                    </a>
+            <div class="underVid">
+                <div class="likeContainer">
+
+                    <?php
+                    if (isset($isLiked["type_like"])) {
+                        if ($isLiked["type_like"] == 1) { ?>
+
+                            <div class="likeButton" id="likeButton">
+                                <a id="click_unlike_like" data-type_click="like">
+                                    <i class="fa-solid fa-thumbs-up activeL" id="likeicon"></i>
+                                </a>
+                            </div>
+                            <div class="dislikeButton " id="dislikeButton">
+                                <a id="click_unlike_like" data-type_click="unlike">
+                                    <i class="fa-solid fa-thumbs-down" id="dislikeicon"></i>
+                                </a>
+                            </div>
+                        <?php } ?>
+                        <?php if ($isLiked["type_like"] == 0) { ?>
+                            <div class="likeButton" id="likeButton">
+                                <a id="click_unlike_like" data-type_click="like">
+                                    <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
+                                </a>
+                            </div>
+                            <div class="dislikeButton " id="dislikeButton">
+                                <a id="click_unlike_like" data-type_click="unlike">
+                                    <i class="fa-solid fa-thumbs-down activeD" id="dislikeicon"></i>
+                                </a>
+                            </div>
+                        <?php }
+                    } else { ?>
+
+                        <div class="likeButton" id="likeButton">
+                            <a id="click_unlike_like" data-type_click="like">
+                                <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
+                            </a>
+                        </div>
+                        <div class="dislikeButton" id="dislikeButton">
+                            <a id="click_unlike_like" data-type_click="unlike">
+                                <i class="fa-solid fa-thumbs-down " id="dislikeicon"></i>
+                            </a>
+                        </div>
+                    <?php } ?>
+
                 </div>
-                <div class="dislikeButton" id="dislikeButton">
-                    <a id="click_unlike_like" data-type_click="unlike">
-                        <i class="fa-solid fa-thumbs-down"></i>
-                    </a>
+                <div class="fillbarContainer">
+                    <div class="fillbar">
+                        <div class="gauge" <?php echo " style= width:$ratioLike%;" ?>></div>
+                    </div>
                 </div>
-                <div id="res"></div>
+
             </div>
+
             <h3>Description : <br></h3>
             <p id="desc"><?php echo $response['description_video'] ?></p>
             <button onclick="readMore()" id="readButton">Voir plus...</button>
@@ -81,7 +121,8 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
             </div>
         </form>
 
-        <h3><?php echo showNbCom($db, $video); ?></h3>
+            <h3><?php echo showNbCom($db, $video); ?></h3>
+
 
         <div id="scrolled">
         <?php
@@ -89,12 +130,13 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
             $query->execute([$video]);
             foreach ($query as $row) {
                 ?>
-            <div class="visu-commentaire" id="<?php echo $row['id_commentaire'];?>">
-                <div class="pp-commentaire"><img src="<?php echo $row['photo_users'];?>"></div>
-                    <div class="container-commentaire">
-                        <div class="data-commentaire">
-                            <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
+                    <div class="visu-commentaire" id="<?php echo $row['id_commentaire']; ?>">
+                        <div class="pp-commentaire"><img src="<?php echo $row['photo_users']; ?>"></div>
+                        <div class="container-commentaire">
+                            <div class="data-commentaire">
+                                <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
                                 <div id="info-com">
+
 
                                     <?php $date = new DateTime($row['date_commentaire']);?>
                                     <div><?php echo $date->format('d-m-Y H:i');?></div>
@@ -112,19 +154,19 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                                     ?>
 
 
+                                </div>
                             </div>
+                            <div class="texte-commentaire"><?php echo $row['texte_commentaire']; ?></div>
                         </div>
-                    <div class="texte-commentaire"><?php echo $row['texte_commentaire'];?></div>
-                </div>
-            </div>
+                    </div>
 
-            <?php
+                <?php
                 }
-            ?>
-            </div>   
+                ?>
+            </div>
         </section>
     </div>
-  
+
     <script src="assets/js/readMoreDesc.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/like.js"></script>
