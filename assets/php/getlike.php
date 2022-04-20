@@ -1,5 +1,5 @@
 <?php
-$idUserSession = 1; // A CHANGER !!!!!!!!
+$idUserSession = 2; // A CHANGER !!!!!!!!
 
 
 if (isset($_GET["video"]) && !empty($_GET["video"])) {
@@ -14,7 +14,7 @@ $pdoStat->execute([$idVideo, $idUserSession]);
 $isLiked = $pdoStat->fetch();
 
 
-//Like
+//Nombre Like/dislike
 $sqlRequest =  "SELECT count(*) FROM note WHERE id_video = ? AND type_like = ?";
 $pdoStat = $db->prepare($sqlRequest);
 $pdoStat->execute([$idVideo, 1]);
@@ -25,7 +25,7 @@ $pdoStat = $db->prepare($sqlRequest);
 $pdoStat->execute([$idVideo, 0]);
 $numberUnlike = $pdoStat->fetch();
 
-
+// Calcul du ratio de like/dislike
 if ($numberUnlike[0] == 0) {
     $ratioLike = 0;
 } else if ($numberLike[0] == 0) {
