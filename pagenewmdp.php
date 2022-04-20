@@ -20,11 +20,11 @@
                 </div>
                 <div class="box-body-input">
                     <div class="box-imput">
-                        <div class="titre-page-info"><h2>PASSWORD PERDU</h2></div>
+                        <div class="titre-page-info"><h2>MOT DE PASSE OUBLIÉ</h2></div>
                         <div class="message-php">
                             <?php if(!empty($_GET['erreur'])){
                                       if($erreur == '1'){
-                            ?>         <p class="color-erreur">champ non remplis</p>
+                            ?>         <p class="color-erreur">veuillez remplir tous les champs</p>
                             <?php    
                                       }
                                       if($erreur == '2'){

@@ -33,7 +33,7 @@
                         <div class="message-php">
                             <?php if(!empty($_GET['erreur'])){
                                     if($erreur == '1')  {
-                            ?><p class="color-erreur">veuillez respecter tous les champs</p><?php
+                            ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
                                                         }
                                     if($erreur == '2')  {
                             ?><p class="color-erreur">nombre de character trop long</p><?php
@@ -51,7 +51,7 @@
                             ?><p class="color-erreur">compte non créer</p><?php
                                                         }
                                     if($erreur == '7')  {
-                            ?><p class="color-erreur">password incorrect</p><?php
+                            ?><p class="color-erreur">mot de passe incorrect</p><?php
                                                         }
                                     if($erreur == '8')  {
                             ?><p class="color-erreur">compte non validé</p><?php

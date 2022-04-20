@@ -39,7 +39,7 @@
                         <?php
                             if(!empty($_GET['erreur'])){
                                 if($erreur == '1'){
-                                ?><p class="color-erreur">champs non remplis</p><?php
+                                ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
                                 }
                                 if($erreur == '2'){
                                 ?><p class="color-erreur">nombre de character trop long</p><?php
@@ -51,13 +51,13 @@
                                 ?><p class="color-erreur">mdp et mdp 2 non identique</p><?php
                                 }
                                 if($erreur == '5'){
-                                ?><p class="color-erreur">user deja pris</p><?php
+                                ?><p class="color-erreur">utilisateur deja pris</p><?php
                                 }
                                 if($erreur == '6'){
                                 ?><p class="color-erreur">compte non créer</p><?php
                                 }
                                 if($erreur == '7'){
-                                ?><p class="color-erreur">password incorrect</p><?php
+                                ?><p class="color-erreur">mot de passe incorrect</p><?php
                                 }
                                 if($erreur == '8'){
                                 ?><p class="color-erreur">compte non validé</p><?php
@@ -66,7 +66,7 @@
 
                             if(!empty($_GET['success'])){
                                 if($success == '1'){
-                                ?><p class="color-success">Compte créer</p><?php
+                                ?><p class="color-success">Compte créer, veuillez verifier votre boite mail.</p><?php
                                 }
                             } 
                         ?>

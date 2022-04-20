@@ -43,8 +43,6 @@
                                 <th>DATE</th>
                                 <th>LIEN</th>
                                 <th>TYPE LIEN</th>
-                                <th>LIKE</th>
-                                <th>DISLIKE</th>
                                 <th>NOM USER</th>
                                 <th>CATEGORIE</th>
                                 <th>VALIDE</th>
@@ -62,8 +60,6 @@
                                     <td><?php echo $value["date_video"] ?></td>
                                     <td><?php echo $value["lien_video"] ?></td>
                                     <td><?php echo $value["typelien_video"] ?></td>
-                                    <td><?php echo $value["nb_likes"] ?></td>
-                                    <td><?php echo $value["nb_dislikes"] ?></td>
                                     <td><?php echo $value["username_users"] ?></td>
                                     <td><?php echo $value["nom_categorie"] ?></td>
                                     <td><?php echo $value["valide"] ?></td>
@@ -106,6 +102,7 @@
             } );
         } );
     </script>
+    <script src="assets/js/navbar.js"></script>
 </body>
 </html>
 <?php 
