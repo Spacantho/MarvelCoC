@@ -32,7 +32,7 @@
         <div class="box-crud">
             <div class="box-user">
                 <div class="box_table_id">
-                    <table id="table_id" class="display">
+                    <table id="table_id" class="table table-striped dt-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>ID USER</th>
@@ -82,15 +82,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $('#table_id').DataTable( {
-                responsive: {
-                    details: {
-                        display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                        type: 'none',
-                        target: ''
-                    }
-                }
-            } );
+            $('#table_id').DataTable();
         } );
     </script>
     <script src="assets/js/navbar.js"></script>
