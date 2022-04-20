@@ -11,6 +11,6 @@
             ':valide'    =>    '1',
             ':id_video'      =>    $_GET['id'],
         ));
-            header("Location: ../../crud.php");
+            header("Location: ../../crud.php?success=1");
 
 };
