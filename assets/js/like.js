@@ -7,14 +7,13 @@ $(document).on("click", "#click_unlike_like", function () {
   var type = $(this).data("type_click");
 
   $.ajax({
-    url: "assets/php/setLike.php",
+    url: "assets/php/setlike.php",
     type: "post",
     data: { like: type, vidId: vidId },
   }).done(function (response) {
-    //On choisi la div et on marque la réponse directement dedans
 
-    $("#res").html(response);
   });
+
   //Switch des boutons like et dislikes
   if (type == "like") {
     if ($("#dislikeicon").hasClass("activeD")) {

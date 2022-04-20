@@ -33,7 +33,6 @@ $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_us
                                         <div><?php echo $date->format('d-m-Y H:i');?></div>
                                         
                                         <?php 
-                                            $user = 6;
                                             if($user == $row['id_users']) {
                                             ?>
                                                 <div id="crud_com">

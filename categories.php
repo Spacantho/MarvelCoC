@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+if (!isset($_SESSION) || empty($_SESSION)) {
+    header("location:index.php?validate_err");
+}
+
 require "assets/php/getallcategorie.php";
 
 ?>

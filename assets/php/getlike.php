@@ -1,5 +1,6 @@
 <?php
-$idUserSession = 1; // A CHANGER !!!!!!!!
+
+$idUserSession = $_SESSION["sess_user_id"];
 
 
 if (isset($_GET["video"]) && !empty($_GET["video"])) {

@@ -15,7 +15,7 @@
             if(strlen($_POST['username_users']) <= $max){
                 if(isset($_POST['photo_users']) && !empty($_POST['photo_users'])){
                     if(strlen($_POST['photo_users']) <= $max){
-                                                    $sqlRequest = "UPDATE users SET username_users =:username_users, mail_users =:mail_users,photo_users =:photo_users, id_role =:id_role
+                                                    $sqlRequest = "UPDATE users SET username_users =:username_users,photo_users =:photo_users, id_role =:id_role
                                                                           WHERE id_users=:id_users;";
                                                     $pdoStat = $db -> prepare($sqlRequest); 
                                                     $pdoStat->execute(Array(

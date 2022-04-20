@@ -1,8 +1,7 @@
 <?php
+session_start();
 require_once("db.php");
-
-$idUserSession = 1; //!!! A CHANGER EN SESSION !!!!
-
+$idUserSession = $_SESSION["sess_user_id"];
 $typeLike = $_POST["like"];
 $idVideo = $_POST["vidId"];
 //0 = dislike en bdd

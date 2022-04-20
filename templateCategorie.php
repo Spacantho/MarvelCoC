@@ -1,4 +1,10 @@
-<?php require "assets/php/getallvid.php"; ?>
+<?php require "assets/php/getallvid.php"; 
+
+session_start();
+if (!isset($_SESSION) || empty($_SESSION)) {
+    header("location:index.php?validate_err");
+}
+?>
 
 
 <!DOCTYPE html>

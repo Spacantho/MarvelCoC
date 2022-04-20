@@ -1,18 +1,19 @@
 <?php
-    // session_start();
-    // if(isset($_SESSION['sess_user_id'])){
-    //     if(isset($_SESSION['sess_id_role'])){
-    //         if($_SESSION['sess_id_role'] == "1"){
-    //             if(isset($_GET['id'])){
-                    $id_video = $_GET['id'];
-                    $role = $_GET['role'];
-                    require("assets/php/db.php");
-                    $sqlRequest = "SELECT * FROM video
-                                    INNER JOIN users ON users.id_users = video.id_users
-                                    INNER JOIN categorie ON categorie.id_categorie = video.id_categorie
-                                                    ";
-                    $pdoStat = $db -> prepare($sqlRequest); 
-                    $pdoStat->execute();
+
+    session_start();
+    if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['sess_id_role'] != 1) {
+        header("location:index.php?validate_err");
+    }
+
+    $id_video = $_GET['id'];
+    $role = $_GET['role'];
+    require("assets/php/db.php");
+    $sqlRequest = "SELECT * FROM video
+                    INNER JOIN users ON users.id_users = video.id_users
+                    INNER JOIN categorie ON categorie.id_categorie = video.id_categorie
+                                    ";
+    $pdoStat = $db -> prepare($sqlRequest); 
+    $pdoStat->execute();
             
 ?>
 
@@ -105,15 +106,3 @@
     <script src="assets/js/navbar.js"></script>
 </body>
 </html>
-
-<?php       
-//     }}
-//     else{
-//         session_destroy();
-//         header("Location: assets/php/signup.php");
-//     }
-//     }}
-//     else{
-//         header("Location: assets/php/signup.php");
-//     }
-?>

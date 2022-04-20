@@ -1,18 +1,20 @@
 <?php
-    // session_start();
-    // if(isset($_SESSION['sess_user_id'])){
-    //     if(isset($_SESSION['sess_id_role'])){
-    //         if($_SESSION['sess_id_role'] == "1"){
-    //             if(isset($_GET['id'])){
-                    $id_users = $_GET['id'];
-                    require("assets/php/db.php");
-                    $sqlRequest = "SELECT * FROM users";
-                    $pdoStat = $db -> prepare($sqlRequest); 
-                    $pdoStat->execute();
-                    $id_role = $_GET['role'];
-                    if(!empty($_GET['erreur'])){
-                        $erreur = $_GET['erreur'];
-                       }
+    session_start();
+    if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['sess_id_role'] != 1) {
+        header("location:index.php?validate_err");
+    }
+
+    require("assets/php/db.php");
+
+
+    $id_users = $_GET['id'];
+    $sqlRequest = "SELECT * FROM users";
+    $pdoStat = $db -> prepare($sqlRequest); 
+    $pdoStat->execute();
+    $id_role = $_GET['role'];
+    if(!empty($_GET['erreur'])){
+        $erreur = $_GET['erreur'];
+       }
 ?>
 
 <!DOCTYPE html>
@@ -89,15 +91,3 @@
     <script src="assets/js/navbar.js"></script>
 </body>
 </html>
-
-<?php       
-//     }}
-//     else{
-//         session_destroy();
-//         header("Location: assets/php/signup.php");
-//     }
-//     }}
-//     else{
-//         header("Location: assets/php/signup.php");
-//     }
-?>

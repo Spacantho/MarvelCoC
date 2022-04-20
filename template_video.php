@@ -1,4 +1,11 @@
-<?php require_once("assets/php/db.php");
+<?php
+
+session_start();
+if (!isset($_SESSION) || empty($_SESSION)) {
+    header("location:index.php?validate_err");
+}
+
+require_once("assets/php/db.php");
 require("assets/php/getNbVideo.php");
 require("assets/php/getlike.php");
 
@@ -9,6 +16,8 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 } else {
     header('location:templateCategorie.php?err=noget');
 }
+
+$user_id = $_SESSION["sess_user_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +121,7 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 
     <section id="section-commentaire">
         <form id="comment_form" method="post">
-            <input type="hidden" name="user_id" value="<?php $user=6; echo $user; ?>">
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
             <input type="hidden" name="video_id" value="<?php echo $video; ?>">
             <textarea name="commentaire" id="textarea-commentaire" maxlength="500" placeholder="Votre commentaire..." required></textarea>
             <div id="commentaire-detail">
@@ -142,8 +151,7 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                                     <div><?php echo $date->format('d-m-Y H:i');?></div>
                                     
                                     <?php 
-                                        $user = 6;
-                                        if($user == $row['id_users']) {
+                                        if($user_id == $row['id_users']) {
                                         ?>
                                             <div id="crud_com">
                                                 <a onclick="editComment(<?php echo $row['id_commentaire'].', \''.$row['texte_commentaire'].'\''; ?>)" class="editUserCom"><i class="fa-solid fa-pen"></i></a>
@@ -169,7 +177,7 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 
     <script src="assets/js/readMoreDesc.js"></script>
     <script src="assets/js/navbar.js"></script>
-    <script src="assets/js/like.js"></script>
+    <script src="assets/js/like.js" defer></script>
 </body>
 
 </html>
