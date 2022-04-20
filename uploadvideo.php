@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+    if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['sess_id_role'] != 1) {
+        header("location:index.php?validate_err");
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -43,6 +43,8 @@ require "assets/php/getallcategorie.php";
         </div>
     </section>
     <?php require_once "assets/include/footer.php"; ?>
+
+    <script src="assets/js/navbar.js"></script>
 </body>
 
 </html>
