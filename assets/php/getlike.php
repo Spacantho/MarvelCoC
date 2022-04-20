@@ -1,17 +1,20 @@
 <?php
-require_once('db.php');
+$idUserSession = 1; // A CHANGER !!!!!!!!
+
+
 if (isset($_GET["video"]) && !empty($_GET["video"])) {
     $idVideo = $_GET['video'];
 } else {
     header('Location: index.php');
 }
-
-$sqlRequest = "SELECT * FROM note WHERE id_video = ?";
+//Pré-affichage du like
+$sqlRequest = "SELECT * FROM note WHERE id_video = ? AND id_users = ?";
 $pdoStat = $db->prepare($sqlRequest);
-$pdoStat->execute([$idVideo]);
+$pdoStat->execute([$idVideo, $idUserSession]);
 $isLiked = $pdoStat->fetch();
 
 
+//Like
 $sqlRequest =  "SELECT count(*) FROM note WHERE id_video = ? AND type_like = ?";
 $pdoStat = $db->prepare($sqlRequest);
 $pdoStat->execute([$idVideo, 1]);
@@ -22,8 +25,7 @@ $pdoStat = $db->prepare($sqlRequest);
 $pdoStat->execute([$idVideo, 0]);
 $numberUnlike = $pdoStat->fetch();
 
-var_dump($numberUnlike[0]);
-var_dump($numberLike[0]);
+
 if ($numberUnlike[0] == 0) {
     $ratioLike = 0;
 } else if ($numberLike[0] == 0) {
