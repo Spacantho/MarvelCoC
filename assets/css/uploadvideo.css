@@ -410,3 +410,85 @@ select{
 select:focus{
   border: solid 2px #ffffff;
 }
+
+#errors_container{
+  position: absolute;
+  min-width: 60%;
+  min-height: 60%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#errors{
+  padding:20px;
+  color: white;
+  bottom: 0;
+}
+
+#btnerrors{
+  position: absolute;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 33%;
+}
+
+#btnerrors{
+  position: absolute;
+}
+
+#uploadimagecategorie{
+  display: none;
+}
+
+.file-upload{
+width: 70%;
+margin-left:15%;
+margin-top: 3vh;
+}
+
+.file-upload .file-upload-select {
+	display: block;
+	color: #dbdbdb;
+	cursor: pointer;
+	text-align: left;
+	background: #1a242f;
+	overflow: hidden;
+	position: relative;
+	border-radius: 6px;
+}
+.file-upload .file-upload-select .file-select-button {
+	background: #161f27;
+	padding: 15px;
+	display: inline-block;
+}
+.file-upload .file-upload-select .file-select-name {
+	display: inline-block;
+	padding: 15px;
+}
+.file-upload .file-upload-select:hover .file-select-button {
+	background: #324759;
+	color: #ffffff;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+.file-upload .file-upload-select input[type="file"] {
+	display: none;
+}
+
+.goodmsg{
+  color: green;
+  text-align: center;
+  padding: 0.8vh;
+}
+.badmsg{
+  color: red;
+  text-align:center;
+  padding: 0.8vh;
+}
