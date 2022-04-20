@@ -24,6 +24,8 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/commentaire.js" defer></script>
     <script src="assets/js/delete_com_user.js" defer></script>
+    <script src="assets/js/edit_com_user.js" defer></script>
+    <script src="assets/js/traitement_edit_com_user.js" defer></script>
     <title>Vidéo</title>
 </head>
 
@@ -61,15 +63,16 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                 </div>
                 <div id="res"></div>
             </div>
-            <p>Description : <br><?php echo $response['description_video'] ?></p>
-            <button onclick="myFunction()" id="readButton">Voir plus...</button>
+            <h3>Description : <br></h3>
+            <p id="desc"><?php echo $response['description_video'] ?></p>
+            <button onclick="readMore()" id="readButton">Voir plus...</button>
     </section>
 
 
 
     <section id="section-commentaire">
         <form id="comment_form" method="post">
-            <input type="hidden" name="user_id" value="<?php $user=2; echo $user; ?>">
+            <input type="hidden" name="user_id" value="<?php $user=6; echo $user; ?>">
             <input type="hidden" name="video_id" value="<?php echo $video; ?>">
             <textarea name="commentaire" id="textarea-commentaire" maxlength="500" placeholder="Votre commentaire..." required></textarea>
             <div id="commentaire-detail">
@@ -82,7 +85,7 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 
         <div id="scrolled">
         <?php
-            $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users WHERE id_video = ? AND valide_comm = 1 ORDER BY date_commentaire');
+            $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users WHERE id_video = ? AND valide_comm = 1 AND verified = 1 ORDER BY date_commentaire');
             $query->execute([$video]);
             foreach ($query as $row) {
                 ?>
@@ -97,12 +100,12 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
                                     <div><?php echo $date->format('d-m-Y H:i');?></div>
                                     
                                     <?php 
-                                        $user = 2;
+                                        $user = 6;
                                         if($user == $row['id_users']) {
                                         ?>
                                             <div id="crud_com">
-                                            <i class="fa-solid fa-pen"></i>
-                                            <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="editComment(<?php echo $row['id_commentaire'].', \''.$row['texte_commentaire'].'\''; ?>)" class="editUserCom"><i class="fa-solid fa-pen"></i></a>
+                                                <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         <?php
                                         }

@@ -18,7 +18,6 @@
     // erreur 7 = password incorrect
     // erreur 8 = compte non validé
 
-
     if(!empty($_GET['erreur'])){
      $erreur = $_GET['erreur'];
     }
@@ -37,6 +36,7 @@
                         <div class="titre-page-info"><h2>CONNEXION</h2></div>
                         <div class="message-php">
                         <?php
+                            // Pense a regarder la doc php pour le swich case :) 
                             if(!empty($_GET['erreur'])){
                                 if($erreur == '1'){
                                 ?><p class="color-erreur">champs non remplis</p><?php
