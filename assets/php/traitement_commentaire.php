@@ -21,32 +21,34 @@ if(isset($_POST['video_id'])){
 $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users WHERE id_video = ? AND valide_comm = 1 ORDER BY date_commentaire DESC LIMIT 0,1');
             $query->execute([$traitementCourant]);
             foreach ($query as $row) {
-                if ($video = $row['id_video']) {
-            ?>
-            <div class="visu-commentaire" id="<?php echo $row['id_commentaire'];?>">
-                <div class="pp-commentaire"><img src="<?php echo $row['photo_users'];?>"></div>
-                    <div class="container-commentaire">
-                        <div class="data-commentaire">
-                            <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
-                            <?php $date = new DateTime($row['date_commentaire']);?>
-                            <div><?php echo $date->format('d-m-Y H:i');?></div>
-
-
-                            <?php 
-                                        $user = 1;
-                                        if($user == $row['id_users']) {
+                    ?>
+                <div class="visu-commentaire" id="<?php echo $row['id_commentaire'];?>">
+                    <div class="pp-commentaire"><img src="<?php echo $row['photo_users'];?>"></div>
+                        <div class="container-commentaire">
+                            <div class="data-commentaire">
+                                <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
+                                    <div id="info-com">
+    
+                                        <?php $date = new DateTime($row['date_commentaire']);?>
+                                        <div><?php echo $date->format('d-m-Y H:i');?></div>
+                                        
+                                        <?php 
+                                            $user = 6;
+                                            if($user == $row['id_users']) {
+                                            ?>
+                                                <div id="crud_com">
+                                                    <a onclick="editComment(<?php echo $row['id_commentaire'].', \''.$row['texte_commentaire'].'\''; ?>)" class="editUserCom"><i class="fa-solid fa-pen"></i></a>
+                                                    <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
+                                                </div>
+                                            <?php
+                                            }
                                         ?>
-                                            <div id="crud_com">
-                                                <i class="fa-solid fa-pen"></i>
-                                                <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
-                                            </div>
-                                        <?php
-                                        }
-                                    ?>
-
-                        </div>
+    
+    
+                                </div>
+                            </div>
                         <div class="texte-commentaire"><?php echo $row['texte_commentaire'];?></div>
+                    </div>
                 </div>
-            </div>
             <?php }
-            }?>
+            ?>

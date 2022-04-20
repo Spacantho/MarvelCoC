@@ -29,8 +29,12 @@ body {
   margin-top: 1rem;
 }
 
-#video p {
+#desc {
   margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 #video-player {
@@ -44,6 +48,7 @@ body {
   text-decoration: underline;
   text-align: center;
   margin-bottom: 3vh;
+  cursor: pointer;
 }
 
 #readButton:hover {
@@ -76,7 +81,7 @@ body {
 
 .container-commentaire {
   background-color: #032e42;
-  width: 85%;
+  width: 95%;
   border-radius: 8px;
   margin-bottom: 3vh;
 }
@@ -116,7 +121,7 @@ body {
   transform: translateY(0.5vh);
 }
 
-#comment_form button img {
+#commentaire-btn img, #replace-btn img {
   width: 20px;
   height: auto;
 }
@@ -126,10 +131,11 @@ body {
 }
 
 #commentaire-detail {
-  display: flex;
-  width: 30px;
-  margin-left: 2vh;
-  flex-direction: column;
+
+    display: inline-flex;
+    width: 30px;
+    margin-left: 2vh;
+    flex-direction: column;
 }
 
 #scrolled {
@@ -137,21 +143,50 @@ body {
   overflow-y: scroll;
 }
 
-#crud_com i,
-a {
-  width: 20px;
-  height: auto;
-  margin-left: 1vh;
+#crud_com {
+  display: inherit;
 }
 
-#crud_com a:hover {
-  color: rgb(255, 0, 0);
+#crud_com i, a {
+    width: 20px;
+    height: auto;
+    margin-left: 1vh;
+}
+
+#crud_com .editUserCom:hover {
+  color: rgb(110, 110, 110);
   cursor: pointer;
 }
 
-#info-com {
-  display: flex;
+#crud_com .deleteUserCom:hover {
+    color: rgb(255, 0, 0);
+    cursor: pointer;
 }
+
+#info-com {
+    display: flex;
+    justify-content: space-between;
+}
+
+#textarea-replace {
+  width: 80%;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  padding: 3px;
+  margin-left: 10px;
+}
+
+#replace-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transform: translateY(-2vh);
+}
+
+
 
 @media screen and (max-width: 1180px) {
   #corps-video {
@@ -167,11 +202,19 @@ a {
     width: 75vw;
     margin: auto;
   }
+
+  #section-commentaire img {
+    width: 20px;
+    height: 20px;
+  }
+
 }
 
 @media screen and (max-width: 500px) {
+
+  
   .container-commentaire {
-    max-width: 70%;
+    max-width: 90%;
   }
 
   #textarea-commentaire {

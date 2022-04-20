@@ -1,15 +1,15 @@
-function myFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
+desc.style.display = "-webkit-box";
+
+function readMore() {
+  var desc = document.getElementById("desc");
   var btnText = document.getElementById("readButton");
 
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Voir plus..."; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
+
+  if (desc.style.display === "-webkit-box") {
+    desc.style.display = "flex";
     btnText.innerHTML = "Voir moins..."; 
-    moreText.style.display = "inline";
+  } else {
+    desc.style.display = "-webkit-box";
+    btnText.innerHTML = "Voir plus..."; 
   }
 }

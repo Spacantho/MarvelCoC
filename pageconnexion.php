@@ -21,8 +21,9 @@
     //  erreur 8 = compte non validé
 
 
-    if (!empty($_GET['erreur'])) {
-        $erreur = $_GET['erreur'];
+    if(!empty($_GET['erreur'])){
+     $erreur = $_GET['erreur'];
+
     }
     if (!empty($_GET['success'])) {
         $success = $_GET['success'];
@@ -41,7 +42,8 @@
                     </div>
                     <div class="message-php">
                         <?php
-                        
+
+                            // Pense a regarder la doc php pour le swich case :) 
 
                             if(!empty($_GET['erreur'])){
                                 if($erreur == '1'){
