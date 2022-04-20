@@ -1,9 +1,11 @@
 <?php
     require_once "assets/php/db.php";
-    // session_start();
-    // if(isset($_SESSION['sess_user_id'])){
-    //     if(isset($_SESSION['sess_id_role'])){
-    //         if($_SESSION['sess_id_role'] == "1"){
+    
+    session_start();
+    if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['sess_id_role'] != 1) {
+        header("location:index.php?validate_err");
+    }
+
     $user = ("SELECT * FROM users");
     $user = $db->prepare($user);
     $user->execute();
@@ -91,13 +93,6 @@
             } );
         } );
     </script>
+    <script src="assets/js/navbar.js"></script>
 </body>
 </html>
-<?php 
-    //     }
-    // else{session_destroy();
-    //      header("Location: index.php");}
-
-    // }}
-    // else{header("Location: index.php");}
-?>

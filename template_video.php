@@ -1,6 +1,13 @@
+<?php
 
-<?php require_once("assets/php/db.php");
-    require("assets/php/getNbVideo.php");
+session_start();
+if (!isset($_SESSION) || empty($_SESSION)) {
+    header("location:index.php?validate_err");
+}
+
+require_once("assets/php/db.php");
+require("assets/php/getNbVideo.php");
+require("assets/php/getlike.php");
 
 
 
@@ -9,6 +16,8 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
 } else {
     header('location:templateCategorie.php?err=noget');
 }
+
+$user_id = $_SESSION["sess_user_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +33,8 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/commentaire.js" defer></script>
     <script src="assets/js/delete_com_user.js" defer></script>
+    <script src="assets/js/edit_com_user.js" defer></script>
+    <script src="assets/js/traitement_edit_com_user.js" defer></script>
     <title>Vidéo</title>
 </head>
 
@@ -48,28 +59,69 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
             </video>
 
             <!-- Like/ dislike -->
-            <div class="likeContainer">
-                <div class="likeButton" id="likeButton">
-                    <a id="click_unlike_like" data-type_click="like">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                    </a>
+            <div class="underVid">
+                <div class="likeContainer">
+
+                    <?php
+                    if (isset($isLiked["type_like"])) {
+                        if ($isLiked["type_like"] == 1) { ?>
+
+                            <div class="likeButton" id="likeButton">
+                                <a id="click_unlike_like" data-type_click="like">
+                                    <i class="fa-solid fa-thumbs-up activeL" id="likeicon"></i>
+                                </a>
+                            </div>
+                            <div class="dislikeButton " id="dislikeButton">
+                                <a id="click_unlike_like" data-type_click="unlike">
+                                    <i class="fa-solid fa-thumbs-down" id="dislikeicon"></i>
+                                </a>
+                            </div>
+                        <?php } ?>
+                        <?php if ($isLiked["type_like"] == 0) { ?>
+                            <div class="likeButton" id="likeButton">
+                                <a id="click_unlike_like" data-type_click="like">
+                                    <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
+                                </a>
+                            </div>
+                            <div class="dislikeButton " id="dislikeButton">
+                                <a id="click_unlike_like" data-type_click="unlike">
+                                    <i class="fa-solid fa-thumbs-down activeD" id="dislikeicon"></i>
+                                </a>
+                            </div>
+                        <?php }
+                    } else { ?>
+
+                        <div class="likeButton" id="likeButton">
+                            <a id="click_unlike_like" data-type_click="like">
+                                <i class="fa-solid fa-thumbs-up" id="likeicon"></i>
+                            </a>
+                        </div>
+                        <div class="dislikeButton" id="dislikeButton">
+                            <a id="click_unlike_like" data-type_click="unlike">
+                                <i class="fa-solid fa-thumbs-down " id="dislikeicon"></i>
+                            </a>
+                        </div>
+                    <?php } ?>
+
                 </div>
-                <div class="dislikeButton" id="dislikeButton">
-                    <a id="click_unlike_like" data-type_click="unlike">
-                        <i class="fa-solid fa-thumbs-down"></i>
-                    </a>
+                <div class="fillbarContainer">
+                    <div class="fillbar">
+                        <div class="gauge" <?php echo " style= width:$ratioLike%;" ?>></div>
+                    </div>
                 </div>
-                <div id="res"></div>
+
             </div>
-            <p>Description : <br><?php echo $response['description_video'] ?></p>
-            <button onclick="myFunction()" id="readButton">Voir plus...</button>
+
+            <h3>Description : <br></h3>
+            <p id="desc"><?php echo $response['description_video'] ?></p>
+            <button onclick="readMore()" id="readButton">Voir plus...</button>
     </section>
 
 
 
     <section id="section-commentaire">
         <form id="comment_form" method="post">
-            <input type="hidden" name="user_id" value="<?php $user=2; echo $user; ?>">
+            <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
             <input type="hidden" name="video_id" value="<?php echo $video; ?>">
             <textarea name="commentaire" id="textarea-commentaire" maxlength="500" placeholder="Votre commentaire..." required></textarea>
             <div id="commentaire-detail">
@@ -78,53 +130,54 @@ if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
             </div>
         </form>
 
-        <h3><?php echo showNbCom($db, $video); ?></h3>
+            <h3><?php echo showNbCom($db, $video); ?></h3>
+
 
         <div id="scrolled">
         <?php
-            $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users WHERE id_video = ? AND valide_comm = 1 ORDER BY date_commentaire');
+            $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_users = commentaire.id_users WHERE id_video = ? AND valide_comm = 1 AND verified = 1 ORDER BY date_commentaire');
             $query->execute([$video]);
             foreach ($query as $row) {
                 ?>
-            <div class="visu-commentaire" id="<?php echo $row['id_commentaire'];?>">
-                <div class="pp-commentaire"><img src="<?php echo $row['photo_users'];?>"></div>
-                    <div class="container-commentaire">
-                        <div class="data-commentaire">
-                            <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
+                    <div class="visu-commentaire" id="<?php echo $row['id_commentaire']; ?>">
+                        <div class="pp-commentaire"><img src="<?php echo $row['photo_users']; ?>"></div>
+                        <div class="container-commentaire">
+                            <div class="data-commentaire">
+                                <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
                                 <div id="info-com">
+
 
                                     <?php $date = new DateTime($row['date_commentaire']);?>
                                     <div><?php echo $date->format('d-m-Y H:i');?></div>
                                     
                                     <?php 
-                                        $user = 2;
-                                        if($user == $row['id_users']) {
+                                        if($user_id == $row['id_users']) {
                                         ?>
                                             <div id="crud_com">
-                                            <i class="fa-solid fa-pen"></i>
-                                            <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="editComment(<?php echo $row['id_commentaire'].', \''.$row['texte_commentaire'].'\''; ?>)" class="editUserCom"><i class="fa-solid fa-pen"></i></a>
+                                                <a onclick="deleteComment(<?php echo $row['id_commentaire']; ?>)" class="deleteUserCom"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         <?php
                                         }
                                     ?>
 
 
+                                </div>
                             </div>
+                            <div class="texte-commentaire"><?php echo $row['texte_commentaire']; ?></div>
                         </div>
-                    <div class="texte-commentaire"><?php echo $row['texte_commentaire'];?></div>
-                </div>
-            </div>
+                    </div>
 
-            <?php
+                <?php
                 }
-            ?>
-            </div>   
+                ?>
+            </div>
         </section>
     </div>
-  
+
     <script src="assets/js/readMoreDesc.js"></script>
     <script src="assets/js/navbar.js"></script>
-    <script src="assets/js/like.js"></script>
+    <script src="assets/js/like.js" defer></script>
 </body>
 
 </html>

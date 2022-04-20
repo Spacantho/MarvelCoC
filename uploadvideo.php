@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/uploadvideo.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/uploadvideo.css" rel="stylesheet">
   <link rel="shortcut icon" href="/assets/favicon.ico">
-    <title>Upload Video</title>
+   <title>Upload Video</title>
 </head>
+
 <body>
-    <section id="uv_mainsection">
+  <section id="uv_mainsection">
 
     <form id="form1" method="post" enctype="multipart/form-data">
+
 
     <section id="left_section">
       
@@ -178,5 +181,7 @@
         })
 
         </script>
+
 </body>
+
 </html>

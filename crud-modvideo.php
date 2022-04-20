@@ -1,18 +1,19 @@
 <?php
-    // session_start();
-    // if(isset($_SESSION['sess_user_id'])){
-    //     if(isset($_SESSION['sess_id_role'])){
-    //         if($_SESSION['sess_id_role'] == "1"){
-    //             if(isset($_GET['id'])){
-                    $id_video = $_GET['id'];
-                    $role = $_GET['role'];
-                    require("assets/php/db.php");
-                    $sqlRequest = "SELECT * FROM video
-                                    INNER JOIN users ON users.id_users = video.id_users
-                                    INNER JOIN categorie ON categorie.id_categorie = video.id_categorie
-                                                    ";
-                    $pdoStat = $db -> prepare($sqlRequest); 
-                    $pdoStat->execute();
+
+    session_start();
+    if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['sess_id_role'] != 1) {
+        header("location:index.php?validate_err");
+    }
+
+    $id_video = $_GET['id'];
+    $role = $_GET['role'];
+    require("assets/php/db.php");
+    $sqlRequest = "SELECT * FROM video
+                    INNER JOIN users ON users.id_users = video.id_users
+                    INNER JOIN categorie ON categorie.id_categorie = video.id_categorie
+                                    ";
+    $pdoStat = $db -> prepare($sqlRequest); 
+    $pdoStat->execute();
             
 ?>
 
@@ -28,12 +29,18 @@
     <title>modding</title>
 </head>
 <body>
-<?php require_once "assets/include/navbar.php"; ?>
+    
+<?php 
+    require_once "assets/include/navbar.php";
+    if(!empty($_GET['erreur'])){
+        $erreur = $_GET['erreur'];
+       }
+?>
     <div class="box-body">
         <div class="box-crud-modif">
             <div class="box-body-input">
                 <div class="box-imput">
-                    <form action="assets/php/traitement-crud-moduser.php?id=<?php echo $id_video?>" method="POST" class="crud-create">
+                    <form action="assets/php/traitement-crud-modvideo.php?id=<?php echo $id_video?>&role=<?php echo $role?>" method="POST" class="crud-create">
                         <?php 
                             while ($result = $pdoStat->fetch()) {
                                 if($result['id_video'] == $id_video){
@@ -56,8 +63,8 @@
                             // while ($resultgenre = $requetegenre->fetch()) {
                                 if($result['id_categorie'] == $role){
                         ?>
-                            <label for="id_role"><p class="texte-pseudo">ID role:</p></label>
-                            <select name="id_role" id="user">
+                            <label for="id_categorie"><p class="texte-pseudo">ID role:</p></label>
+                            <select name="id_categorie" id="user">
                                 <option value="<?php echo $result["id_categorie"] ?>">--<?php echo $result["nom_categorie"] ?>--</option>
                                 <?php 
                                     $role = ("SELECT * FROM categorie");
@@ -70,7 +77,18 @@
 
                             </select>
                         </div>
-                        
+                        <div class="message-php">
+                            <?php 
+                                if(!empty($_GET['erreur'])){
+                                    if($erreur == '1'){
+                                    ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
+                                    }
+                                    if($erreur == '2'){
+                                    ?><p class="color-erreur">nombre de character trop long</p><?php
+                                    }
+                                }
+                            ?>
+                        </div>
                         <?php     
                                     }
                                 }
@@ -85,17 +103,6 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/navbar.js"></script>
 </body>
 </html>
-
-<?php       
-//     }}
-//     else{
-//         session_destroy();
-//         header("Location: assets/php/signup.php");
-//     }
-//     }}
-//     else{
-//         header("Location: assets/php/signup.php");
-//     }
-?>

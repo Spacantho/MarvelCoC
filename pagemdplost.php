@@ -20,7 +20,7 @@
                 </div>
                 <div class="box-body-input">
                     <div class="box-imput">
-                        <div class="titre-page-info"><h2>PASSWORD PERDU</h2></div>
+                        <div class="titre-page-info"><h2>MOT DE PASSE PERDU</h2></div>
                         <div class="message-php">
                             <?php if(!empty($_GET['envoi'])){
                                     if($envoi == '1')  {

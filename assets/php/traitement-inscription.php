@@ -19,7 +19,7 @@
 
                         if(isset($_POST['password']) && !empty($_POST['password'])){
                             if(isset($_POST['password2']) && !empty($_POST['password2'])){
-                                if(isset($_POST['password']) == ($_POST['password2'])){
+                                if(($_POST['password']) == ($_POST['password2'])){
                                     if(strlen($_POST['password']) <= $max){
                                         if(strlen($_POST['password2'] ) <= $max){
                                             $password = htmlspecialchars(password_hash($_POST["password"], PASSWORD_DEFAULT));
