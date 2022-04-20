@@ -127,6 +127,11 @@ session_start();
 
         
   <div id="errors_container">
+  <div id="load2">
+  </div>
+  <div id="loadmsg">
+    Mise en ligne de la vidéo...
+  </div>
   <div id="errors">
   </div>
   <button id="btnerrors">Fermer</button>
@@ -142,6 +147,11 @@ session_start();
         <script>
         $("#form1").submit(function(e) {
             e.preventDefault();
+            $("#errors").html("");
+            $("#errors_container").css('display', 'flex')
+            $("#btnerrors").css('display', 'none')
+            $("#load2").css("display","block")
+            $("#loadmsg").css("display","block")
         });
 
         function submitUploadVideo(){
@@ -172,7 +182,9 @@ session_start();
                       console.log("SUCCESS : ", data);
                       $("#btnSubmit").prop("disabled", false);
                       $("#errors").html(data);
-                      $("#errors_container").css('display', 'flex')
+                      $("#load2").css("display","none")
+                      $("#btnerrors").css('display', 'block')
+                      $("#loadmsg").css("display","none")
 
                   },
                   error: function (e) {
