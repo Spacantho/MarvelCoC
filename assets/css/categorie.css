@@ -19,7 +19,6 @@ body {
   height: fit-content;
   padding: 8em 0 8em 0;
   display: flex;
-  min-height: 34vh;
   justify-content: center;
   align-items: center;
 }
