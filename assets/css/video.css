@@ -121,7 +121,8 @@ body {
   transform: translateY(0.5vh);
 }
 
-#commentaire-btn img, #replace-btn img {
+#commentaire-btn img,
+#replace-btn img {
   width: 20px;
   height: auto;
 }
@@ -131,11 +132,10 @@ body {
 }
 
 #commentaire-detail {
-
-    display: inline-flex;
-    width: 30px;
-    margin-left: 2vh;
-    flex-direction: column;
+  display: inline-flex;
+  width: 30px;
+  margin-left: 2vh;
+  flex-direction: column;
 }
 
 #scrolled {
@@ -147,10 +147,11 @@ body {
   display: inherit;
 }
 
-#crud_com i, a {
-    width: 20px;
-    height: auto;
-    margin-left: 1vh;
+#crud_com i,
+a {
+  width: 20px;
+  height: auto;
+  margin-left: 1vh;
 }
 
 #crud_com .editUserCom:hover {
@@ -159,13 +160,13 @@ body {
 }
 
 #crud_com .deleteUserCom:hover {
-    color: rgb(255, 0, 0);
-    cursor: pointer;
+  color: rgb(255, 0, 0);
+  cursor: pointer;
 }
 
 #info-com {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #textarea-replace {
@@ -186,8 +187,6 @@ body {
   transform: translateY(-2vh);
 }
 
-
-
 @media screen and (max-width: 1180px) {
   #corps-video {
     flex-direction: column;
@@ -207,12 +206,9 @@ body {
     width: 20px;
     height: 20px;
   }
-
 }
 
 @media screen and (max-width: 500px) {
-
-  
   .container-commentaire {
     max-width: 90%;
   }
@@ -307,4 +303,10 @@ body {
   display: flex;
 
   flex-direction: column;
+}
+.viewsCount {
+  font-weight: bold;
+  justify-self: flex-start;
+  align-self: center;
+  width: 100%;
 }
