@@ -9,8 +9,8 @@ var btnText = document.getElementById("readButton");
 if (!isTextClamped) {
   btnText.remove();
 }
-desc.style.display = "-webkit-box";
 
+desc.style.display = "-webkit-box";
 function readMore() {
   if (desc.style.display === "-webkit-box") {
     desc.style.display = "flex";
