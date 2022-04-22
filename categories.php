@@ -1,8 +1,8 @@
 <?php
 
 // process the cookie value
-// var_dump($_COOKIE["remember"]);
-// echo ($_COOKIE["remember"]);
+var_dump($_COOKIE["remember"]);
+echo ($_COOKIE["remember"]);
 
 session_start();
 // if (!isset($_SESSION) || empty($_SESSION)) {
