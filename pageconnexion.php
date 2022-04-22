@@ -11,6 +11,7 @@
 
 <body>
     <?php
+    session_start();
     //  erreur 1 = champs non remplis
     //  erreur 2 = nombre de character trop long
     //  erreur 3 = adresse deja utilisé
@@ -21,9 +22,8 @@
     //  erreur 8 = compte non validé
 
 
-    if(!empty($_GET['erreur'])){
-     $erreur = $_GET['erreur'];
-
+    if (!empty($_GET['erreur'])) {
+        $erreur = $_GET['erreur'];
     }
     if (!empty($_GET['success'])) {
         $success = $_GET['success'];
@@ -43,44 +43,43 @@
                     <div class="message-php">
                         <?php
 
-                            // Pense a regarder la doc php pour le swich case :) 
+                        // Pense a regarder la doc php pour le swich case :) 
 
-                            if(!empty($_GET['erreur'])){
-                                if($erreur == '1'){
-                                ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
-                                }
-                                if($erreur == '2'){
-                                ?><p class="color-erreur">nombre de character trop long</p><?php
-                                }
-                                if($erreur == '3'){
-                                ?><p class="color-erreur">adresse deja utilisé</p><?php
-                                }
-                                if($erreur == '4'){
-                                ?><p class="color-erreur">mdp et mdp 2 non identique</p><?php
-                                }
-                                if($erreur == '5'){
-                                ?><p class="color-erreur">utilisateur deja pris</p><?php
-                                }
-                                if($erreur == '6'){
-                                ?><p class="color-erreur">compte non créer</p><?php
-                                }
-                                if($erreur == '7'){
-                                ?><p class="color-erreur">mot de passe incorrect</p><?php
-                                }
-                                if($erreur == '8'){
-                                ?><p class="color-erreur">compte non validé</p><?php
-                                }
+                        if (!empty($_GET['erreur'])) {
+                            if ($erreur == '1') {
+                        ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
+                                                                                    }
+                                                                                    if ($erreur == '2') {
+                                                                                        ?><p class="color-erreur">nombre de character trop long</p><?php
+                                                                                                                                                }
+                                                                                                                                                if ($erreur == '3') {
+                                                                                                                                                    ?><p class="color-erreur">adresse deja utilisé</p><?php
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                    if ($erreur == '4') {
+                                                                                                                                                                                                        ?><p class="color-erreur">mdp et mdp 2 non identique</p><?php
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                    if ($erreur == '5') {
+                                                                                                                                                                                                                                                                        ?><p class="color-erreur">utilisateur deja pris</p><?php
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                    if ($erreur == '6') {
+                                                                                                                                                                                                                                                            ?><p class="color-erreur">compte non créer</p><?php
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                    if ($erreur == '7') {
+                                                                                                                                                                                                                                                ?><p class="color-erreur">mot de passe incorrect</p><?php
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                    if ($erreur == '8') {
+                                                                                                                                                                                                                                                ?><p class="color-erreur">compte non validé</p><?php
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                }
 
-                            }
-                        
-                        if (!empty($_GET['success'])) {
-                            if ($success == '1') {
-                                ?>
-                        <p class="color-success">Compte créer, veuillez verifier votre boite mail.</p>
+                                                                                                                                                                                                                                                                if (!empty($_GET['success'])) {
+                                                                                                                                                                                                                                                                    if ($success == '1') {
+                                                                                                                                                                                                                                        ?>
+                                <p class="color-success">Compte créer, veuillez verifier votre boite mail.</p>
                         <?php
-                            }
-                        }
-                                ?>
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                }
+                        ?>
                     </div>
                     <form action="assets/php/traitement-connexion.php" method="post">
                         <div class="imputi">

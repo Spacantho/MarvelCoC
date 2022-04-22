@@ -27,7 +27,7 @@
                                             $token = openssl_random_pseudo_bytes(26);
                                             $token = bin2hex($token);
 
-                                                    $photo = "assets/images/default-user.png";
+                                                    $photo = "default-user.png";
                                             $sqlRequest1 = "SELECT * FROM users WHERE mail_users=:mail_users";
                                             $pdoStat1 = $db -> prepare($sqlRequest1);
                                             $pdoStat1->execute(ARRAY(

@@ -1,4 +1,4 @@
-var btnUpload = $("#upload_file"),
+var btnUpload = $("#miniature"),
 		btnOuter = $(".button_outer");
 	btnUpload.on("change", function(e){
 		var ext = btnUpload.val().split('.').pop().toLowerCase();

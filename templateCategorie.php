@@ -1,4 +1,4 @@
-<?php require "assets/php/getallvid.php"; 
+<?php require "assets/php/getallvid.php";
 
 session_start();
 if (!isset($_SESSION) || empty($_SESSION)) {
@@ -26,7 +26,7 @@ if (!isset($_SESSION) || empty($_SESSION)) {
         <div class="categories">
             <?php foreach ($videos as $video) { ?>
                 <a href=<?php echo "template_video.php?video=" . $video["id_video"] ?>>
-                    <div class="categorie" style="background-image: url(<?php echo $video["miniature_video"] ?>);background-size: cover;">
+                    <div class="categorie" style="background-image: url(<?php echo "assets/uploads/" . $video["miniature_video"] ?>);background-size: cover;background-position: center;">
 
                         <div class="filterBlack">
                             <div class="titleCat"><?php echo $video["titre_video"] ?></div>
