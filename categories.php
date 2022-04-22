@@ -33,7 +33,7 @@ require "assets/php/getallcategorie.php";
         <div class="categories">
             <?php foreach ($result as $value) { ?>
                 <a href="<?php echo "templateCategorie.php?categorie=" . $value["id_categorie"] ?>">
-                    <div class="categorie" style="background-image: url('<?php echo "assets/uploads" . $value["img_categorie"] ?>');background-size: cover;background-position: center;">
+                    <div class="categorie" style="background-image: url('<?php echo "assets/uploads/" . $value["img_categorie"] ?>');background-size: cover;background-position: center;">
                         <div class=" filterBlack">
                             <div class="titleCat"><?php echo "Categorie " . $value["nom_categorie"]; ?></div>
                             <div class="textCat">

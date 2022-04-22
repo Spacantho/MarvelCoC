@@ -9,6 +9,11 @@ body {
   color: #fff;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 #corps-video {
   display: flex;
   justify-content: space-evenly;
@@ -143,7 +148,7 @@ body {
 
 #scrolled {
   height: 55vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #crud_com {
