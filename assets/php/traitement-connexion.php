@@ -41,13 +41,10 @@ if (isset($_POST['submitBtnLogin'])) {
               $query = "UPDATE users SET token_cookie = ? WHERE id_users = ?";
               $stmt = $db->prepare($query);
               $stmt->execute([$token_hashed, $row['id_users']]);
+
               //1 mois d'expiration du cookie
               $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
-              setcookie("remember", $token_hashed,  [
-                'expires' => time() + 3600 * 24 * 31,
-                'secure' => true,
-                'httponly' => true,
-              ], '/', $domain, false);
+              setcookie("remember", $token_hashed,  time() + 3600 * 24 * 31, "/", $domain);
             }
 
 
