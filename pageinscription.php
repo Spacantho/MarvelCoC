@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/connexion.css">
-    <title>Inscription</title>
+    <title>Page Inscription</title>
 </head>
 
 <body>
@@ -87,6 +87,12 @@
                             <input class="btn-valide" type="submit" value="Valider">
                         </div>
                     </form>
+                    <div class="redirection">
+                        <div class="nouveau">
+                            <p>Vous êtes déjà inscrit ?</p>
+                            <div class="space"></div><a href="pageconnexion.php"> connectez-vous ici</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="bandeau1">

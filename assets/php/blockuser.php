@@ -11,6 +11,6 @@
             ':verified'    =>    '0',
             ':id_users'      =>    $_GET['id'],
         ));
-            header("Location: ../../crud.php?success=1");
+            header("Location: ../../crud-user.php?success=1");
 
 };

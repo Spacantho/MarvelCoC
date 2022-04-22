@@ -15,15 +15,9 @@
     <link rel="stylesheet" href="assets/css/crud-index.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footerindex.css">
-    <title>Crud</title>
+    <title>Gestionnaire Administrateur</title>
 </head>
 <body>
-<?php
-    // success 1 = modification reussi
-
-
-    if(!empty($_GET['success'])){$success = $_GET['success'];}
-    ?>
     <?php require_once "assets/include/navbar.php"; ?>
     <div class="box-body">
         <div class="box-crud">
@@ -38,16 +32,6 @@
                 <img class='crud-slash' src="assets/images/slash.png">
                 <div class="crud-column">
                     <a class='crud-icone' href="crud-comm.php"><img class='crud-icone' src="assets/images/svg/comments-solid.svg"></a><p class='texte-crud'>COMMENTAIRES</p>
-                </div>
-            </div>
-            <div class="second">
-                <div class="message-php">
-                    <?php if(!empty($_GET['success']))
-                    {
-                    if($success == '1')  {
-                    ?><p class="color-success">modification reussi</p><?php
-                                                            }
-                    }?>
                 </div>
             </div>
         </div>

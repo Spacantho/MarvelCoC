@@ -1,5 +1,6 @@
 <?php
-    $max= 255;
+    $maxuser= 30;
+    $maxphoto= 255;
     // erreur 1 = champs non remplis
     //  erreur 2 = nombre de character trop long
     //  erreur 3 = adresse deja utilisé
@@ -12,9 +13,9 @@
         $id_role = $_GET['role'];
         
         if(isset($_POST['username_users']) && !empty($_POST['username_users'])){
-            if(strlen($_POST['username_users']) <= $max){
+            if(strlen($_POST['username_users']) <= $maxuser){
                 if(isset($_POST['photo_users']) && !empty($_POST['photo_users'])){
-                    if(strlen($_POST['photo_users']) <= $max){
+                    if(strlen($_POST['photo_users']) <= $maxphoto){
                                                     $sqlRequest = "UPDATE users SET username_users =:username_users,photo_users =:photo_users, id_role =:id_role
                                                                           WHERE id_users=:id_users;";
                                                     $pdoStat = $db -> prepare($sqlRequest); 
@@ -24,7 +25,7 @@
                                                         ':id_role'    =>    $_POST['id_role'],
                                                         ':id_users'      =>    $id_users
                                                     ));
-                                                        header("Location: ../../crud.php?success=1");
+                                                        header("Location: ../../crud-user.php?success=1");
                     }
                     else{header("Location: ../../crud-moduser.php?erreur=2&id=$id_users&role=$id_role");}
                 }
