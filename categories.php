@@ -1,9 +1,13 @@
 <?php
 
+// process the cookie value
+// var_dump($_COOKIE["remember"]);
+// echo ($_COOKIE["remember"]);
+
 session_start();
-if (!isset($_SESSION) || empty($_SESSION)) {
-    header("location:index.php?validate_err");
-}
+// if (!isset($_SESSION) || empty($_SESSION)) {
+//     header("location:index.php?validate_err");
+// }
 
 require "assets/php/getallcategorie.php";
 
@@ -29,7 +33,7 @@ require "assets/php/getallcategorie.php";
         <div class="categories">
             <?php foreach ($result as $value) { ?>
                 <a href="<?php echo "templateCategorie.php?categorie=" . $value["id_categorie"] ?>">
-                    <div class="categorie" style="background-image: url('<?php echo $value["img_categorie"] ?>');background-size: cover;">
+                    <div class="categorie" style="background-image: url('<?php echo "assets/uploads" . $value["img_categorie"] ?>');background-size: cover;background-position: center;">
                         <div class=" filterBlack">
                             <div class="titleCat"><?php echo "Categorie " . $value["nom_categorie"]; ?></div>
                             <div class="textCat">

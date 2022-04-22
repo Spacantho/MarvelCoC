@@ -24,7 +24,7 @@ body {
 }
 .categories {
   width: 80%;
-  height: fit-content;
+  min-height: fit-content;
   justify-content: center;
   background-color: #0a1417;
   gap: 5.6em 2em;
