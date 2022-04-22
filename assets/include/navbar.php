@@ -10,10 +10,10 @@
                                 if($_SESSION['sess_id_role'] == "1"){
                         ?>
                         <li class="nav-choice"><a href="crud.php">C.R.U.D</a></li>
+                        <li class="nav-choice"><a href="uploadvideo.php">Upload</a></li>
                         <?php
                                 }}}
                         ?>
-                        <li class="nav-choice"><a href="uploadvideo.php">Upload</a></li>
                         <li class="nav-choice"><a href="categories.php">Catégories</a></li>
                         <li class="nav-choice"><a href="contact.php">Contact</a></li>
                         <li class="nav-choice"><a href="profil.php?id=<?php echo $_SESSION["sess_user_id"]; ?>">Profil</a></li>
