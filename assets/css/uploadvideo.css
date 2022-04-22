@@ -237,6 +237,7 @@ html {
     padding: 10px 16px;
     transition: all 0.2s ease;
     resize: none;
+    max-height: 400px;
   }
   .auto-expand.placeholder {
     color: rgba(255, 255, 255, 0.841);

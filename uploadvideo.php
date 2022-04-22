@@ -31,7 +31,7 @@ session_start();
 
   <div id="titre_et_inputtitre"> 
   <h2>TITRE</h2>
-  <input id="videoname" class="textinput" type="text" name="videoname" placeholder="Entrez un titre ici...">
+  <input id="videoname" class="textinput" type="text" name="videoname" placeholder="Entrez un titre ici..." maxlength="255">
   </div>
     
     <div class="drop-zone" id="videodropfile">
@@ -40,7 +40,7 @@ session_start();
     </div>
 
   <div id="videocopylink">
-  <input id="videolink" class="textinput" type="text" name="videolink" placeholder="Copiez le lien ici...">
+  <input id="videolink" class="textinput" type="text" name="videolink" placeholder="Copiez le lien ici..." maxlength="255">
   </div>
 
   <script src="./src/main.js"></script>
@@ -70,7 +70,7 @@ session_start();
   </select>
   <input id="isNewCategorie" type="hidden" name="isNewCategorie">
   <input id="selectedCategorieID" type="hidden" name="selectedCategorieID">
-  <input id="newcategoriename" class="textinput" type="text" name="newcategoriename" placeholder="Nom de la categorie...">
+  <input id="newcategoriename" class="textinput" type="text" name="newcategoriename" placeholder="Nom de la categorie..." maxlength="255">
   </div>
 
   <div id="uploadimagecategorie" class="file-upload">
@@ -113,7 +113,7 @@ session_start();
 
 <div class="wrapper">
   <div class="form-group">
-    <textarea id="videodesc" name="videodesc" rows='1' class='auto-expand' id="textarea1" placeholder="Résumé de la vidéo..."></textarea>
+    <textarea id="videodesc" name="videodesc" rows='1' class='auto-expand' id="textarea1" placeholder="Résumé de la vidéo..." maxlength="2000"></textarea>
   </div>
   </div>
   
