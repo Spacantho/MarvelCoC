@@ -54,11 +54,15 @@ header {
     cursor: pointer;
     background: none;
     border: none;
-    font-size: 50px;
     padding: 0;
     vertical-align: top;
     float: right;
     margin-right: 32px;
+}
+
+#hamburger-button img {
+    height: 50px;
+    width: auto;
 }
 
 #hamburger-overlay {

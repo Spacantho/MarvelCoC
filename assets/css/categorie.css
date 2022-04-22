@@ -10,10 +10,10 @@ body {
   border: 0;
   background-color: #0a1417;
 }
-.fakenav {
+/* .fakenav {
   height: 12vh;
   background-color: grey;
-}
+} */
 .categorieContainer {
   background-color: #0a1417;
   height: fit-content;

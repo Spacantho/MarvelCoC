@@ -56,11 +56,20 @@ $user_id = $_SESSION["sess_user_id"];
 
             ?>
             <h2 id="titre-video"><?php echo $response['titre_video'] ?></h2>
-            <video id="video-player" controls>
-                <source src="<?php echo $response['lien_video'] ?>" type="video/mp4">
-                <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
+            <?php
+            if ($response['typelien_video'] === "file" ) { ?>
 
-            </video>
+                <video id="video-player" controls>
+                    <source src="assets/uploads/<?php echo $response['lien_video'] ?>" type="video/mp4">
+                    <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
+                </video>
+
+               <?php } elseif ($response['typelien_video'] === "link") { ?>
+                   <iframe id="video-player" src="<?php echo $response['lien_video'] ?>" title="<?php echo $response['titre_video'] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               <?php } else {
+                   echo "<span class='alertcommentaire' style='color: red;'>Aucune vidéo n'a été trouvée</span>";
+               }
+            ?>
 
             <!-- Like/ dislike -->
             <div class="underVid">
@@ -144,10 +153,10 @@ $user_id = $_SESSION["sess_user_id"];
                 foreach ($query as $row) {
                 ?>
                     <div class="visu-commentaire" id="<?php echo $row['id_commentaire']; ?>">
-                        <div class="pp-commentaire"><img src="<?php echo $row['photo_users']; ?>"></div>
+                    <div id="pp-commentaire" style="background: url(assets/uploads/pp/<?php echo $row["photo_users"]?>) center no-repeat; background-size: cover;"></div>
                         <div class="container-commentaire">
                             <div class="data-commentaire">
-                                <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
+                                <div class="prenom_commentaire"><a href="profil.php?id=<?php echo $row['id_users']; ?>"><?php echo $row['username_users']; ?></a></div>
                                 <div id="info-com">
 
 
