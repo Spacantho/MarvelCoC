@@ -1,9 +1,13 @@
 <?php
 
+// process the cookie value
+// var_dump($_COOKIE["remember"]);
+// echo ($_COOKIE["remember"]);
+
 session_start();
-if (!isset($_SESSION) || empty($_SESSION)) {
-    header("location:index.php?validate_err");
-}
+// if (!isset($_SESSION) || empty($_SESSION)) {
+//     header("location:index.php?validate_err");
+// }
 
 require "assets/php/getallcategorie.php";
 
