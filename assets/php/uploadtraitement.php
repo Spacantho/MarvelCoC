@@ -66,8 +66,8 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])) {
 
   switch ($switchVideoType) {
     case "file":
-      //   echo "La vidéo est un fichier<br>";
-      $videoPath = upload("videofile", "mp4", $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "la vidéo");
+   //   echo "La vidéo est un fichier<br>";
+      $videoPath = upload("videofile",["mp4", "avi", "mov", "m4v"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel,"la vidéo");
       break;
     case "link":
       //   echo "La vidéo est un lien<br>";
@@ -78,14 +78,14 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])) {
       break;
   }
 
-  $imagePath = upload("miniature", "png", $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "la miniature");
 
-  include 'db.php';
+ $imagePath = upload("miniature", ["png", "jpg"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "la miniature");
+
 
   if ($isNewCategorie == "true") {
 
-    $categorie_img = "default";
-    $categorie_img = upload("uploadimagecategorie", "png", $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "l'image de la catégorie");
+  $categorie_img = "default";
+  $categorie_img = upload("uploadimagecategorie",["png", "jpg"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "l'image de la catégorie");
 
     $sql = "INSERT INTO categorie (nom_categorie, img_categorie) VALUES (?, ?)";
     $stmt = $db->prepare($sql);
@@ -141,9 +141,8 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])) {
 }
 
 
-function upload($path, $fileTypeExpected, $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, &$fichiers_ajoutes_au_serveurs_names, &$willCancel, $string)
-{
-
+function upload($path, $filesTypeExpected, $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, &$fichiers_ajoutes_au_serveurs_names, &$willCancel, $string){
+  
   $nomFinalDuFichier = "";
 
   $target_dir = "../uploads/";
@@ -156,20 +155,17 @@ function upload($path, $fileTypeExpected, $video_was_added_in_bdd, $video_insert
 
 
   $target_file = $target_dir . basename($_FILES[$path]["name"]);
-  $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-  if ($fileType == $fileTypeExpected) {
-    if ($fupload) {
-      //echo $fileType." uploaded<br>";
-      $nomFinalDuFichier = $randomString . $f_name;
-      array_push($fichiers_ajoutes_au_serveurs_names, $nomFinalDuFichier);
-    } else {
-      echo "<div class='badmsg'>Impossible d'upload " . $string . "</div>";
-      $willCancel = true;
-    }
-  } else {
-    echo "<div class='badmsg'>Impossible d'upload " . $string . ", le format n'est pas le bon ou le fichier est inexistant</div>";
-    $willCancel = true;
+  $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+  
+ if (in_array($fileType, $filesTypeExpected)){
+   if ($fupload){
+     //echo $fileType." uploaded<br>";
+     $nomFinalDuFichier = $randomString . $f_name;
+     array_push($fichiers_ajoutes_au_serveurs_names, $nomFinalDuFichier);
+  }else{
+     echo "<div class='badmsg'>Impossible d'upload ".$string."</div>";
+     $willCancel = true;
   }
 
   return $nomFinalDuFichier;
@@ -191,7 +187,7 @@ function cancel_upload($video_was_added_in_bdd, $video_inserted_in_bdd_ID, $cate
 
   echo "<br><div class='badmsg'>Veuillez ressayer</div>";
 
-  include 'db.php';
+  require 'db.php';
 
   if ($video_was_added_in_bdd) {
     $sql = "DELETE FROM video WHERE id_video=$video_inserted_in_bdd_ID";

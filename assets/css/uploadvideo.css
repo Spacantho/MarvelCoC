@@ -80,13 +80,13 @@ label{
 
 #uv_mainsection{
     width: 100%;
-    width: 100%;
     max-width: 1100px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.274);
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
     align-items: center;
 }
+
 
 #titre_et_inputtitre{
 display: flex;
@@ -176,7 +176,6 @@ margin-left: 5%;
   
   /* upload image */
 
-  * {margin: 0; padding: 0; box-sizing: border-box;}
 body {font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 1;}
 .container {max-width: 1100px; padding: 0 20px; margin:0 auto;}
 .panel {margin: 100px auto 40px; max-width: 500px; text-align: center;}
@@ -413,8 +412,8 @@ select:focus{
 
 #errors_container{
   position: absolute;
-  min-width: 60%;
-  min-height: 60%;
+  min-width: 80%;
+  min-height: 80%;
   background-color: rgba(0, 0, 0, 0.9);
   display: none;
   flex-direction: row;
@@ -426,6 +425,12 @@ select:focus{
   padding:20px;
   color: white;
   bottom: 0;
+}
+
+#loadmsg{
+  position: absolute;
+  color: white;
+  margin-top: 20vh;
 }
 
 #btnerrors{
@@ -491,4 +496,39 @@ margin-top: 3vh;
   color: red;
   text-align:center;
   padding: 0.8vh;
+}
+
+@keyframes load {
+  100% {transform: rotate(360deg);}
+}
+
+#load2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 10px solid grey;
+  border-top: 10px solid white;
+  border-radius: 60px;
+  animation: load 1s linear infinite;
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  #videoname{
+    width: 100%;
+    margin-left: -5%;
+    margin-top: 2vh;
+  }
+  #newcategoriename{
+    width: 90vw;
+    margin-left: -9vw;
+    margin-top: 2vh;
+  }
+}
+
+#miniature{
+  min-width: 100px;
+  min-height: 100px;
+  background-color: blue;
+  display: block;
 }

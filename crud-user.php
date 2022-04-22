@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/crud-index.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footerindex.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
@@ -32,7 +33,7 @@
         <div class="box-crud">
             <div class="box-user">
                 <div class="box_table_id">
-                    <table id="table_id" class="display">
+                    <table id="table_id" class="table table-striped dt-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>ID USER</th>
@@ -67,6 +68,7 @@
                 </div>
             </div>
         </div>
+        <?php require_once "assets/include/footerindex.php"; ?>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
@@ -82,15 +84,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $('#table_id').DataTable( {
-                responsive: {
-                    details: {
-                        display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                        type: 'none',
-                        target: ''
-                    }
-                }
-            } );
+            $('#table_id').DataTable();
         } );
     </script>
     <script src="assets/js/navbar.js"></script>
