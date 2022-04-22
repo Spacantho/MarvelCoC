@@ -1,0 +1,177 @@
+@font-face {
+    font-family: "roboto";
+    src: url("../font/Roboto-Regular.ttf");
+}
+
+body {
+  font-family: "roboto";
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #0a1417;
+  color: white;
+}
+
+#corps {
+    width: 70%;
+    margin: 4vh auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-gap: 50px;
+}
+
+#message {
+    width: 70%;
+    margin: auto;
+    margin-top: 4vh;
+    text-align: center;
+    font-size: 25px;
+    height: 8vh;
+}
+
+.erreur {
+    color: red;
+    margin: auto;
+}
+
+.succes {
+    color: green;
+    margin: auto;
+}
+
+#pp {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+#profil_info {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+#membre-depuis {
+    font-size: 20px !important;
+}
+
+.label {
+    margin-right: 20px;
+}
+
+#username {
+    display: inline-flex;
+    align-self: center;
+}
+
+.editPseudo {
+    align-self: center;
+}
+
+.editPseudo:hover {
+    color: rgb(110, 110, 110);
+    cursor: pointer;
+}
+
+#textarea-replace {
+    width: 80%;
+    resize: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    padding: 3px;
+    margin-left: 10px;
+    height: 20px;
+    align-self: center;
+}
+  
+#replace-btn {
+    background: none;
+    border: none;
+    cursor: pointer;    
+}
+
+#replace-btn img{
+    width: 20px;
+    height: auto;
+    margin-left: 1vh;
+}
+
+#email span {
+    color: grey;
+    font-size: 10px;
+}
+
+#mdp a{
+    color: white;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 920px) {
+
+    #corps {
+        width: 70%;
+        margin: 10vh auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 50px;
+        justify-self: center;
+    }
+
+    #pp {
+        height: 200px;
+        width: 200px;
+        justify-self: center;
+    }
+
+    #profil_info {
+        justify-self: center;
+        word-wrap: break-word;
+    }
+
+    #corps_mdp {
+        width: 80%;
+    }
+
+}
+
+/* change mdp */
+
+#corps_mdp {
+    width: 40%;
+    margin: 7vh auto;
+    font-size: 20px;
+}
+
+#formulaire_mdp form{
+    display: flex;
+    flex-direction: column;
+}
+
+#formulaire_mdp form input{
+    margin: 1vh 0 2vh 0;
+}
+
+#valide_btn {
+    width: 100px;
+    height: 30px;
+    margin-top: 1vh;
+    border: none;
+    border-radius: 2px;
+    background-color: #2b6684;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#valide_btn:hover {
+    background-color: #032e42;
+}
+
+@media screen and (max-width: 920px) {
+
+    #corps_mdp {
+        width: 60%;
+    }
+
+}

@@ -23,7 +23,7 @@ $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_us
             foreach ($query as $row) {
                     ?>
                 <div class="visu-commentaire" id="<?php echo $row['id_commentaire'];?>">
-                    <div class="pp-commentaire"><img src="<?php echo $row['photo_users'];?>"></div>
+                <div id="pp-commentaire" style="background: url(assets/uploads/pp/<?php echo $row["photo_users"]?>) center no-repeat; background-size: cover;"></div>
                         <div class="container-commentaire">
                             <div class="data-commentaire">
                                 <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>

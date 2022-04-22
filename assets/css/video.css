@@ -39,6 +39,7 @@ body {
 
 #video-player {
   width: 100%;
+  height: auto;
 }
 
 #readButton {
@@ -66,24 +67,26 @@ body {
   padding-bottom: 1rem;
 }
 
-#section-commentaire img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  border-radius: 50%;
-}
-
 .visu-commentaire {
   display: flex;
-  width: 100%;
+  width: 97%;
   font-size: 1rem;
+  margin-top: 20px;
 }
 
 .container-commentaire {
   background-color: #032e42;
   width: 95%;
   border-radius: 8px;
-  margin-bottom: 3vh;
+}
+
+#pp-commentaire {
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
 }
 
 .data-commentaire {
@@ -203,7 +206,7 @@ body {
     margin: auto;
   }
 
-  #section-commentaire img {
+  #pp-commentaire{
     width: 20px;
     height: 20px;
   }
