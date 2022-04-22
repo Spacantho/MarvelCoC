@@ -26,7 +26,7 @@ session_start();
     <form id="form1" method="post" enctype="multipart/form-data">
 
 
-    <section id="left_section">
+    <article id="left_section">
       
 
   <div id="titre_et_inputtitre"> 
@@ -83,10 +83,10 @@ session_start();
   
     
 
-  </section> 
+  </article> 
 
   
-  <section id="right_section">
+  <article id="right_section">
 
   <main class="main_full">
 	<div class="container">
@@ -94,7 +94,7 @@ session_start();
 	      	<div class="panel">
 		        	<div class="button_outer">
 			          	<div class="btn_upload">
-				          	<input id="miniature" type="file" id="upload_file" name="miniature">
+				          	<input id="miniature" type="file" name="miniature">
 				      	Image Miniature +
 			      	</div>
 				<div class="processing_bar"></div>
@@ -119,7 +119,7 @@ session_start();
   
   <button id="buttonuploadvideo" onclick="submitUploadVideo()">UPLOAD VIDEO</button>
 
-  </section> 
+  </article> 
 
   </form>
 
@@ -127,6 +127,11 @@ session_start();
 
         
   <div id="errors_container">
+  <div id="load2">
+  </div>
+  <div id="loadmsg">
+    Mise en ligne de la vidéo...
+  </div>
   <div id="errors">
   </div>
   <button id="btnerrors">Fermer</button>
@@ -134,7 +139,6 @@ session_start();
         
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-<script src="assets/js/uploadimg.js"></script>
         <script src="assets/js/draganddropjs.js"></script>
         <script src="assets/js/inputmultilines.js"></script>
         <script src="assets/js/switch_file_link.js"></script>
@@ -142,6 +146,11 @@ session_start();
         <script>
         $("#form1").submit(function(e) {
             e.preventDefault();
+            $("#errors").html("");
+            $("#errors_container").css('display', 'flex')
+            $("#btnerrors").css('display', 'none')
+            $("#load2").css("display","block")
+            $("#loadmsg").css("display","block")
         });
 
         function submitUploadVideo(){
@@ -172,7 +181,9 @@ session_start();
                       console.log("SUCCESS : ", data);
                       $("#btnSubmit").prop("disabled", false);
                       $("#errors").html(data);
-                      $("#errors_container").css('display', 'flex')
+                      $("#load2").css("display","none")
+                      $("#btnerrors").css('display', 'block')
+                      $("#loadmsg").css("display","none")
 
                   },
                   error: function (e) {
@@ -189,7 +200,26 @@ session_start();
                       $("#errors_container").css('display', 'none')
         })
 
+        responsive()
+        window.onresize = responsive;
+        function responsive() {
+        if (window.innerWidth < 800){
+        $("#form1").css("flex-direction","column")
+        $("#left_section").css("width", "100%")
+        $("#right_section").css("width", "100%")
+        $("#titre_et_inputtitre").css("flex-direction","column")
+        $("#sel-box").css("flex-direction","column")
+        }else{
+        $("#form1").css("flex-direction","row")
+        $("#left_section").css("width", "60%")
+        $("#right_section").css("width", "40%")
+        $("#titre_et_inputtitre").css("flex-direction","row")
+        $("#sel-box").css("flex-direction","row")
+        }
+        }
+
         </script>
+        <script src="assets/js/uploadimg.js"></script>
 
 </body>
 
