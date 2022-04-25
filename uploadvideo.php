@@ -226,6 +226,7 @@ session_start();
 
         </script>
         <script src="assets/js/uploadimg.js"></script>
+        <script src="assets/js/navbar.js"></script>
         </div>
 </body>
 
