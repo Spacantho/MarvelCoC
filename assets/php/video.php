@@ -3,6 +3,7 @@ class Video
 {
 
     protected $_nbrView = 0;
+    protected $_timestamp = 0;
     /**
      * On initialise avec un nombre de vues choisi
      *
@@ -26,6 +27,10 @@ class Video
 
     public function __wakeup()
     {
-        $this->_nbrView += 1;
+
+        if ($this->_timestamp == 0 ||  $this->_timestamp > date('Y-m-d', strtotime('+1 hour'))) {
+            $this->_timestamp = date("Y-m-d");
+            $this->_nbrView += 1;
+        }
     }
 }
