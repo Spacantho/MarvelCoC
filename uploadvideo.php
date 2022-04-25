@@ -16,11 +16,17 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/uploadvideo.css" rel="stylesheet">
+  <link href="assets/css/navbar.css" rel="stylesheet">
   <link rel="shortcut icon" href="/assets/favicon.ico">
    <title>Upload Video</title>
 </head>
 
 <body>
+
+<?php include 'assets/include/navbar.php';?>
+
+<div class="bodycontainer">
+
   <section id="uv_mainsection">
 
     <form id="form1" method="post" enctype="multipart/form-data">
@@ -220,7 +226,7 @@ session_start();
 
         </script>
         <script src="assets/js/uploadimg.js"></script>
-
+        </div>
 </body>
 
 </html>

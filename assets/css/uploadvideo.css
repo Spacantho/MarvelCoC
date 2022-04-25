@@ -4,7 +4,7 @@
     font-family: roboto, arial;
 }
 
-body{
+.bodycontainer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +12,7 @@ body{
     background-image: url(../img/uploadbackground.png);
     background-size: cover;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 #left_section{
