@@ -107,9 +107,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
   $id_categorie = $_POST['selectedCategorieID'];
  }
     require("video.php");
-    $newVid = new Video(0);
-
-    $serialized = serialize($newVid);
+    $newV
     if ($id_categorie != "null"){
 
 
@@ -117,7 +115,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
       $stmt= $db->prepare($sql);
       
       //INSERT VIDEO
-      $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 1, 1, $id_categorie, $serialized]);
+      $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 0, 1, $id_categorie]);
       $video_was_added_in_bdd = true;
       $video_inserted_in_bdd_ID = $db->lastInsertId();
     }else{

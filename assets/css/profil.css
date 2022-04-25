@@ -23,10 +23,11 @@ body {
 #message {
     width: 70%;
     margin: auto;
-    margin-top: 4vh;
+    margin-top: 8vh;
     text-align: center;
     font-size: 25px;
     height: 8vh;
+    line-height: 8vh;
 }
 
 .erreur {

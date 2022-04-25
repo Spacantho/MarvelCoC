@@ -1,5 +1,6 @@
 <?php
 session_start();
+setlocale(LC_TIME, "fr_FR");
 
 require "assets/php/getprofilinfo.php";
 
@@ -42,6 +43,9 @@ if (!isset($_SESSION) || empty($_SESSION)) {
                         case "succes_pseudo":
                             echo "<span class='succes'>Votre pseudonyme à bien été modifié.</span>";
                             break;
+                        case "pwchangeok":
+                            echo "<span class='succes'>Votre mot de passe à bien été modifié.</span>";
+                            break;
                     }
             }
         
@@ -51,7 +55,7 @@ if (!isset($_SESSION) || empty($_SESSION)) {
     <div id="corps">
         <div id="pp" style="background: url(assets/uploads/pp/<?php echo $result["photo_users"]?>) center no-repeat; background-size: cover;"></div>
         <div id="profil_info">
-            <p id="membre-depuis">Membre depuis "insert date inscription"</p>
+            <p id="membre-depuis">Membre depuis le <?php echo strftime("%d %B %G", strtotime($result['date_users']))?></p>
             <div id="username">
                 <p class="label">Pseudo :</p> 
                 <p id="username_input"> 

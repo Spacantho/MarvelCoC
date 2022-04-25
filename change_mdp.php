@@ -40,6 +40,12 @@ if (!isset($_SESSION) || empty($_SESSION) || !$mine) {
                         case "mdplength":
                             echo "<span class='erreur'>Mot de passe trop long. (max: 255)</span>";
                             break;
+                        case "samepw":
+                            echo "<span class='erreur'>Vérifiez que les deux mots de passe correspondent.</span>";
+                            break;
+                        case "olderr":
+                            echo "<span class='erreur'>L’ancien mot de passe saisi est incorrect.</span>";
+                            break;
                         /* case "succes_pseudo":
                             echo "<span class='succes'>Votre pseudonyme à bien été modifié.</span>";
                             break; */
