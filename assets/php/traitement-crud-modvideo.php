@@ -1,7 +1,9 @@
 <?php
 
-$max= 255;
-$max2= 500;
+$maxtitre= 100;
+$maxdescription= 2000;
+$maxminiature= 255;
+$maxlien= 255;
 // erreur 1 = champs non remplis
 //  erreur 2 = nombre de character trop long
 //  erreur 3 = adresse deja utilisé
@@ -14,13 +16,13 @@ if(isset($_GET['id'])){
     $id_role = $_GET['role'];
     
     if(isset($_POST['titre_video']) && !empty($_POST['titre_video'])){
-        if(strlen($_POST['titre_video']) <= $max){
+        if(strlen($_POST['titre_video']) <= $maxtitre){
             if(isset($_POST['description_video']) && !empty($_POST['description_video'])){
-                if(strlen($_POST['description_video']) <= $max2){
+                if(strlen($_POST['description_video']) <= $maxdescription){
                     if(isset($_POST['miniature_video']) && !empty($_POST['miniature_video'])){
-                        if(strlen($_POST['miniature_video']) <= $max){
+                        if(strlen($_POST['miniature_video']) <= $maxminiature){
                             if(isset($_POST['lien_video']) && !empty($_POST['lien_video'])){
-                                if(strlen($_POST['lien_video']) <= $max){
+                                if(strlen($_POST['lien_video']) <= $maxlien){
                                                 $sqlRequest = "UPDATE video SET titre_video =:titre_video, description_video =:description_video, miniature_video =:miniature_video, lien_video =:lien_video, id_categorie =:id_categorie
                                                                       WHERE id_video=:id_video;";
                                                 $pdoStat = $db -> prepare($sqlRequest); 
@@ -32,7 +34,7 @@ if(isset($_GET['id'])){
                                                     ':id_categorie'    =>    $_POST['id_categorie'],
                                                     ':id_video'    =>    $id_video
                                                 ));
-                                                    header("Location: ../../crud.php?success=1");
+                                                    header("Location: ../../crud-video.php?success=1");
                                 }
                                 else{header("Location: ../../crud-modvideo.php?erreur=2&id=$id_video&role=$id_role");}
                             }

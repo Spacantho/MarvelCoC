@@ -29,22 +29,33 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
-    <title>Crud</title>
+    <title>Gestionnaire Administrateur/Commentaires</title>
 </head>
 <body>
-    <?php require_once "assets/include/navbar.php"; ?>
+    <?php
+        require_once "assets/include/navbar.php";
+        if(!empty($_GET['success'])){$success = $_GET['success'];}
+    ?>
     <div class="box-body">
         <div class="box-crud">
             <div class="box-user">
+                <div class="message-php">
+                    <?php if(!empty($_GET['success']))
+                    {
+                    if($success == '1')  {
+                    ?><p class="color-success">Modification reussie</p><?php
+                                                            }
+                    }?>
+                </div>
                 <div class="box_table_id">
                     <table id="table_id" class="table table-striped table-bordered dt-responsive nowrap">
                         <thead>
                             <tr>
+                                <th>DATE</th>
                                 <th>ID</th>
                                 <th>COMMENTAIRE</th>
                                 <th>UTILISATEUR</th>
                                 <th>TITRE VIDEO</th>
-                                <th>DATE</th>
                                 <th>VALIDE</th>
                                 <th>BLOQUÉ</th>
                             </tr>
@@ -52,16 +63,16 @@
                         <tbody>
                             <?php foreach ($comm as $value){ ?>
                                 <tr>
+                                    <td><?php echo $value["date_commentaire"] ?></td>
                                     <td><?php echo $value["id_commentaire"] ?></td>
                                     <td><?php echo $value["texte_commentaire"] ?></td>
                                     <td><?php echo $value["username_users"] ?></td>
                                     <td><?php echo $value["titre_video"] ?></td>
-                                    <td><?php echo $value["date_commentaire"] ?></td>
                                     <td><?php echo $value["valide_comm"] ?></td>
                                     <?php if($value['valide_comm'] == 1){ ?>
-                                    <td><a href="assets/php/blockcomm.php?id=<?php echo $value["id_commentaire"]?>">bloqué</a></td>
+                                    <td><a href="assets/php/blockcomm.php?id=<?php echo $value["id_commentaire"]?>">bloquer</a></td>
                                     <?php }else{ ?>
-                                    <td><a href="assets/php/deblockcomm.php?id=<?php echo $value["id_commentaire"]?>">débloqué</a></td>
+                                    <td><a href="assets/php/deblockcomm.php?id=<?php echo $value["id_commentaire"]?>">débloquer</a></td>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>
@@ -86,15 +97,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $('#table_id').DataTable( {
-                responsive: {
-                    details: {
-                        display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                        type: 'none',
-                        target: ''
-                    }
-                }
-            } );
+            $('#table_id').DataTable();
         } );
     </script>
     <script src="assets/js/navbar.js"></script>

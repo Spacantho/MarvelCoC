@@ -4,8 +4,7 @@
 }
 @font-face {
   font-family: "texte";
-
-  src: url("../font/lemonlick.otf");
+  src: url("../font/Roboto-Medium.ttf");
 }
 * {
   margin: 0;
@@ -77,8 +76,14 @@
   font-size: 26px;
   font-family: "titre";
 }
+.titre-page-info2 {
+  margin-top: 20px;
+  font-size: 26px;
+  font-family: "titre";
+}
 .message-php {
   margin-top: 25px;
+  height: 25px;
 }
 .imput {
   margin-top: 25px;
@@ -127,6 +132,8 @@
 .texte-pseudo {
   font-size: 22px;
   font-family: "texte";
+  display: flex;
+  margin-left: 30px;
 }
 #Pseudo,
 #password,
@@ -134,7 +141,19 @@
 #password2 {
   font-size: 18px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 6px;
+  width: 325px;
+  margin-bottom: 10px;
+}
+#Pseudo3,
+#password3,
+#mail3,
+#password4 {
+  font-size: 18px;
+  text-align: center;
+  border-radius: 6px;
+  width: 325px;
+  margin-bottom: 10px;
 }
 .btn-valide {
   background: whitesmoke;
@@ -159,14 +178,14 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 85px;
-  margin-top: -10px;
+  margin-left: 35px;
+  margin-top: -5px;
 }
 .recup-mdp1 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 85px;
+  margin-left: 35px;
   margin-top: 0px;
 }
 .nouveau {
@@ -224,9 +243,43 @@
   transition-duration: 0.3s;
   text-shadow: 0px 0px 17px rgba(204, 204, 204, 1);
 }
+@media (max-height: 900px) {
+  .titre-page-info{
+    margin-top: 30px;
+    font-size: 24px;
+  }
+  .titre-page-info2{
+    margin-top: 5px;
+    font-size: 18px;
+  }
+  .texte-pseudo{
+    font-size: 16px;
+  }
+  #Pseudo,
+  #password,
+  #mail,
+  #password2 {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+  #Pseudo3,
+  #password3,
+  #mail3,
+  #password4 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+.box-body-input {
+  height: 50vh;
+  margin-top: 20vh;
+}
+.box-imput{
+  height: 480px;
+}
+}
 @media (max-height: 820px) {
   .box-imput {
-    height: 400px;
+    /* height: 400px; */
   }
   .titre-page-info {
     margin-top: 25px;
@@ -237,28 +290,59 @@
   .imputi {
     margin-top: 5px;
   }
+  #Pseudo,
+  #password,
+  #mail,
+  #password2 {
+  width: 300px;
+}
+  #Pseudo3,
+  #password3,
+  #mail3,
+  #password4 {
+  width: 300px;
+}
+}
+@media (max-height: 800px) {
+  .box-body-input {
+    height: 54vh;
+    margin-top: 16vh;
+  }
+  .box-imput{
+    height: 480px;
+  }
+}
+@media (max-height: 750px) {
+  .box-body-input {
+    height: 56vh;
+    margin-top: 14vh;
+  }
+  .box-imput{
+    height: 455px;
+  }
 }
 @media (max-height: 670px) {
   * {
     overflow-x: hidden;
     overflow-y: hidden;
   }
-  .box-body-input {
+  /* .box-body-input {
     height: 58vh;
-  }
+  } */
   .image-titre {
     width: 225px;
     height: 160px;
     background-image: url(../images/logo-mobile.png);
+    margin-top: -60px;
   }
   .box-imput {
-    height: 400px;
+    /* height: 400px; */
     width: 270px;
   }
-  .titre-page-info {
+  /* .titre-page-info2 {
     margin-top: 10px;
     font-size: 18px;
-  }
+  } */
   .message-php {
     margin-top: 10px;
   }
@@ -271,7 +355,27 @@
   .text-valid {
     font-size: 16px;
   }
+  #Pseudo,
+  #password,
+  #mail,
+  #password2 {
+  width: 220px;
+  }
+  #Pseudo3,
+  #password3,
+  #mail3,
+  #password4 {
+  width: 220px;
+  }
+  .box-body-input {
+    height: 74vh;
+    margin-top: 7vh;
+  }
+  .box-imput{
+    height: 465px;
+  }
 }
+
 @media (max-height: 600px) {
   .imputi{
     line-height: 27px;

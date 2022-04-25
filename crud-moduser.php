@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="assets/css/crud-index.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
-    <title>modding</title>
+    <title>Gestionnaire Administrateur/Modification User</title>
 </head>
 <body>
 <?php require_once "assets/include/navbar.php"; ?>
@@ -72,7 +72,7 @@
                                     ?><p class="color-erreur">veuillez remplir tous les champs</p><?php
                                     }
                                     if($erreur == '2'){
-                                    ?><p class="color-erreur">nombre de character trop long</p><?php
+                                    ?><p class="color-erreur">nombres de character trop long</p><?php
                                     }
                                 }
                             ?>
