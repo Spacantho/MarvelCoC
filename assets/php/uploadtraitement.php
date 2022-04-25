@@ -71,7 +71,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
   switch ($switchVideoType){
     case "file":
    //   echo "La vidéo est un fichier<br>";
-      $videoPath = upload("videofile",["mp4", "avi", "mov", "m4v"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel,"la vidéo");
+      $videoPath = upload("videofile",["mp4", "avi", "mov", "m4v"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel,"la vidéo", $switchVideoType);
       break;
     case "link":
    //   echo "La vidéo est un lien<br>";
@@ -82,14 +82,14 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
       break;
   }
 
- $imagePath = upload("miniature", ["png", "jpg"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "la miniature");
+ $imagePath = upload("miniature", ["png", "jpg"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "la miniature", $switchVideoType);
 
  include 'db.php';
  
  if ($isNewCategorie=="true"){
 
   $categorie_img = "default";
-  $categorie_img = upload("uploadimagecategorie",["png", "jpg"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "l'image de la catégorie");
+  $categorie_img = upload("uploadimagecategorie",["png", "jpg"], $video_was_added_in_bdd, $video_inserted_in_bdd_ID, $categorie_was_added_in_bdd, $categorie_inserted_in_bdd_ID, $fichiers_ajoutes_au_serveurs_names, $willCancel, "l'image de la catégorie", $switchVideoType);
 
   $sql = "INSERT INTO categorie (nom_categorie, img_categorie) VALUES (?, ?)";
   $stmt= $db->prepare($sql);
@@ -120,7 +120,8 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
       $stmt= $db->prepare($sql);
       
       //INSERT VIDEO
-      $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 1, $_SESSION['sess_user_id'], $id_categorie, $serialized]);
+
+      $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, $switchVideoType, 1, $_SESSION['sess_user_id'], $id_categorie, $serialized]);
       $video_was_added_in_bdd = true;
       $video_inserted_in_bdd_ID = $db->lastInsertId();
     }else{
@@ -153,7 +154,7 @@ function upload($path, $filesTypeExpected, $video_was_added_in_bdd, $video_inser
   $t_name = $_FILES[$path]["tmp_name"];
   $randomString = generateRandomString();
 
-  $fupload = move_uploaded_file($t_name, $target_dir . trim($randomString . $f_name));
+  $fupload = move_uploaded_file($t_name, $target_dir . substr(trim($randomString . $f_name),0,255));
  
   
   $target_file = $target_dir . basename($_FILES[$path]["name"]);
