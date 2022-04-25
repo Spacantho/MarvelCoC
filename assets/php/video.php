@@ -1,35 +1,25 @@
 <?php
 class Video
 {
-
     protected $_nbrView = 0;
     protected $_timestamp = 0;
-    /**
-     * On initialise avec un nombre de vues choisi
-     *
-     * @param integer $nbrView
-     */
 
-    /**
-     * Augmente de 1 notre nombre de vue
-     *
-     * @param integer $number
-     * @return void
-     */
     public function getNbrView()
     {
         return $this->_nbrView;
     }
-    public function addView(int $number)
+    public function getTimestamp()
     {
-        $this->_nbrView += $number;
+        return $this->_timestamp;
     }
-
+    public function setDate($date)
+    {
+        $this->_timestamp = $date;
+    }
     public function __wakeup()
     {
-
-        if ($this->_timestamp == 0 ||  $this->_timestamp > date('Y-m-d', strtotime('+1 hour'))) {
-            $this->_timestamp = date("Y-m-d");
+        if ($this->_timestamp == 0) {
+            $this->_timestamp = date('Y-m-d H:i:s', strtotime("+10 seconds"));
             $this->_nbrView += 1;
         }
     }
