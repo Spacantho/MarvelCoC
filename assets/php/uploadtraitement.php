@@ -112,7 +112,9 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
   $id_categorie = $_POST['selectedCategorieID'];
  }
     require("video.php");
-    $newV
+    $newVid = new Video(0);
+
+    $serialized = serialize($newVid);
     if ($id_categorie != "null"){
 
 

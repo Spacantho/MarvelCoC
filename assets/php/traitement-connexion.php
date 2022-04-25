@@ -26,7 +26,7 @@ if (isset($_COOKIE["remember"])) {
     $_SESSION['sess_id_role'] = $row['id_role'];
     $_SESSION['isVerified'] = $row["verified"];
     generateCookie($db, $row);
-    header("Location: ../../categories.php");
+    header("Location: ../../homepage.php");
   }
 }
 

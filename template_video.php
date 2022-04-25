@@ -55,7 +55,7 @@ $user_id = $_SESSION["sess_user_id"];
             ?>
             <h2 id="titre-video"><?php echo $response['titre_video'] ?></h2>
             <?php
-            if ($response['typelien_video'] === "uploaded" ) { ?>
+            if ($response['typelien_video'] === "file" ) { ?>
 
                 <video id="video-player" controls>
                     <source src="assets/uploads/<?php echo $response['lien_video'] ?>" type="video/mp4">
