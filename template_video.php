@@ -10,8 +10,6 @@ require("assets/php/getNbVideo.php");
 require("assets/php/getlike.php");
 
 
-
-
 if ((isset($_GET['video'])) && (!empty($_GET['video']))) {
     $video = $_GET['video'];
 } else {
@@ -48,7 +46,7 @@ $user_id = $_SESSION["sess_user_id"];
         <section id="video">
 
             <?php
-            $query = $db->prepare('SELECT * FROM video WHERE id_video = ?');
+            $query = $db->prepare('SELECT * FROM video INNER JOIN users ON users.id_users = video.id_users WHERE id_video = ?');
             $query->execute([$video]);
             $response = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -74,7 +72,13 @@ $user_id = $_SESSION["sess_user_id"];
             <!-- Like/ dislike -->
             <div class="underVid">
                 <div class="likeContainer">
-                    <div class="viewsCount"><?php echo $views ?> vues</div>
+
+                    <div id="auteur">
+                        <div style="background: url(assets/uploads/pp/<?php echo $response["photo_users"]?>) center no-repeat; background-size: cover; "></div>
+                        <p><?php echo $response["username_users"]?></p>
+                    </div>
+            
+                <div id="like_dislike">
                     <?php
                     if (isset($isLiked["type_like"])) {
                         if ($isLiked["type_like"] == 1) { ?>
@@ -115,7 +119,7 @@ $user_id = $_SESSION["sess_user_id"];
                             </a>
                         </div>
                     <?php } ?>
-
+                    </div>
                 </div>
                 <div class="fillbarContainer">
                     <div class="fillbar">
@@ -125,7 +129,15 @@ $user_id = $_SESSION["sess_user_id"];
 
             </div>
 
-            <h3>Description : <br></h3>
+            <div class="info_vid"><?php echo $views.' vues - ' ?> 
+                <?php 
+                    $date_vid = $response['date_video'];
+                    setlocale(LC_TIME, "fr_FR");
+                    echo strftime("%A %d %B %G", strtotime($date_vid));
+                ?>
+            </div>
+
+            <h3 id="description">Description : <br></h3>
             <p id="desc"><?php echo $response['description_video'] ?></p>
             <button onclick="readMore()" id="readButton">Voir plus...</button>
         </section>
@@ -136,7 +148,7 @@ $user_id = $_SESSION["sess_user_id"];
             <form id="comment_form" method="post">
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                 <input type="hidden" name="video_id" value="<?php echo $video; ?>">
-                <textarea name="commentaire" id="textarea-commentaire" maxlength="500" placeholder="Votre commentaire..." required></textarea>
+                <textarea name="commentaire" id="textarea-commentaire" maxlength="280" placeholder="Votre commentaire..." required></textarea>
                 <div id="commentaire-detail">
                     <div id="counter-commentaire"></div>
                     <button id="commentaire-btn" type=submit name="commenter"><img src="assets/images/logo/validate.png" alt="Poster"></button>
@@ -144,7 +156,6 @@ $user_id = $_SESSION["sess_user_id"];
             </form>
 
             <h3><?php echo showNbCom($db, $video); ?></h3>
-
 
             <div id="scrolled">
                 <?php

@@ -9,7 +9,7 @@ if(isset($_POST['video_id'])){
 
     if( (isset($user)) && (isset($_POST['commentaire'])) && (!empty($_POST['commentaire'])) ) {
         $commentaire = htmlspecialchars($_POST['commentaire']);
-        if(strlen($commentaire)<= 500) {
+        if(strlen($commentaire)<= 280) {
             echo "<span class='alertcommentaire' style='color: green; margin-bottom: 1vh;'>Commentaire envoyé avec succès</span>";
             $insert = $db->prepare('INSERT INTO commentaire(texte_commentaire, id_users, id_video, valide_comm) VALUES(?, ?, ?, 1)');
             $insert->execute(array($commentaire,$user,$traitementCourant));
@@ -26,7 +26,7 @@ $query = $db->prepare('SELECT * FROM commentaire INNER JOIN users ON users.id_us
                 <div id="pp-commentaire" style="background: url(assets/uploads/pp/<?php echo $row["photo_users"]?>) center no-repeat; background-size: cover;"></div>
                         <div class="container-commentaire">
                             <div class="data-commentaire">
-                                <div class="prenom_commentaire"><?php echo $row['username_users']; ?></div>
+                            <div class="prenom_commentaire"><a href="profil.php?id=<?php echo $row['id_users']; ?>"><?php echo $row['username_users']; ?></a></div>
                                     <div id="info-com">
     
                                         <?php $date = new DateTime($row['date_commentaire']);?>
