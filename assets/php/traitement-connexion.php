@@ -12,9 +12,6 @@
 session_start();
 include("db.php");
 require("cookie.php");
-
-
-
 if (isset($_COOKIE["remember"])) {
   if (verifycookie($db)) {
     echo " OK ! cookie ici";
@@ -22,6 +19,7 @@ if (isset($_COOKIE["remember"])) {
     $stmt = $db->prepare($query);
     $stmt->execute([$_COOKIE["remember"]["id_users"]]);
     $row =  $stmt->fetch(PDO::FETCH_ASSOC);
+
 
     $_SESSION['sess_user_id']   = $row['id_users'];
     $_SESSION['sess_user_name'] = $row['username_users'];
@@ -31,7 +29,6 @@ if (isset($_COOKIE["remember"])) {
     header("Location: ../../categories.php");
   }
 }
-
 
 ?> 
 <?php
