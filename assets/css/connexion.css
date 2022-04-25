@@ -244,38 +244,38 @@
   text-shadow: 0px 0px 17px rgba(204, 204, 204, 1);
 }
 @media (max-height: 900px) {
-  .titre-page-info{
+  .titre-page-info {
     margin-top: 30px;
     font-size: 24px;
   }
-  .titre-page-info2{
+  .titre-page-info2 {
     margin-top: 5px;
     font-size: 18px;
   }
-  .texte-pseudo{
+  .texte-pseudo {
     font-size: 16px;
   }
   #Pseudo,
   #password,
   #mail,
   #password2 {
-  margin-bottom: 5px;
-  font-size: 16px;
-}
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
   #Pseudo3,
   #password3,
   #mail3,
   #password4 {
-  font-size: 16px;
-  margin-bottom: 0px;
-}
-.box-body-input {
-  height: 50vh;
-  margin-top: 20vh;
-}
-.box-imput{
-  height: 480px;
-}
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
+  .box-body-input {
+    height: 50vh;
+    margin-top: 20vh;
+  }
+  .box-imput {
+    height: 480px;
+  }
 }
 @media (max-height: 820px) {
   .box-imput {
@@ -294,21 +294,21 @@
   #password,
   #mail,
   #password2 {
-  width: 300px;
-}
+    width: 300px;
+  }
   #Pseudo3,
   #password3,
   #mail3,
   #password4 {
-  width: 300px;
-}
+    width: 300px;
+  }
 }
 @media (max-height: 800px) {
   .box-body-input {
     height: 54vh;
     margin-top: 16vh;
   }
-  .box-imput{
+  .box-imput {
     height: 480px;
   }
 }
@@ -317,7 +317,7 @@
     height: 56vh;
     margin-top: 14vh;
   }
-  .box-imput{
+  .box-imput {
     height: 455px;
   }
 }
@@ -359,25 +359,25 @@
   #password,
   #mail,
   #password2 {
-  width: 220px;
+    width: 220px;
   }
   #Pseudo3,
   #password3,
   #mail3,
   #password4 {
-  width: 220px;
+    width: 220px;
   }
   .box-body-input {
     height: 74vh;
     margin-top: 7vh;
   }
-  .box-imput{
+  .box-imput {
     height: 465px;
   }
 }
 
 @media (max-height: 600px) {
-  .imputi{
+  .imputi {
     line-height: 27px;
   }
 }
