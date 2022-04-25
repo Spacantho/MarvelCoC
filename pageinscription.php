@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/connexion.css">
-    <title>Inscription</title>
+    <title>Page Inscription</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
             </div>
             <div class="box-body-input">
                 <div class="box-imput">
-                    <div class="titre-page-info">
+                    <div class="titre-page-info2">
                         <h2>INSCRIPTION</h2>
                     </div>
                     <div class="message-php">
@@ -69,24 +69,30 @@
                             <label for="Pseudo">
                                 <p class="texte-pseudo">Pseudo:</p>
                             </label>
-                            <input type="text" name="Pseudo" id="Pseudo" required><br>
+                            <input type="text" name="Pseudo" id="Pseudo3" required><br>
                             <label for="mail">
                                 <p class="texte-pseudo">Mail:</p>
                             </label>
-                            <input type="email" name="mail" id="mail" required><br>
+                            <input type="email" name="mail" id="mail3" required><br>
                             <label for="password">
                                 <p class="texte-pseudo">Mot de passe:</p>
                             </label>
-                            <input type="password" name="password" id="password" required>
+                            <input type="password" name="password" id="password3" required>
                             <label for="password2">
                                 <p class="texte-pseudo">Confirmez mot de passe:</p>
                             </label>
-                            <input type="password" name="password2" id="password2" required>
+                            <input type="password" name="password2" id="password4" required>
                         </div>
                         <div class="validation">
                             <input class="btn-valide" type="submit" value="Valider">
                         </div>
                     </form>
+                    <div class="redirection">
+                        <div class="nouveau">
+                            <p>Vous êtes déjà inscrit ?</p>
+                            <div class="space"></div><a href="pageconnexion.php"> connectez-vous ici</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="bandeau1">

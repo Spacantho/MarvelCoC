@@ -11,6 +11,6 @@
             ':valide_comm'    =>    '1',
             ':id_commentaire'      =>    $_GET['id'],
         ));
-            header("Location: ../../crud.php?success=1");
+            header("Location: ../../crud-comm.php?success=1");
 
 };

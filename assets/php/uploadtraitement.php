@@ -122,7 +122,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
       $stmt= $db->prepare($sql);
       
       //INSERT VIDEO
-      $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 1, $_SESSION['sess_id_role'], $id_categorie, $serialized]);
+      $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, "uploaded", 1, $_SESSION['sess_user_id'], $id_categorie, $serialized]);
       $video_was_added_in_bdd = true;
       $video_inserted_in_bdd_ID = $db->lastInsertId();
     }else{
