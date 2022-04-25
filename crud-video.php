@@ -28,19 +28,30 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
-    <title>Crud</title>
+    <title>Gestionnaire Administrateur/Video</title>
 </head>
 <body>
-    <?php require_once "assets/include/navbar.php"; ?>
+    <?php
+        require_once "assets/include/navbar.php";
+        if(!empty($_GET['success'])){$success = $_GET['success'];}
+    ?>
     <div class="box-body">
         <div class="box-crud">
             <div class="box-user">
+                <div class="message-php">
+                    <?php if(!empty($_GET['success']))
+                    {
+                    if($success == '1')  {
+                    ?><p class="color-success">Modification reussie</p><?php
+                                                            }
+                    }?>
+                </div>
                 <div class="box_table_id">
                     <table id="table_id" class="table table-striped dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>TITRE</th>
+                                <th>ID</th>
                                 <th>DESCRIPTION</th>
                                 <th>MINIATURE</th>
                                 <th>DATE</th>
@@ -56,8 +67,8 @@
                         <tbody>
                             <?php foreach ($video as $value){ ?>
                                 <tr>
-                                    <td><?php echo $value["id_video"] ?></td>
                                     <td><?php echo $value["titre_video"] ?></td>
+                                    <td><?php echo $value["id_video"] ?></td>
                                     <td><?php echo $value["description_video"] ?></td>
                                     <td><?php echo $value["miniature_video"] ?></td>
                                     <td><?php echo $value["date_video"] ?></td>
@@ -68,15 +79,16 @@
                                     <td><?php echo $value["valide"] ?></td>
                                     <td><a href="crud-modvideo.php?id=<?php echo $value["id_video"]?>&role=<?php echo $value["id_categorie"]?>">modifier</a></td>
                                     <?php if($value['valide'] == 1){ ?>
-                                    <td><a href="assets/php/blockvideo.php?id=<?php echo $value["id_video"]?>">bloqué</a></td>
+                                    <td><a href="assets/php/blockvideo.php?id=<?php echo $value["id_video"]?>">bloquer</a></td>
                                     <?php }else{ ?>
-                                    <td><a href="assets/php/deblockvideo.php?id=<?php echo $value["id_video"]?>">débloqué</a></td>
+                                    <td><a href="assets/php/deblockvideo.php?id=<?php echo $value["id_video"]?>">débloquer</a></td>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
+                
             </div>
         </div>
         <?php require_once "assets/include/footerindex.php"; ?>

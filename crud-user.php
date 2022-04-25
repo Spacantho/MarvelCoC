@@ -25,19 +25,30 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
-    <title>Crud</title>
+    <title>Gestionnaire Administrateur/Users</title>
 </head>
 <body>
-    <?php require_once "assets/include/navbar.php"; ?>
+    <?php
+        require_once "assets/include/navbar.php";
+        if(!empty($_GET['success'])){$success = $_GET['success'];}
+    ?>
     <div class="box-body">
         <div class="box-crud">
             <div class="box-user">
+                <div class="message-php">
+                    <?php if(!empty($_GET['success']))
+                    {
+                    if($success == '1')  {
+                    ?><p class="color-success">Modification reussie</p><?php
+                                                            }
+                    }?>
+                </div>
                 <div class="box_table_id">
                     <table id="table_id" class="table table-striped dt-responsive nowrap">
                         <thead>
                             <tr>
-                                <th>ID USER</th>
                                 <th>USERNAME</th>
+                                <th>ID USER</th>
                                 <th>MAIL</th>
                                 <th>PHOTO</th>
                                 <th>VERIFIE</th>
@@ -49,17 +60,17 @@
                         <tbody>
                             <?php foreach ($user as $value){ ?>
                                 <tr>
-                                    <td><?php echo $value["id_users"] ?></td>
                                     <td><?php echo $value["username_users"] ?></td>
+                                    <td><?php echo $value["id_users"] ?></td>
                                     <td><?php echo $value["mail_users"] ?></td>
                                     <td><?php echo $value["photo_users"] ?></td>
                                     <td><?php echo $value["verified"] ?></td>
                                     <td><?php echo $value["id_role"] ?></td>
                                     <td><a href="crud-moduser.php?id=<?php echo $value["id_users"]?>&role=<?php echo $value["id_role"]?>">modifier</a></td>
                                     <?php if($value['verified'] == 1){ ?>
-                                    <td><a href="assets/php/blockuser.php?id=<?php echo $value["id_users"]?>">bloqué</a></td>
+                                    <td><a href="assets/php/blockuser.php?id=<?php echo $value["id_users"]?>">bloquer</a></td>
                                     <?php }else{ ?>
-                                    <td><a href="assets/php/deblockuser.php?id=<?php echo $value["id_users"]?>">débloqué</a></td>
+                                    <td><a href="assets/php/deblockuser.php?id=<?php echo $value["id_users"]?>">débloquer</a></td>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>

@@ -1,6 +1,6 @@
 <header>
     <div id="hamburger">
-        <a href="index.php"><img id="logo-navbar" src="assets/images/logo/logoMarvel.png" alt="logo MCOC"></a>
+        <a href="homepage.php"><img id="logo-navbar" src="assets/images/logo/logoMarvel.png" alt="logo MCOC"></a>
             <div id="hamburger-content">
                 <nav>
                     <ul id="nav-list-choice">

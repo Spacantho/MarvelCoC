@@ -112,9 +112,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
   $id_categorie = $_POST['selectedCategorieID'];
  }
     require("video.php");
-    $newVid = new Video(0);
-
-    $serialized = serialize($newVid);
+    $newV
     if ($id_categorie != "null"){
 
 
@@ -122,6 +120,7 @@ if (isset($_POST['videoname']) && isset($_POST['videodesc'])){
       $stmt= $db->prepare($sql);
       
       //INSERT VIDEO
+
       $stmt->execute([$title, $desc, $imagePath, date('Y-m-d H:i:s'), $videoPath, $switchVideoType, 1, $_SESSION['sess_user_id'], $id_categorie, $serialized]);
       $video_was_added_in_bdd = true;
       $video_inserted_in_bdd_ID = $db->lastInsertId();
@@ -215,9 +214,9 @@ function cancel_upload($video_was_added_in_bdd, $video_inserted_in_bdd_ID, $cate
   foreach ($fichiers_ajoutes_au_serveurs_names as $file) {
     $filepath = "../uploads/".$file;
     if (file_exists($filepath)) {
-        echo'tentative de suppression de '.$filepath;
+        //echo'tentative de suppression de '.$filepath;
         unlink($filepath);
-        echo'suppression de '.$filepath.'reussie';
+        //echo'suppression de '.$filepath.'reussie';
     }
   }
 
