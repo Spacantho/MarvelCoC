@@ -16,8 +16,7 @@ body {
     width: 70%;
     margin: 4vh auto;
     display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-gap: 50px;
+    grid-template-columns: 0.7fr 1fr;
 }
 
 #message {
@@ -40,10 +39,37 @@ body {
     margin: auto;
 }
 
+#photo_profil {
+    display: grid;
+    grid-template-rows: 3fr;
+}
+
 #pp {
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
+    margin-bottom: 10px;
+    grid-row: 1;
+    justify-self: center;
+}
+
+#edit_pp {
+    text-decoration: underline;
+    cursor: pointer;
+    justify-self: center;
+    margin-top: 1vh;
+}
+
+#form_pp {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    gap: 20px;
+}
+
+#form_pp button {
+    width: 100px;
+    align-self: center;
 }
 
 #profil_info {
@@ -71,6 +97,12 @@ body {
 .editPseudo:hover {
     color: rgb(110, 110, 110);
     cursor: pointer;
+}
+
+i {
+    font-size: 15px;
+    vertical-align: text-top;
+    margin-left: 5px;
 }
 
 #textarea-replace {
@@ -122,7 +154,6 @@ body {
     #pp {
         height: 200px;
         width: 200px;
-        justify-self: center;
     }
 
     #profil_info {
