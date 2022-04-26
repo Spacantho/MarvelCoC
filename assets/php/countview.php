@@ -24,7 +24,6 @@ $diff = $viewDate - $currentDate;
 if ($diff <= 0) {
     $currentView->setDate(0);
 }
-var_dump($diff);
 $addView = serialize($currentView);
 //On écrase l'anciennne instance sérialisée
 $sqlRequest = "UPDATE video SET view = ?  WHERE id_video = ?";
