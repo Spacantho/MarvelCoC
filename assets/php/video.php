@@ -19,7 +19,7 @@ class Video
     public function __wakeup()
     {
         if ($this->_timestamp == 0) {
-            $this->_timestamp = date('Y-m-d H:i:s', strtotime("+10 seconds"));
+            $this->_timestamp = date('Y-m-d H:i:s', strtotime("+100 seconds"));
             $this->_nbrView += 1;
         }
     }
