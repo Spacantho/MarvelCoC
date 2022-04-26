@@ -4,7 +4,7 @@ setlocale(LC_TIME, "fr_FR");
 
 require "assets/php/getprofilinfo.php";
 
-if (!isset($_SESSION) || empty($_SESSION)) {
+if (!isset($_SESSION) || empty($_SESSION) && !isset($_GET["id"]) || empty($_GET["id"])) {
     header("location:index.php?validate_err");
 }
 
@@ -40,11 +40,23 @@ if (!isset($_SESSION) || empty($_SESSION)) {
                         case "maxlength":
                             echo "<span class='erreur'>Le pseudonyme est trop long (max: 20)</span>";
                             break;
+                        case "misspp":
+                            echo "<span class='erreur'>Veuillez inserer une image.</span>";
+                            break;
+                        case "extend":
+                            echo "<span class='erreur'>L'extension du fichier n'est pas prise en charge.</span>";
+                            break;
+                        case "sizepp":
+                            echo "<span class='erreur'>Le fichier est trop lourd.</span>";
+                            break;
                         case "succes_pseudo":
                             echo "<span class='succes'>Votre pseudonyme à bien été modifié.</span>";
                             break;
                         case "pwchangeok":
                             echo "<span class='succes'>Votre mot de passe à bien été modifié.</span>";
+                            break;
+                        case "validepp":
+                            echo "<span class='succes'>Votre photo de profil à bien été modifié.</span>";
                             break;
                     }
             }
@@ -53,7 +65,12 @@ if (!isset($_SESSION) || empty($_SESSION)) {
     </div>
 
     <div id="corps">
-        <div id="pp" style="background: url(assets/uploads/pp/<?php echo $result["photo_users"]?>) center no-repeat; background-size: cover;"></div>
+        <div id="photo_profil">
+            <div id="pp" style="background: url(assets/uploads/pp/<?php echo $result["photo_users"]?>) center no-repeat; background-size: cover;"></div>
+            <?php if ($mine) { ?>
+                <div onclick="changePp(<?php echo $id_user; ?>)" id="edit_pp">Éditer la photo.</div>
+            <?php } ?>
+        </div>
         <div id="profil_info">
             <p id="membre-depuis">Membre depuis le <?php echo strftime("%d %B %G", strtotime($result['date_users']))?></p>
             <div id="username">
@@ -85,6 +102,7 @@ if (!isset($_SESSION) || empty($_SESSION)) {
 
 
     <script src="assets/js/edit_pseudo_user.js"></script>
+    <script src="assets/js/changePp.js"></script>
     <script src="assets/js/navbar.js"></script>
 </body>
 
