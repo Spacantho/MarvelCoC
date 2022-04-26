@@ -83,7 +83,7 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   padding-left: 10%;
   top: 0;
   opacity: 0;
@@ -103,4 +103,22 @@ a {
   width: 95%;
   height: 100%;
   border-radius: 10px;
+}
+.box-bienvenue {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+}
+
+.bienvenue {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+
+.texte-de-bienvenue {
+  font-family: "Roboto";
+  font-size: calc(10px + 0.5vw);
 }
