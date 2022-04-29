@@ -14,3 +14,15 @@ function countVid($db, $idcategorie)
     $result = $pdoStat->fetch();
     return $result[0];
 }
+
+function showNbVid($db, $idcategorie) {
+
+    $countVid = countVid($db, $idcategorie);
+    
+        if ($countVid > 1) {
+                return countVid($db, $idcategorie)." vidéos";
+            } else {
+                return countVid($db, $idcategorie)." vidéo";
+            }
+}
+?>

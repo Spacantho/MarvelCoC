@@ -1,3 +1,27 @@
+<?php
+require ("assets/php/db.php");
+
+//s'il existe le token et l'id en get
+if (isset($_GET["t"]) && !empty($_GET['t']) && isset($_GET["i"]) && !empty($_GET['i'])) {
+
+    $id = htmlspecialchars($_GET['i']);
+    $getToken = htmlspecialchars($_GET['t']);
+
+    // returne true si le token est bien associé au user
+    $pdoStat = $db->prepare("SELECT token from users where id_users = ?");
+    $pdoStat->execute([$id]);
+    $data = $pdoStat->fetch(PDO::FETCH_ASSOC);
+    $token = $data['token'];
+
+    // on compare le token du get et celui du user et on renvoi à l'index si ce n'est pas bon
+    if ($getToken != $token) {
+        header("Location: index.php");
+    }
+} else {
+    header("Location: index.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,50 +32,36 @@
     <title>Page reset mot de passe</title>
 </head>
 <body>
-    <?php
-        if(!empty($_GET['erreur'])){
-            $erreur = $_GET['erreur'];}
-    ?>
-    <div class="box-body">
-        <div class="mask-body">
-            <div class="bandeau"></div>
-                <div class="box-titre-image">
-                    <div class="image-titre"></div>
-                </div>
-                <div class="box-body-input">
                     <div class="box-imput">
-                        <div class="titre-page-info"><h2>MOT DE PASSE OUBLIÉ</h2></div>
+                        <h2 class="titre-page-info">Réinitialisation du mot de passe</h2>
                         <div class="message-php">
-                            <?php if(!empty($_GET['erreur'])){
-                                      if($erreur == '1'){
-                            ?>         <p class="color-erreur">veuillez remplir tous les champs</p>
-                            <?php    
-                                      }
-                                      if($erreur == '2'){
-                            ?>         <p class="color-erreur">mot de passe trop long</p>
-                            <?php
-                                  }}
-                            ?>
+                            <?php if (isset($_GET['mes']) && !empty($_GET['mes'])) {
+                                $message = $_GET['mes'];
+                                    switch ($message) {
+                                        case "samepw":
+                                            echo "<span class='color-erreur'>Vérifiez que les deux mots de passe correspondent.</span>";
+                                            break;
+                                        case "missinput":
+                                            echo "<span class='color-erreur'>Veuillez remplir tous les champs</span>";
+                                            break;
+                                        case "length":
+                                            echo "<span class='color-erreur'>Un des champs est trop long</span>";
+                                            break;
+                                    }
+                            }?>
                         </div>
-
-                        
-                            <form action="assets/php/traitement-New-mdp.php?token=<?php echo $_GET['token']?>" method="post">
-                                <div class="imputi">
-                                    <label for="New-mdp"><p class="texte-pseudo">Nouveau Mot de passe:</p></label>
-                                    <input type="password" name="New-mdp" id="New-mdp" required><br>
-                                    <label for="RNew-mdp"><p class="texte-pseudo">repetez Mot de passe:</p></label>
-                                    <input type="password" name="RNew-mdp" id="RNew-mdp" required>
-                                </div>
-                                <div class="validation">
-                                    <input class="btn-valide" type="submit" value="Valider">
-                                </div>
-                            </form>
+                        <form action="assets/php/traitement-New-mdp.php?t=<?php echo $token; ?>&i=<?php echo $id;?>" method="post">
+                            <div class="imputi">
+                                <label for="New-mdp"><p class="texte-pseudo">Nouveau mot de passe</p></label>
+                                <input type="password" name="New-mdp" id="New-mdp" maxlength=255 required><br>
+                                <label for="RNew-mdp"><p class="texte-pseudo">Confirmez le mot de passe</p></label>
+                                <input type="password" name="RNew-mdp" id="RNew-mdp" maxlength=255 required>
+                            </div>
+                            <div class="validation">
+                                <input class="btn-valide" type="submit" value="Valider">
+                            </div>
+                        </form>
                     </div>
-                </div>
-            <div class="bandeau1">
-                <div class="copy"></div>
-            </div>
-        </div>
-    </div>
+                
 </body>
 </html>

@@ -62,7 +62,7 @@ $user_id = $_SESSION["sess_user_id"];
                     <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
                 </video>
 
-               <?php } elseif ($response['typelien_video'] === "youtube") { ?>
+               <?php } elseif ($response['typelien_video'] === "link") { ?>
                    <iframe id="video-player" src="<?php echo $response['lien_video'] ?>" title="<?php echo $response['titre_video'] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                <?php } else {
                    echo "<span class='alertcommentaire' style='color: red;'>Aucune vidéo n'a été trouvée</span>";

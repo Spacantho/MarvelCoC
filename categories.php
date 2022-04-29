@@ -39,7 +39,7 @@ require "assets/php/getallcategorie.php";
                         <div class=" filterBlack">
                             <div class="titleCat"><?php echo "Categorie " . $value["nom_categorie"]; ?></div>
                             <div class="textCat">
-                                <div> <?php echo countVid($db, $value["id_categorie"]) . " vidéo(s)"; ?></div>
+                                <div> <?php echo showNbVid($db, $value["id_categorie"]); ?></div>
                             </div>
                         </div>
                     </div>

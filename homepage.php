@@ -40,7 +40,7 @@ include "assets/php/accesvideo.php";
             <div class="slide responsive onrad">
             <?php foreach ($executevideo as $value){ ?>
                 <div class="body-slide" id="">
-                    <div class="card" style=" background: center / contain no-repeat url(<?php echo $value['miniature_video']?>)">
+                    <div class="card" style=" background: center / contain no-repeat url(assets/uploads/<?php echo $value['miniature_video']?>)">
                         <a href="template_video.php?video=<?php echo $value["id_video"]?>" class="js-modal">                           
                             <div class="textcache" id="info">
                                 <p>

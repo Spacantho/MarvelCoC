@@ -8,50 +8,43 @@
     <title>Page mot de passe perdu</title>
 </head>
 <body>
-    <?php
-        if(!empty($_GET['envoi'])){
-            $envoi = $_GET['envoi'];}
-    ?>
-    <div class="box-body">
-        <div class="mask-body">
-            <div class="bandeau"></div>
-                <div class="box-titre-image">
-                    <div class="image-titre"></div>
-                </div>
-                <div class="box-body-input">
-                    <div class="box-imput">
-                        <div class="titre-page-info"><h2>MOT DE PASSE PERDU</h2></div>
-                        <div class="message-php">
-                            <?php if(!empty($_GET['envoi'])){
-                                    if($envoi == '1')  {
-                            ?><p class="color-success">mail envoyer</p>
-                            <?php    
-                                      }
-                                  }
-                            ?>
-                        </div>
 
-                        
+                    <div class="box-imput">
+                        <h2 class="titre-page-info">Mot de passe oublié</h2>
+                        <div class="message-php">
+                            <?php
+                            //Check Way : pagemdplost.php? + message
+                            if (isset($_GET['mes']) && !empty($_GET['mes'])) {
+                                $message = $_GET['mes'];
+                                    switch ($message) {
+                                        case "mailsend":
+                                            echo "<span class='color-success'>Un email vous a bien été envoyé</span>";
+                                            break;
+                                        case "noaccount":
+                                            echo "<span class='color-erreur'>Ce compte n'existe pas</span>";
+                                            break;
+                                        case "missinput":
+                                            echo "<span class='color-erreur'>Veuillez remplir tous les champs</span>";
+                                            break;
+                                        case "length":
+                                            echo "<span class='color-erreur'>Un des champs est trop long</span>";
+                                            break;
+                                    }
+                            }?>
+                        </div>
                             <form action="assets/php/traitement-recuperation.php" method="post">
                                 <div class="imputi">
                                     <label for="Pseudo"><p class="texte-pseudo">Pseudo:</p></label>
-                                    <input type="text" name="Pseudo" id="Pseudo" required><br>
+                                    <input type="text" name="Pseudo" id="Pseudo" maxlength="30" required><br>
                                     <label for="mail"><p class="texte-pseudo">Mail:</p></label>
-                                    <input type="mail" name="mail" id="mail" required>
+                                    <input type="mail" name="mail" id="mail" maxlength="320" required>
                                 </div>
                                 <div class="validation">
                                     <input class="btn-valide" type="submit" value="Valider">
                                 </div>
+                                <div class="redirection">
+                                    <div class="nouveau"><p>Vous êtes nouveau ?</p><a href="pageinscription.php" style="margin-left: 5px;">Inscrivez-vous ici</a></div>
+                                </div>
                             </form>
-                        <div class="redirection">
-                            <div class="nouveau"><p>vous êtes nouveau?</p><a href="pageinscription.php"> inscrivez-vous ici</a></div>
-                        </div>
-                    </div>
-                </div>
-            <div class="bandeau1">
-                <div class="copy"></div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
