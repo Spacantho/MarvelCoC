@@ -26,6 +26,16 @@ header {
     color: white;
 }
 
+#nav-list-choice {
+    margin: 0rem !important;
+}
+
+.nav-choice a:hover {
+    color: white !important;
+}
+
+
+
 #nav-btn {
     background-color: #2b6684;
     padding: 8px;

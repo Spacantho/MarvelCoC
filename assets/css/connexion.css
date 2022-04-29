@@ -1,100 +1,53 @@
 @font-face {
-  font-family: "titre";
-  src: url("../font/AkiraExpanded.otf");
-}
-@font-face {
-  font-family: "texte";
+  font-family: "roboto";
   src: url("../font/Roboto-Medium.ttf");
 }
 * {
   margin: 0;
   padding: 0;
+  font-family: "roboto";
 }
-.box-body {
+body {
   width: 100%;
   height: 100vh;
   background: url("../images/bgins.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  /* overflow-y: hidden; */
+  font-weight: 100;
 }
-.mask-body {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  /* backdrop-filter: blur(3px); */
-}
-.box-titre-image {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  /* height: 220px; */
-}
-.image-titre {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 310px;
-  height: 240px;
-  background: url("../images/logo.png");
-  background-repeat: no-repeat;
-  margin-top: -40px;
-}
-.bandeau {
-  width: 100%;
-  height: 10vh;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.bandeau1 {
-  width: 100%;
-  height: 10vh;
-  margin-top: 10vh;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.box-body-input {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 50vh;
-  margin-top: 20vh;
-}
+
 .box-imput {
   display: flex;
   flex-direction: column;
-  width: 380px;
-  height: 490px;
+  position: relative;
+  top: 15vh;
+  margin: auto;
+  padding: 20px;
+  width: calc(100% - 70vw);
   color: whitesmoke;
-  text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 25px;
-  line-height: 30px;
+  border-radius: 3px;
   backdrop-filter: blur(3px);
 }
 .titre-page-info {
-  margin-top: 50px;
-  font-size: 26px;
-  font-family: "titre";
-}
-.titre-page-info2 {
-  margin-top: 20px;
-  font-size: 26px;
-  font-family: "titre";
+  font-size: 2.5rem;
+  text-align: center;
 }
 .message-php {
-  margin-top: 25px;
   height: 25px;
+  text-align: center;
+  margin: 5px 0;
 }
 .imput {
   margin-top: 25px;
-  line-height: 40px;
 }
 .imputi {
-  margin-top: 25px;
   line-height: 30px;
 }
 .validation {
   margin-top: 25px;
+  text-align: center;
 }
 .redirection {
   margin-top: 25px;
@@ -114,7 +67,6 @@
 }
 .btn-valide2 a {
   color: #122228;
-  font-family: "texte";
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
@@ -130,64 +82,62 @@
   color: whitesmoke;
 }
 .texte-pseudo {
-  font-size: 22px;
-  font-family: "texte";
-  display: flex;
-  margin-left: 30px;
+  font-size: 18px;
 }
 #Pseudo,
 #password,
 #mail,
 #password2 {
+  padding: 2px;
   font-size: 18px;
-  text-align: center;
-  border-radius: 6px;
-  width: 325px;
+  border-radius: 4px;
+  width: 90%;
   margin-bottom: 10px;
 }
 #Pseudo3,
 #password3,
 #mail3,
 #password4 {
+  padding: 2px;
   font-size: 18px;
-  text-align: center;
-  border-radius: 6px;
-  width: 325px;
+  border-radius: 4px;
+  width: 90%;
   margin-bottom: 10px;
 }
 .btn-valide {
   background: whitesmoke;
-  /* border: 1px solid #ffd700; */
   border: none;
-  border-radius: 6px;
+  border-radius: 2px;
   color: #122228;
-  width: 100px;
-  height: 40px;
-  font-family: "texte";
-  font-size: 18px;
+  width: 85px;
+  height: 25px;
+  font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
+  justify-content: center;
 }
 .btn-valide:hover {
-  transform: translateY(-5px);
   transition-duration: 0.3s;
   color: whitesmoke;
   background: #122228;
-  border: 1px solid whitesmoke;
 }
 .recup-mdp {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 35px;
   margin-top: -5px;
 }
 .recup-mdp1 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 35px;
   margin-top: 0px;
 }
+
+.recup-mdp1 label{
+  cursor: pointer;
+}
+
 .nouveau {
   display: flex;
   flex-direction: row;
@@ -195,13 +145,10 @@
 .nouveau a,
 .recup-mdp a {
   color: whitesmoke;
-  transition-duration: 0.3s;
 }
 .nouveau a:hover,
 .recup-mdp a:hover {
-  color: rgb(106, 164, 168);
-  transition-duration: 0.3s;
-  text-shadow: 0px 0px 17px rgba(204, 204, 204, 1);
+  color: #2b6684;
 }
 .space {
   width: 5px;
@@ -236,148 +183,31 @@
 }
 .btn-retour a {
   color: whitesmoke;
-  transition-duration: 0.3s;
 }
 .btn-retour a:hover {
-  color: rgb(106, 164, 168);
-  transition-duration: 0.3s;
-  text-shadow: 0px 0px 17px rgba(204, 204, 204, 1);
-}
-@media (max-height: 900px) {
-  .titre-page-info {
-    margin-top: 30px;
-    font-size: 24px;
-  }
-  .titre-page-info2 {
-    margin-top: 5px;
-    font-size: 18px;
-  }
-  .texte-pseudo {
-    font-size: 16px;
-  }
-  #Pseudo,
-  #password,
-  #mail,
-  #password2 {
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
-  #Pseudo3,
-  #password3,
-  #mail3,
-  #password4 {
-    font-size: 16px;
-    margin-bottom: 0px;
-  }
-  .box-body-input {
-    height: 50vh;
-    margin-top: 20vh;
-  }
-  .box-imput {
-    height: 480px;
-  }
-}
-@media (max-height: 820px) {
-  .box-imput {
-    /* height: 400px; */
-  }
-  .titre-page-info {
-    margin-top: 25px;
-  }
-  .message-php {
-    margin-top: 10px;
-  }
-  .imputi {
-    margin-top: 5px;
-  }
-  #Pseudo,
-  #password,
-  #mail,
-  #password2 {
-    width: 300px;
-  }
-  #Pseudo3,
-  #password3,
-  #mail3,
-  #password4 {
-    width: 300px;
-  }
-}
-@media (max-height: 800px) {
-  .box-body-input {
-    height: 54vh;
-    margin-top: 16vh;
-  }
-  .box-imput {
-    height: 480px;
-  }
-}
-@media (max-height: 750px) {
-  .box-body-input {
-    height: 56vh;
-    margin-top: 14vh;
-  }
-  .box-imput {
-    height: 455px;
-  }
-}
-@media (max-height: 670px) {
-  * {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-  /* .box-body-input {
-    height: 58vh;
-  } */
-  .image-titre {
-    width: 225px;
-    height: 160px;
-    background-image: url(../images/logo-mobile.png);
-    margin-top: -60px;
-  }
-  .box-imput {
-    /* height: 400px; */
-    width: 270px;
-  }
-  /* .titre-page-info2 {
-    margin-top: 10px;
-    font-size: 18px;
-  } */
-  .message-php {
-    margin-top: 10px;
-  }
-  .imputi {
-    margin-top: 5px;
-  }
-  .bandeau1 {
-    margin-top: 2vh;
-  }
-  .text-valid {
-    font-size: 16px;
-  }
-  #Pseudo,
-  #password,
-  #mail,
-  #password2 {
-    width: 220px;
-  }
-  #Pseudo3,
-  #password3,
-  #mail3,
-  #password4 {
-    width: 220px;
-  }
-  .box-body-input {
-    height: 74vh;
-    margin-top: 7vh;
-  }
-  .box-imput {
-    height: 465px;
-  }
+  color: #2b6684;
 }
 
-@media (max-height: 600px) {
-  .imputi {
-    line-height: 27px;
+#New-mdp, #RNew-mdp {
+  padding: 2px;
+  font-size: 18px;
+  border-radius: 4px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  
+  .box-imput {
+    width: calc(100% - 40vw);
   }
+
+}
+
+@media screen and (max-width: 500px) {
+  
+  .box-imput {
+    width: calc(100% - 10vw);
+  }
+
 }

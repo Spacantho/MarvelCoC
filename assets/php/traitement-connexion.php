@@ -1,14 +1,5 @@
 <?php
 
-// erreur 1 = champs non remplis
-//  erreur 2 = nombre de character trop long
-//  erreur 3 = adresse deja utilisé
-//  erreur 5 = user deja pris
-//  erreur 4 = mdp et mdp 2 non identique
-// erreur 6 = compte non créer
-// erreur 7 = password incorrect
-// erreur 8 = compte non validé
-
 session_start();
 include("db.php");
 require("cookie.php");
@@ -65,19 +56,19 @@ if (isset($_POST['submitBtnLogin'])) {
 
             header("Location: home.php");
           } else {
-            header('Location: ../../pageconnexion.php?erreur=8');
+            header('Location: ../../pageconnexion.php?mes=novalid');
           }
         } else {
-          header('Location: ../../pageconnexion.php?erreur=7');
+          header('Location: ../../pageconnexion.php?mes=pwfail');
         }
       } else {
-        header('Location: ../../pageconnexion.php?erreur=6');
+        header('Location: ../../pageconnexion.php?mes=noaccount');
       }
     } catch (PDOException $e) {
       echo "Error : " . $e->getMessage();
     }
   } else {
-    header('Location: ../../pageconnexion.php?erreur=1');
+    header('Location: ../../pageconnexion.php?mes=missinput');
   }
 }
 ?>

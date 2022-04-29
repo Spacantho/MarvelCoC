@@ -9,17 +9,29 @@
     $message = "
     <html>
         <head>
-            <title>Bonjour $name, merci d’avoir rejoint MarvelCoC.</title>
+            <title>Validation du compte</title>
+            <style>
+                body {
+                    font-family: sans-serif;
+                    width: 70%;
+                    margin: auto;
+                }
+                h2 {
+                    text-align: center;
+                }
+            </style>
         </head>
-        <body style='color:blue'>
-            Nous aimerions vous confirmer que votre compte a été créé avec succès. Pour accéder à MarvelCoC, cliquez sur le lien ci-dessous.
+        <body>
+            <h2>Bonjour $name, merci d’avoir rejoint MarvelCoC.</h2><br>
+            <p>Nous aimerions vous confirmer que votre compte a été créé avec succès.</p>
+            <p>Pour accéder à MarvelCoC, cliquez sur le lien ci-dessous: </p>
             
-            http://localhost:8888/marvel/MarvelCoC/assets/php/traitement_verif_mail.php?token=$token
+            <p>http://localhost:8888/marvel9/MarvelCoC/assets/php/traitement_verif_mail.php?token=$token</p>
             
-            Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous à [email contact].
+            <p>Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous à [email contact].</P>
             
-            Cordialement,
-            L’équipe MarvelCoC
+            <p>Cordialement,<br/>
+            L’équipe MarvelCoC</p>
         </body>
     </html>";
 

@@ -16,16 +16,16 @@
             if(strlen($_POST['username_users']) <= $maxuser){
                 if(isset($_POST['photo_users']) && !empty($_POST['photo_users'])){
                     if(strlen($_POST['photo_users']) <= $maxphoto){
-                                                    $sqlRequest = "UPDATE users SET username_users =:username_users,photo_users =:photo_users, id_role =:id_role
-                                                                          WHERE id_users=:id_users;";
-                                                    $pdoStat = $db -> prepare($sqlRequest); 
-                                                    $pdoStat->execute(Array(
-                                                        ':username_users'   =>    $_POST['username_users'],
-                                                        ':photo_users'    =>    $_POST['photo_users'],
-                                                        ':id_role'    =>    $_POST['id_role'],
-                                                        ':id_users'      =>    $id_users
-                                                    ));
-                                                        header("Location: ../../crud-user.php?success=1");
+                        $sqlRequest = "UPDATE users SET username_users =:username_users,photo_users =:photo_users, id_role =:id_role
+                                              WHERE id_users=:id_users;";
+                        $pdoStat = $db -> prepare($sqlRequest); 
+                        $pdoStat->execute(Array(
+                            ':username_users'   =>    $_POST['username_users'],
+                            ':photo_users'    =>    $_POST['photo_users'],
+                            ':id_role'    =>    $_POST['id_role'],
+                            ':id_users'      =>    $id_users
+                        ));
+                            header("Location: ../../crud-user.php?success=1");
                     }
                     else{header("Location: ../../crud-moduser.php?erreur=2&id=$id_users&role=$id_role");}
                 }
